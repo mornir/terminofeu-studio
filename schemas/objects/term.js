@@ -13,12 +13,8 @@ export default {
       type: 'array',
       name: 'additionnalFields',
       title: 'Weitere Felder',
-      description: 'Kontext, Anmerkung, Abkürzung, usw.',
-      of: [{type: 'context' }, {type: 'notice'}, {type: 'abbreviation'}]
-    },
-    {
-      type: 'definition',
-      name: 'definition',
+      description: 'Definition, Anmerkung, Abkürzung, usw.',
+      of: [{ type: 'definition'}, {type: 'abbreviation'}, {type: 'context' }, {type: 'notice'} ]
     },
     {
         type: 'array',
