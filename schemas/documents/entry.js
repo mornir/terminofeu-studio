@@ -25,13 +25,20 @@ export default {
       title: 'Verwandte Einträge',
       name: 'relatedTerms',
       type: 'array',
-      of: [{ type: 'entry' }],
+        of: [
+        {
+          type: 'reference',
+          to: [
+            {type: 'entry'},
+          ]
+        }
+      ]
     },
     {
       title: 'Abbildung',
       name: 'image',
       type: 'image',
-      description: 'z.B. Zeichnungen, grafische Darstellungen oder Schemata',
+      description: 'Zeichnungen, grafische Darstellungen oder Schemata',
       fieldset: 'image',
     },
     {
