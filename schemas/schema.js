@@ -9,9 +9,12 @@ import domain from './documents/domain'
 import entry from './documents/entry'
 
 // Import objects
-import termLang from './objects/termLang'
+import term from './objects/term'
 import blockContent from './objects/blockContent'
 import variant from './objects/variant'
+import context from './objects/context'
+import notice from './objects/notice'
+import abbreviation from './objects/abbreviation'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,7 +26,10 @@ export default createSchema({
     /* Your types here! */
     blockContent,
     variant,
-    termLang,
+    context,
+    notice,
+    abbreviation,
+    term,
     domain,
     entry,
   ]),

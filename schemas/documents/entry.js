@@ -2,7 +2,7 @@ import Tabs from 'sanity-plugin-tabs'
 
 export default {
   name: 'entry',
-  title: 'Begriffe',
+  title: 'Einträge',
   type: 'document',
   fieldsets: [
     {
@@ -22,15 +22,16 @@ export default {
       to: [{ type: 'domain' }],
     },
     {
-      title: 'Verwandte Begriffe',
+      title: 'Verwandte Einträge',
       name: 'relatedTerms',
       type: 'array',
       of: [{ type: 'entry' }],
     },
     {
-      title: 'Bild',
+      title: 'Abbildung',
       name: 'image',
       type: 'image',
+      description: 'z.B. Zeichnungen, grafische Darstellungen oder Schemata',
       fieldset: 'image',
     },
     {
@@ -44,19 +45,19 @@ export default {
       ],
       fields: [
         {
-          type: 'termLang',
+          type: 'term',
           name: 'de',
           title: 'Deutsch',
           fieldset: 'de',
         },
         {
-          type: 'termLang',
+          type: 'term',
           name: 'fr',
           title: 'Französisch',
           fieldset: 'fr',
         },
         {
-          type: 'termLang',
+          type: 'term',
           name: 'it',
           title: 'Italienisch',
           fieldset: 'it',
@@ -66,7 +67,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'content.de.vedette',
+      title: 'content.de.preferredTerm',
     },
   },
 }

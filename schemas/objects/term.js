@@ -1,39 +1,33 @@
 export default {
   title: 'Sprache',
-  name: 'termLang',
+  name: 'term',
   type: 'object',
-  fieldsets: [
-    {
-      title: 'Bezeichnungen',
-      name: 'designation',
-      options: {
-        columns: 2,
-      },
-    },
-  ],
   fields: [
     {
       type: 'string',
       name: 'preferredTerm',
       title: 'Hauptbegriff',
-      fieldset: 'designation',
+
     },
-    {
-      type: 'string',
-      name: 'abbreviation',
-      title: 'Abkürzung',
-      fieldset: 'designation',
-    },
-    {
+   {
       type: 'blockContent',
       name: 'definition',
       title: 'Definition',
+      description: 'Die Definition soll so kurz wie möglich und so ausführlich wie nötig sein',
     },
-    {
+  /*    {
       type: 'blockContent',
       name: 'source',
       title: 'Quelle',
+    }, */
+    {
+      type: 'array',
+      name: 'additionnalFields',
+      title: 'Weitere Felder',
+      description: 'Kontext, Anmerkung, Abkürzung, usw.',
+      of: [{type: 'context' }, {type: 'notice'}, {type: 'abbreviation'}]
     },
+
     {
       type: 'array',
       name: 'variants',
