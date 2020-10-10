@@ -15,6 +15,7 @@ import variant from './objects/variant'
 import context from './objects/context'
 import notice from './objects/notice'
 import abbreviation from './objects/abbreviation'
+import definition from './objects/definition'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,6 +29,7 @@ export default createSchema({
     variant,
     context,
     notice,
+    definition,
     abbreviation,
     term,
     domain,

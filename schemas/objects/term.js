@@ -7,19 +7,8 @@ export default {
       type: 'string',
       name: 'preferredTerm',
       title: 'Hauptbegriff',
-
+      validation: Rule => Rule.required(),
     },
-   {
-      type: 'blockContent',
-      name: 'definition',
-      title: 'Definition',
-      description: 'Die Definition soll so kurz wie möglich und so ausführlich wie nötig sein',
-    },
-  /*    {
-      type: 'blockContent',
-      name: 'source',
-      title: 'Quelle',
-    }, */
     {
       type: 'array',
       name: 'additionnalFields',
@@ -27,12 +16,15 @@ export default {
       description: 'Kontext, Anmerkung, Abkürzung, usw.',
       of: [{type: 'context' }, {type: 'notice'}, {type: 'abbreviation'}]
     },
-
     {
-      type: 'array',
-      name: 'variants',
-      title: 'Alternative Begriffe',
-      of: [{ type: 'variant' }],
+      type: 'definition',
+      name: 'definition',
     },
-  ],
+    {
+        type: 'array',
+        name: 'variants',
+        title: 'Alternative Begriffe',
+        of: [{ type: 'variant' }],
+      },
+    ],
 }
