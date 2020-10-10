@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+:root {
+  --main-navigation-color: #c05621;
+  --brand-primary: #dd6b20;
+  --brand-secondary: #f6ad55;
+  /* --font-family-base: 'Fjalla One'; */
+  --font-family-base: 'Nunito', sans-serif;
+}
