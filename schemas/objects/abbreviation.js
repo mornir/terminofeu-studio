@@ -1,6 +1,6 @@
 export default {
   title: 'Abkürzung',
-  name: 'abbreviation', 
+  name: 'abbreviation',
   type: 'object',
   fields: [
     {
@@ -13,6 +13,17 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'blockContent',
-    }
-  ]
+    },
+  ],
+  preview: {
+    select: {
+      abbreviation: 'abbreviation',
+    },
+    prepare({ abbreviation }) {
+      const title = `Abkürzung: ${abbreviation}`
+      return {
+        title,
+      }
+    },
+  },
 }

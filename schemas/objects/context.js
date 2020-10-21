@@ -1,6 +1,6 @@
 export default {
   title: 'Kontext',
-  name: 'context', 
+  name: 'context',
   type: 'object',
   fields: [
     {
@@ -13,6 +13,17 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'blockContent',
-    }
-  ]
+    },
+  ],
+  preview: {
+    select: {
+      context: 'context',
+    },
+    prepare({ context }) {
+      const title = `Kontext: ${context}`
+      return {
+        title,
+      }
+    },
+  },
 }

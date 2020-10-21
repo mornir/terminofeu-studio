@@ -25,14 +25,12 @@ export default {
       title: 'Verwandte Einträge',
       name: 'relatedTerms',
       type: 'array',
-        of: [
+      of: [
         {
           type: 'reference',
-          to: [
-            {type: 'entry'},
-          ]
-        }
-      ]
+          to: [{ type: 'entry' }],
+        },
+      ],
     },
     {
       title: 'Abbildung',

@@ -1,6 +1,6 @@
 export default {
   title: 'Anmerkung',
-  name: 'notice', 
+  name: 'notice',
   type: 'object',
   fields: [
     {
@@ -9,5 +9,12 @@ export default {
       type: 'blockContent',
       description: 'Benennungsbezogenen oder begriffsbezogenen Daten',
     },
-  ]
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Anmerkung',
+      }
+    },
+  },
 }
