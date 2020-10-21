@@ -4,16 +4,6 @@ export default {
   name: 'entry',
   title: 'Einträge',
   type: 'document',
-  fieldsets: [
-    {
-      title: 'Bild',
-      name: 'image',
-      options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by
-      },
-    },
-  ],
   fields: [
     {
       title: 'Bereich',
@@ -33,11 +23,11 @@ export default {
       ],
     },
     {
-      title: 'Abbildung',
-      name: 'image',
-      type: 'image',
+      title: 'Abbildungen',
+      name: 'illustrations',
+      type: 'array',
       description: 'Zeichnungen, grafische Darstellungen oder Schemata',
-      fieldset: 'image',
+      of: [{ type: 'illustration' }],
     },
     {
       name: 'content',
