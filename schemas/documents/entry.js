@@ -65,4 +65,11 @@ export default {
       title: 'content.de.preferredTerm',
     },
   },
+  orderings: [
+    {
+      title: 'Alphabetical Order',
+      name: 'alphabeticalOrder',
+      by: [{ field: 'content.de.preferredTerm', direction: 'asc' }],
+    },
+  ],
 }
