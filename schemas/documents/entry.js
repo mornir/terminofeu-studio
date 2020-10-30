@@ -58,8 +58,8 @@ export default {
   ],
   preview: {
     select: {
-      term: 'content.de.preferredTerm',
-      definition: 'content.de.definition',
+      term: 'content.de.terms[0].term',
+      definition: 'content.de.definitions[0].definition',
     },
     prepare({ term, definition }) {
       const block = (definition || []).find((block) => block._type === 'block')
