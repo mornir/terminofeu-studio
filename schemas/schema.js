@@ -5,7 +5,6 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Import documents
-import domain from './documents/domain'
 import entry from './documents/entry'
 
 // Import objects
@@ -17,6 +16,7 @@ import notice from './objects/notice'
 import abbreviation from './objects/abbreviation'
 import definition from './objects/definition'
 import illustration from './objects/illustration'
+import lang from './objects/lang'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,8 +33,8 @@ export default createSchema({
     definition,
     abbreviation,
     illustration,
+    lang,
     term,
-    domain,
     entry,
   ]),
 })

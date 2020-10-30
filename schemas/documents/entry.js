@@ -4,17 +4,13 @@ export default {
   name: 'entry',
   title: 'Einträge',
   type: 'document',
+  liveEdit: true,
   fields: [
-    {
-      title: 'Bereich',
-      name: 'domain',
-      type: 'reference',
-      to: [{ type: 'domain' }],
-    },
     {
       title: 'Verwandte Einträge',
       name: 'relatedTerms',
       type: 'array',
+      validation: (Rule) => Rule.unique(),
       of: [
         {
           type: 'reference',
@@ -40,19 +36,19 @@ export default {
       ],
       fields: [
         {
-          type: 'term',
+          type: 'lang',
           name: 'de',
           title: 'Deutsch',
           fieldset: 'de',
         },
         {
-          type: 'term',
+          type: 'lang',
           name: 'fr',
           title: 'Französisch',
           fieldset: 'fr',
         },
         {
-          type: 'term',
+          type: 'lang',
           name: 'it',
           title: 'Italienisch',
           fieldset: 'it',
@@ -62,13 +58,26 @@ export default {
   ],
   preview: {
     select: {
-      title: 'content.de.preferredTerm',
+      term: 'content.de.preferredTerm',
+      definition: 'content.de.definition',
+    },
+    prepare({ term, definition }) {
+      const block = (definition || []).find((block) => block._type === 'block')
+      return {
+        title: term,
+        subtitle: block
+          ? block.children
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : 'Keine Definition',
+      }
     },
   },
   orderings: [
     {
-      title: 'Alphabetical Order',
-      name: 'alphabeticalOrder',
+      title: 'Alphabetical',
+      name: 'alphabetical',
       by: [{ field: 'content.de.preferredTerm', direction: 'asc' }],
     },
   ],

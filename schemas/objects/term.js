@@ -1,31 +1,40 @@
+// THIS SHOULD BE RENAMED TERM
 export default {
-  title: 'Sprache',
+  title: 'Begriff',
   name: 'term',
   type: 'object',
   fields: [
     {
       type: 'string',
-      name: 'preferredTerm',
-      title: 'Hauptbegriff',
-      validation: (Rule) => Rule.required(),
+      name: 'term',
+      title: 'Begriff',
+    },
+    {
+      type: 'blockContent',
+      name: 'sourceTerm',
+      title: 'Quelle des Begriffs',
+    },
+    {
+      type: 'string',
+      name: 'status',
+      title: 'Status',
+      options: {
+        list: [
+          { title: 'Hauptbegriff', value: 'hauptbegriff' },
+          { title: 'genormt', value: 'genormt' },
+          { title: 'nicht genormt', value: 'nicht_genormt' },
+          { title: 'veraltet', value: 'neu' },
+          { title: 'abzulehnen', value: 'abzulehnen' },
+          { title: 'zulässig', value: 'zulässig' },
+        ],
+      },
     },
     {
       type: 'array',
       name: 'additionnalFields',
       title: 'Weitere Felder',
-      description: 'Definition, Anmerkung, Abkürzung, usw.',
-      of: [
-        { type: 'definition' },
-        { type: 'abbreviation' },
-        { type: 'context' },
-        { type: 'notice' },
-      ],
-    },
-    {
-      type: 'array',
-      name: 'variants',
-      title: 'Alternative Begriffe',
-      of: [{ type: 'variant' }],
+      description: 'Anmerkung, Abkürzung, usw.',
+      of: [{ type: 'abbreviation' }, { type: 'context' }, { type: 'notice' }],
     },
   ],
 }
