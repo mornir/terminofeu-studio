@@ -4,7 +4,7 @@ export default {
   type: 'object',
   fields: [
     {
-      title: 'Kontext',
+      title: 'Beispielsatz (für Übersetzer)',
       name: 'context',
       type: 'text',
       description: 'Typische fachsprachliche Verwendung einer Benennung',
