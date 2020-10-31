@@ -39,6 +39,9 @@ export default () =>
                       .title(lang.title)
                       .filter('_type == "term" && language == $lang')
                       .params({ lang: lang.code })
+                      .initialValueTemplates([
+                        S.initialValueTemplateItem('term-' + lang.code),
+                      ])
                   )
               }),
             ])
