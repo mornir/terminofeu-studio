@@ -1,4 +1,3 @@
-// THIS SHOULD BE RENAMED LANG
 export default {
   title: 'Sprache',
   name: 'lang',
@@ -18,6 +17,10 @@ export default {
         {
           type: 'reference',
           to: [{ type: 'term' }],
+          options: {
+            filter: 'language == $lang',
+            filterParams: { lang: 'fr' },
+          },
         },
       ],
     },

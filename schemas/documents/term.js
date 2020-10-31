@@ -1,4 +1,3 @@
-// THIS SHOULD BE RENAMED TERM
 export default {
   title: 'Begriff',
   name: 'term',
