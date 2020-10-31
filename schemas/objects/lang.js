@@ -12,7 +12,7 @@ export default {
     },
     {
       type: 'array',
-      name: 'terms',
+      name: 'alternativeTerms',
       title: 'Alternative Begriffe',
       of: [
         {

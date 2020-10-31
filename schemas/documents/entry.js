@@ -1,5 +1,4 @@
 import Tabs from 'sanity-plugin-tabs'
-import client from 'part:@sanity/base/client'
 
 export default {
   name: 'entry',
@@ -73,7 +72,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'content.de.preferredTerm', direction: 'asc' }],
+      by: [{ field: 'content.de.preferredTerm.term', direction: 'asc' }],
     },
   ],
 }

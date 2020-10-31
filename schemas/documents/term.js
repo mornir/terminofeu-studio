@@ -1,9 +1,22 @@
 // THIS SHOULD BE RENAMED TERM
 export default {
-  title: 'Begriffe',
+  title: 'Begriff',
   name: 'term',
   type: 'document',
+  liveEdit: true,
   fields: [
+    {
+      title: 'Sprache',
+      name: 'language',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Deutsch', value: 'de' },
+          { title: 'Französisch', value: 'fr' },
+          { title: 'Italienisch', value: 'it' },
+        ],
+      },
+    },
     {
       type: 'string',
       name: 'term',
@@ -37,4 +50,12 @@ export default {
       of: [{ type: 'abbreviation' }, { type: 'context' }, { type: 'notice' }],
     },
   ],
+  initialValue: {
+    language: 'de',
+  },
+  preview: {
+    select: {
+      title: 'term',
+    },
+  },
 }

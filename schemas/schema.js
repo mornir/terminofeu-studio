@@ -6,9 +6,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Import documents
 import entry from './documents/entry'
+import term from './documents/term'
 
 // Import objects
-import term from './objects/term'
 import blockContent from './objects/blockContent'
 import variant from './objects/variant'
 import context from './objects/context'
