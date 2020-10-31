@@ -1,8 +1,8 @@
 // THIS SHOULD BE RENAMED TERM
 export default {
-  title: 'Begriff',
+  title: 'Begriffe',
   name: 'term',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       type: 'string',
