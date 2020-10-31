@@ -5,16 +5,35 @@ export default {
   type: 'object',
   fields: [
     {
-      type: 'array',
-      name: 'terms',
-      title: 'Begriffe',
-      of: [{ type: 'term' }],
+      type: 'reference',
+      name: 'preferredTerm',
+      title: 'Hauptbegriff',
+      to: [{ type: 'term' }],
     },
     {
       type: 'array',
-      name: 'definitions',
-      title: 'Definitions',
-      of: [{ type: 'definition' }],
+      name: 'terms',
+      title: 'Alternative Begriffe',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'term' }],
+        },
+      ],
+    },
+    {
+      type: 'blockContent',
+      name: 'definition',
+      title: 'Definition(en)',
+      description:
+        'Die Definition soll so kurz wie möglich und so ausführlich wie nötig sein.',
+    },
+    {
+      title: 'Abbildungen',
+      name: 'illustrations',
+      type: 'array',
+      description: 'Zeichnungen, grafische Darstellungen oder Schemata',
+      of: [{ type: 'illustration' }],
     },
   ],
 }

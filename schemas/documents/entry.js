@@ -1,4 +1,5 @@
 import Tabs from 'sanity-plugin-tabs'
+import client from 'part:@sanity/base/client'
 
 export default {
   name: 'entry',
@@ -17,13 +18,6 @@ export default {
           to: [{ type: 'entry' }],
         },
       ],
-    },
-    {
-      title: 'Abbildungen',
-      name: 'illustrations',
-      type: 'array',
-      description: 'Zeichnungen, grafische Darstellungen oder Schemata',
-      of: [{ type: 'illustration' }],
     },
     {
       name: 'content',
@@ -58,10 +52,11 @@ export default {
   ],
   preview: {
     select: {
-      term: 'content.de.terms[0].term',
-      definition: 'content.de.definitions[0].definition',
+      term: 'content.de.preferredTerm.term',
+      definition: 'content.de.definition',
     },
     prepare({ term, definition }) {
+      console.log(term)
       const block = (definition || []).find((block) => block._type === 'block')
       return {
         title: term,
