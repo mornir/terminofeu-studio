@@ -15,6 +15,15 @@ export default {
         {
           type: 'reference',
           to: [{ type: 'entry' }],
+          options: {
+            filter: ({ document }) => {
+              console.log(document._id)
+              return {
+                filter: '_id != $id',
+                params: {
+                  id: getPublishedId(document._id),
+                },
+              }
         },
       ],
     },
