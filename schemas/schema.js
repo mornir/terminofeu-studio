@@ -6,7 +6,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Import documents
 import entry from './documents/entry'
-import term from './documents/term'
+import deTerm from './documents/deTerm'
+import frTerm from './documents/frTerm'
+import itTterm from './documents/itTerm'
 
 // Import objects
 import blockContent from './objects/blockContent'
@@ -34,7 +36,9 @@ export default createSchema({
     abbreviation,
     illustration,
     lang,
-    term,
+    deTerm,
+    frTerm,
+    itTterm,
     entry,
   ]),
 })

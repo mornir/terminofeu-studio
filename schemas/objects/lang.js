@@ -4,22 +4,33 @@ export default {
   type: 'object',
   fields: [
     {
-      type: 'reference',
-      name: 'preferredTerm',
-      title: 'Hauptbegriff',
-      to: [{ type: 'term' }],
-    },
-    {
       type: 'array',
       name: 'alternativeTerms',
-      title: 'Alternative Begriffe',
+      title: 'Begriffe',
       of: [
         {
           type: 'reference',
-          to: [{ type: 'term' }],
+          to: [{ type: 'deTerm' }],
           options: {
-            filter: 'language == $lang',
-            filterParams: { lang: 'fr' },
+            filter: ({ document }) => {
+              console.log({ document })
+              // Always make document to check for document properties
+              // before attempting to use them
+              if (!document.releaseYear) {
+                return {
+                  filter: 'role == $role',
+                  params: { role: 'director' },
+                }
+              }
+
+              return {
+                filter: 'role == $role && birthYear >= $minYear',
+                params: {
+                  role: 'director',
+                  minYear: document.releaseYear,
+                },
+              }
+            },
           },
         },
       ],

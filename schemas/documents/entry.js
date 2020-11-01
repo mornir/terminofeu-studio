@@ -1,4 +1,7 @@
 import Tabs from 'sanity-plugin-tabs'
+import langFn from '../objects/langFn'
+
+import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
 export default {
   name: 'entry',
@@ -24,6 +27,8 @@ export default {
                   id: getPublishedId(document._id),
                 },
               }
+            },
+          },
         },
       ],
     },
@@ -37,13 +42,27 @@ export default {
         { name: 'it', title: 'Italienisch' },
       ],
       fields: [
-        {
-          type: 'lang',
-          name: 'de',
-          title: 'Deutsch',
-          fieldset: 'de',
-        },
-        {
+        langFn({ title: 'Deutsch', code: 'de' }),
+        /*        {
+          title: 'FR',
+          name: 'fr',
+          type: 'object',
+          fieldset: 'fr',
+          fields: [
+            {
+              type: 'array',
+              name: 'alternativeTerms',
+              title: 'Alternative Begriffe',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{ type: 'frTerm' }],
+                },
+              ],
+            },
+          ],
+        }, */
+        /*         {
           type: 'lang',
           name: 'fr',
           title: 'Französisch',
@@ -54,17 +73,16 @@ export default {
           name: 'it',
           title: 'Italienisch',
           fieldset: 'it',
-        },
+        }, */
       ],
     },
   ],
   preview: {
     select: {
-      term: 'content.de.preferredTerm.term',
+      term: 'content.de.terms.0.term',
       definition: 'content.de.definition',
     },
     prepare({ term, definition }) {
-      console.log(term)
       const block = (definition || []).find((block) => block._type === 'block')
       return {
         title: term,

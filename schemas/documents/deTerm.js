@@ -1,21 +1,9 @@
 export default {
-  title: 'Begriff',
-  name: 'term',
+  title: 'Begriffe DE',
+  name: 'deTerm',
   type: 'document',
   liveEdit: true,
   fields: [
-    {
-      title: 'Sprache',
-      name: 'language',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Deutsch', value: 'de' },
-          { title: 'Französisch', value: 'fr' },
-          { title: 'Italienisch', value: 'it' },
-        ],
-      },
-    },
     {
       type: 'string',
       name: 'term',
@@ -49,9 +37,6 @@ export default {
       of: [{ type: 'abbreviation' }, { type: 'context' }, { type: 'notice' }],
     },
   ],
-  initialValue: {
-    language: 'de',
-  },
   preview: {
     select: {
       title: 'term',
