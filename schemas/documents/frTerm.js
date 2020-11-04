@@ -1,5 +1,5 @@
 export default {
-  title: 'Begriffe FR',
+  title: 'Termes FR',
   name: 'frTerm',
   type: 'document',
   liveEdit: true,
@@ -7,12 +7,12 @@ export default {
     {
       type: 'string',
       name: 'term',
-      title: 'Begriff',
+      title: 'Dénomination',
     },
     {
       type: 'blockContent',
       name: 'sourceTerm',
-      title: 'Quelle des Begriffs',
+      title: 'Source de la dénomination',
     },
     {
       type: 'string',
@@ -32,7 +32,7 @@ export default {
     {
       type: 'array',
       name: 'additionnalFields',
-      title: 'Weitere Felder',
+      title: 'Autres champs',
       description: 'Anmerkung, Abkürzung, usw.',
       of: [{ type: 'abbreviation' }, { type: 'context' }, { type: 'notice' }],
     },
