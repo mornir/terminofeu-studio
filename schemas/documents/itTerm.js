@@ -34,7 +34,7 @@ export default {
       name: 'additionnalFields',
       title: 'Weitere Felder',
       description: 'Anmerkung, Abkürzung, usw.',
-      of: [{ type: 'abbreviation' }, { type: 'context' }, { type: 'notice' }],
+      of: [{ type: 'abbreviation' }, { type: 'notice' }],
     },
   ],
   preview: {
