@@ -14,6 +14,9 @@ export default ({ title, code }) => {
           {
             type: 'reference',
             to: [{ type: `${code}Term` }],
+            options: {
+              filter: `count(*[references(^._id)]) == 0`,
+            },
           },
         ],
       },
