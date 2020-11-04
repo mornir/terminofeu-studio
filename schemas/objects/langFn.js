@@ -17,7 +17,10 @@ export default ({ title, code }) => {
         description: (
           <span>
             Begriffe, die hier hinzugefügt werden sollen, müssen zuerst{' '}
-            <Link href={`/intent/create/type=deTerm;template=${code}Term`}>
+            <Link
+              href={`/intent/create/type=deTerm;template=${code}Term`}
+              target="_blank"
+            >
               hier erfasst werden
             </Link>
           </span>
@@ -31,6 +34,20 @@ export default ({ title, code }) => {
             },
           },
         ],
+      },
+      {
+        type: 'blockContent',
+        name: 'definition',
+        title: 'Definition(en)',
+        description:
+          'Die Definition soll so kurz wie möglich und so ausführlich wie nötig sein.',
+      },
+      {
+        title: 'Abbildungen',
+        name: 'illustrations',
+        type: 'array',
+        description: 'Zeichnungen, grafische Darstellungen oder Schemata',
+        of: [{ type: 'illustration' }],
       },
     ],
   }

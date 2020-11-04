@@ -37,42 +37,12 @@ export default {
       inputComponent: Tabs,
       fieldsets: [
         { name: 'de', title: 'Deutsch' },
-        { name: 'fr', title: 'Französisch' },
+        { name: 'fr', title: 'Français' },
         { name: 'it', title: 'Italienisch' },
       ],
       fields: [
         langFn({ title: 'Deutsch', code: 'de' }),
-        /*        {
-          title: 'FR',
-          name: 'fr',
-          type: 'object',
-          fieldset: 'fr',
-          fields: [
-            {
-              type: 'array',
-              name: 'alternativeTerms',
-              title: 'Alternative Begriffe',
-              of: [
-                {
-                  type: 'reference',
-                  to: [{ type: 'frTerm' }],
-                },
-              ],
-            },
-          ],
-        }, */
-        /*         {
-          type: 'lang',
-          name: 'fr',
-          title: 'Französisch',
-          fieldset: 'fr',
-        },
-        {
-          type: 'lang',
-          name: 'it',
-          title: 'Italienisch',
-          fieldset: 'it',
-        }, */
+        langFn({ title: 'Français', code: 'fr' }),
       ],
     },
   ],
