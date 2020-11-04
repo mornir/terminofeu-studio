@@ -1,5 +1,5 @@
 import Tabs from 'sanity-plugin-tabs'
-import langFn from '../objects/langFn'
+import langFn from '../builder/langFn'
 
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
@@ -68,7 +68,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'content.de.preferredTerm.term', direction: 'asc' }],
+      by: [{ field: 'content.de.terms.0.term', direction: 'asc' }],
     },
   ],
 }

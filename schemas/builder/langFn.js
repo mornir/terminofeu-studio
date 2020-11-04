@@ -39,8 +39,6 @@ export default ({ title, code }) => {
         type: 'blockContent',
         name: 'definition',
         title: 'Definition(en)',
-        description:
-          'Die Definition soll so kurz wie möglich und so ausführlich wie nötig sein.',
       },
       {
         title: 'Abbildungen',

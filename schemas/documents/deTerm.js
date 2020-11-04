@@ -1,3 +1,5 @@
+import status from '../builder/termStatus'
+
 export default {
   title: 'Begriffe DE',
   name: 'deTerm',
@@ -25,13 +27,10 @@ export default {
       name: 'status',
       title: 'Status',
       options: {
-        list: [
-          { title: 'genormt', value: 'genormt' },
-          { title: 'nicht genormt', value: 'nicht_genormt' },
-          { title: 'veraltet', value: 'old' },
-          { title: 'abzulehnen', value: 'abzulehnen' },
-          { title: 'zulässig', value: 'zulässig' },
-        ],
+        list: status.map(({ deTitle, value }) => ({
+          title: deTitle,
+          value,
+        })),
       },
     },
     {
@@ -40,7 +39,7 @@ export default {
       title: 'Quelle der Benennung',
     },
     {
-      title: 'Anmerkung (fakultativ)',
+      title: 'Anmerkungen (fakultativ)',
       name: 'notice',
       type: 'blockContent',
       description: 'Benennungsbezogenen oder begriffsbezogenen Informationen',
@@ -57,13 +56,10 @@ export default {
       title: 'Status',
       fieldset: 'abbreviation',
       options: {
-        list: [
-          { title: 'genormt', value: 'genormt' },
-          { title: 'nicht genormt', value: 'nicht_genormt' },
-          { title: 'veraltet', value: 'old' },
-          { title: 'abzulehnen', value: 'abzulehnen' },
-          { title: 'zulässig', value: 'zulässig' },
-        ],
+        list: status.map(({ deTitle, value }) => ({
+          title: deTitle,
+          value,
+        })),
       },
     },
     {
