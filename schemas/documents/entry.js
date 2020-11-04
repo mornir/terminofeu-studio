@@ -20,7 +20,6 @@ export default {
           to: [{ type: 'entry' }],
           options: {
             filter: ({ document }) => {
-              console.log(document._id)
               return {
                 filter: '_id != $id',
                 params: {
