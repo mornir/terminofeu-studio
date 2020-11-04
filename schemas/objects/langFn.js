@@ -1,4 +1,8 @@
-// *[_type == 'deTerm' && count(*[references(^._id)])
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+
+// Les termes à ajouter ici doivent d'abord être créés ici.
+
 export default ({ title, code }) => {
   return {
     title,
@@ -10,6 +14,14 @@ export default ({ title, code }) => {
         type: 'array',
         name: 'terms',
         title: 'Begriffe',
+        description: (
+          <span>
+            Begriffe, die hier hinzugefügt werden sollen, müssen zuerst{' '}
+            <Link href={`/intent/create/type=deTerm;template=${code}Term`}>
+              hier erfasst werden
+            </Link>
+          </span>
+        ),
         of: [
           {
             type: 'reference',
