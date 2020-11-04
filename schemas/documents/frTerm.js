@@ -8,6 +8,7 @@ export default {
       type: 'string',
       name: 'term',
       title: 'Dénomination',
+      validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
       type: 'blockContent',

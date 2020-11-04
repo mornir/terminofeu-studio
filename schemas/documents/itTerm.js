@@ -8,6 +8,7 @@ export default {
       type: 'string',
       name: 'term',
       title: 'Begriff',
+      validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
       type: 'blockContent',
