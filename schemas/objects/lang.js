@@ -11,27 +11,6 @@ export default {
         {
           type: 'reference',
           to: [{ type: 'deTerm' }],
-          options: {
-            filter: ({ document }) => {
-              console.log({ document })
-              // Always make document to check for document properties
-              // before attempting to use them
-              if (!document.releaseYear) {
-                return {
-                  filter: 'role == $role',
-                  params: { role: 'director' },
-                }
-              }
-
-              return {
-                filter: 'role == $role && birthYear >= $minYear',
-                params: {
-                  role: 'director',
-                  minYear: document.releaseYear,
-                },
-              }
-            },
-          },
         },
       ],
     },
