@@ -11,7 +11,7 @@ export default {
   fields: [
     {
       title: 'Verwandte Einträge',
-      name: 'relatedTerms',
+      name: 'relatedEntries',
       type: 'array',
       validation: (Rule) => Rule.unique(),
       of: [
