@@ -38,11 +38,12 @@ export default {
       fieldsets: [
         { name: 'de', title: 'Deutsch' },
         { name: 'fr', title: 'Français' },
-        { name: 'it', title: 'Italienisch' },
+        { name: 'it', title: 'Italiano' },
       ],
       fields: [
         langFn({ title: 'Deutsch', code: 'de' }),
         langFn({ title: 'Français', code: 'fr' }),
+        langFn({ title: 'Italiano', code: 'it' }),
       ],
     },
   ],
