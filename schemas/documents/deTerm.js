@@ -34,9 +34,10 @@ export default {
       },
     },
     {
-      type: 'blockContent',
+      type: 'text',
       name: 'sourceTerm',
       title: 'Quelle der Benennung',
+      rows: 5,
     },
     {
       title: 'Anmerkungen (fakultativ)',
@@ -65,13 +66,21 @@ export default {
     {
       title: 'Quelle',
       name: 'abbreviationSource',
-      type: 'blockContent',
+      type: 'text',
+      rows: 5,
       fieldset: 'abbreviation',
     },
   ],
   preview: {
     select: {
-      title: 'term',
+      term: 'term',
+      abbreviation: 'abbreviation',
+    },
+    prepare({ term, abbreviation }) {
+      const title = abbreviation ? `${term} (${abbreviation})` : term
+      return {
+        title,
+      }
     },
   },
 }

@@ -1,8 +1,20 @@
+import status from '../builder/termStatus'
+
 export default {
   title: 'Begriffe IT',
   name: 'itTerm',
   type: 'document',
   liveEdit: true,
+  fieldsets: [
+    {
+      name: 'abbreviation',
+      title: 'Abkürzung (falls vorhanden)',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+  ],
   fields: [
     {
       type: 'string',
@@ -11,9 +23,10 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      type: 'blockContent',
+      type: 'text',
       name: 'sourceTerm',
       title: 'Quelle des Begriffs',
+      rows: 5,
     },
     {
       type: 'string',
@@ -31,16 +44,35 @@ export default {
       },
     },
     {
-      type: 'array',
-      name: 'additionnalFields',
-      title: 'Weitere Felder',
-      description: 'Anmerkung, Abkürzung, usw.',
-      of: [{ type: 'abbreviation' }, { type: 'notice' }],
+      type: 'string',
+      name: 'abbreviationStatus',
+      title: 'Status',
+      fieldset: 'abbreviation',
+      options: {
+        list: status.map(({ deTitle, value }) => ({
+          title: deTitle,
+          value,
+        })),
+      },
+    },
+    {
+      title: 'Quelle',
+      name: 'abbreviationSource',
+      type: 'text',
+      rows: 5,
+      fieldset: 'abbreviation',
     },
   ],
   preview: {
     select: {
-      title: 'term',
+      term: 'term',
+      abbreviation: 'abbreviation',
+    },
+    prepare({ term, abbreviation }) {
+      const title = abbreviation ? `${term} (${abbreviation})` : term
+      return {
+        title,
+      }
     },
   },
 }
