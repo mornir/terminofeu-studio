@@ -17,10 +17,7 @@ export default ({ title, code }) => {
         description: (
           <span>
             Begriffe, die hier hinzugefügt werden sollen, müssen zuerst{' '}
-            <Link
-              href={`/intent/create/type=deTerm;template=${code}Term`}
-              target="_blank"
-            >
+            <Link href={`/intent/create/type=${code}Term`} target="_blank">
               hier erfasst werden
             </Link>
           </span>
