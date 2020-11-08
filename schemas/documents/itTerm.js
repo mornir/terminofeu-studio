@@ -23,10 +23,9 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      type: 'text',
+      type: 'string',
       name: 'sourceTerm',
       title: 'Quelle des Begriffs',
-      rows: 5,
     },
     {
       type: 'string',
@@ -58,8 +57,7 @@ export default {
     {
       title: 'Quelle',
       name: 'abbreviationSource',
-      type: 'text',
-      rows: 5,
+      type: 'string',
       fieldset: 'abbreviation',
     },
   ],

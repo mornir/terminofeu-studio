@@ -34,10 +34,9 @@ export default {
       },
     },
     {
-      type: 'text',
+      type: 'string',
       name: 'sourceTerm',
       title: 'Quelle der Benennung',
-      rows: 5,
     },
     {
       title: 'Anmerkungen (fakultativ)',
@@ -66,8 +65,7 @@ export default {
     {
       title: 'Quelle',
       name: 'abbreviationSource',
-      type: 'text',
-      rows: 5,
+      type: 'string',
       fieldset: 'abbreviation',
     },
   ],

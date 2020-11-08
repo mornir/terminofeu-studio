@@ -23,25 +23,26 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      type: 'text',
-      name: 'sourceTerm',
-      title: 'Source de la dénomination',
-      rows: 5,
-    },
-    {
       type: 'string',
       name: 'status',
       title: 'Status',
       options: {
-        list: [
-          { title: 'Hauptbegriff', value: 'hauptbegriff' },
-          { title: 'genormt', value: 'genormt' },
-          { title: 'nicht genormt', value: 'nicht_genormt' },
-          { title: 'veraltet', value: 'neu' },
-          { title: 'abzulehnen', value: 'abzulehnen' },
-          { title: 'zulässig', value: 'zulässig' },
-        ],
+        list: status.map(({ frTitle, value }) => ({
+          title: frTitle,
+          value,
+        })),
       },
+    },
+    {
+      type: 'string',
+      name: 'sourceTerm',
+      title: 'Source de la dénomination',
+    },
+    {
+      title: 'Remarque (facultatif)',
+      name: 'notice',
+      type: 'blockContent',
+      description: 'Benennungsbezogenen oder begriffsbezogenen Informationen',
     },
     {
       type: 'string',
@@ -58,8 +59,7 @@ export default {
     {
       title: 'Quelle',
       name: 'abbreviationSource',
-      type: 'text',
-      rows: 5,
+      type: 'string',
       fieldset: 'abbreviation',
     },
   ],
