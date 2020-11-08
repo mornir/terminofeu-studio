@@ -49,7 +49,7 @@ export default {
   ],
   preview: {
     select: {
-      term: 'content.de.terms.0.term',
+      term: 'content.de.title',
       definition: 'content.de.definition',
     },
     prepare({ term, definition }) {
@@ -69,7 +69,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'content.de.terms.0.term', direction: 'asc' }],
+      by: [{ field: 'content.de.title', direction: 'asc' }],
     },
   ],
 }
