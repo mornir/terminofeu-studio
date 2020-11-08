@@ -9,25 +9,7 @@ export default ({ title, code }) => {
     name: code,
     type: 'object',
     fieldset: code,
-    fieldsets: [{ name: 'intern', options: { columns: 2 } }],
     fields: [
-      {
-        title: 'Eintragstitel',
-        name: 'title',
-        type: 'string',
-        description: '= Hauptbegriff',
-        fieldset: 'intern',
-      },
-      {
-        title: 'Titelform',
-        name: 'slug',
-        type: 'slug',
-        fieldset: 'intern',
-        description: 'URL gültige Form des Eintragstitel',
-        options: {
-          source: (doc) => doc.content[code].title,
-        },
-      },
       {
         type: 'array',
         name: 'terms',
