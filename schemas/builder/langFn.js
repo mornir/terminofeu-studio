@@ -25,7 +25,7 @@ export default ({ title, code }) => {
         fieldset: 'intern',
         description: 'URL gültige Form des Eintragstitel',
         options: {
-          source: `content.${code}.title`,
+          source: (doc) => doc.content[code].title,
         },
       },
       {
