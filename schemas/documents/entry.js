@@ -1,4 +1,7 @@
 import Tabs from 'sanity-plugin-tabs'
+import langFn from '../builder/langFn'
+
+import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
 export default {
   name: 'entry',
@@ -8,13 +11,23 @@ export default {
   fields: [
     {
       title: 'Verwandte Einträge',
-      name: 'relatedTerms',
+      name: 'relatedEntries',
       type: 'array',
       validation: (Rule) => Rule.unique(),
       of: [
         {
           type: 'reference',
           to: [{ type: 'entry' }],
+          options: {
+            filter: ({ document }) => {
+              return {
+                filter: '_id != $id',
+                params: {
+                  id: getPublishedId(document._id),
+                },
+              }
+            },
+          },
         },
       ],
     },
@@ -24,38 +37,22 @@ export default {
       inputComponent: Tabs,
       fieldsets: [
         { name: 'de', title: 'Deutsch' },
-        { name: 'fr', title: 'Französisch' },
-        { name: 'it', title: 'Italienisch' },
+        { name: 'fr', title: 'Français' },
+        { name: 'it', title: 'Italiano' },
       ],
       fields: [
-        {
-          type: 'lang',
-          name: 'de',
-          title: 'Deutsch',
-          fieldset: 'de',
-        },
-        {
-          type: 'lang',
-          name: 'fr',
-          title: 'Französisch',
-          fieldset: 'fr',
-        },
-        {
-          type: 'lang',
-          name: 'it',
-          title: 'Italienisch',
-          fieldset: 'it',
-        },
+        langFn({ title: 'Deutsch', code: 'de' }),
+        langFn({ title: 'Français', code: 'fr' }),
+        langFn({ title: 'Italiano', code: 'it' }),
       ],
     },
   ],
   preview: {
     select: {
-      term: 'content.de.preferredTerm.term',
+      term: 'content.de.title',
       definition: 'content.de.definition',
     },
     prepare({ term, definition }) {
-      console.log(term)
       const block = (definition || []).find((block) => block._type === 'block')
       return {
         title: term,
@@ -72,7 +69,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'content.de.preferredTerm.term', direction: 'asc' }],
+      by: [{ field: 'content.de.title', direction: 'asc' }],
     },
   ],
 }

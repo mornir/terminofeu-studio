@@ -12,7 +12,8 @@ export default {
     {
       title: 'Quelle',
       name: 'source',
-      type: 'blockContent',
+      type: 'text',
+      rows: 5,
     },
   ],
   preview: {
