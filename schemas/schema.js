@@ -12,11 +12,7 @@ import itTterm from './documents/itTerm'
 
 // Import objects
 import blockContent from './objects/blockContent'
-import variant from './objects/variant'
-import context from './objects/context'
-import notice from './objects/notice'
-import abbreviation from './objects/abbreviation'
-import definition from './objects/definition'
+import term from './objects/term'
 import illustration from './objects/illustration'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -28,11 +24,7 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     blockContent,
-    variant,
-    context,
-    notice,
-    definition,
-    abbreviation,
+    term,
     illustration,
     deTerm,
     frTerm,

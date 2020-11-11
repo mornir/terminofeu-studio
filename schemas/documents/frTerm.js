@@ -1,5 +1,3 @@
-import status from '../builder/termStatus'
-
 export default {
   title: 'Termes FR',
   name: 'frTerm',
@@ -17,56 +15,21 @@ export default {
   ],
   fields: [
     {
-      type: 'string',
+      title: 'Begriff',
       name: 'term',
-      title: 'Dénomination',
-      validation: (Rule) => Rule.required().error('Pflichtfeld'),
+      type: 'term',
     },
     {
-      type: 'string',
-      name: 'status',
-      title: 'Status',
-      options: {
-        list: status.map(({ frTitle, value }) => ({
-          title: frTitle,
-          value,
-        })),
-      },
-    },
-    {
-      type: 'string',
-      name: 'sourceTerm',
-      title: 'Source de la dénomination',
-    },
-    {
-      title: 'Remarque (facultatif)',
-      name: 'notice',
-      type: 'blockContent',
-      description: 'Benennungsbezogenen oder begriffsbezogenen Informationen',
-    },
-    {
-      type: 'string',
-      name: 'abbreviationStatus',
-      title: 'Status',
+      title: 'Abkürzung',
+      name: 'abbreviation',
       fieldset: 'abbreviation',
-      options: {
-        list: status.map(({ deTitle, value }) => ({
-          title: deTitle,
-          value,
-        })),
-      },
-    },
-    {
-      title: 'Quelle',
-      name: 'abbreviationSource',
-      type: 'string',
-      fieldset: 'abbreviation',
+      type: 'term',
     },
   ],
   preview: {
     select: {
-      term: 'term',
-      abbreviation: 'abbreviation',
+      term: 'term.designation',
+      abbreviation: 'abbreviation.designation',
     },
     prepare({ term, abbreviation }) {
       const title = abbreviation ? `${term} (${abbreviation})` : term

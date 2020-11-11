@@ -17,62 +17,21 @@ export default {
   ],
   fields: [
     {
-      type: 'string',
+      title: 'Begriff',
       name: 'term',
-      title: 'Benennung',
-      validation: (Rule) => Rule.required().error('Pflichtfeld'),
+      type: 'term',
     },
     {
-      type: 'string',
-      name: 'status',
-      title: 'Status',
-      options: {
-        list: status.map(({ deTitle, value }) => ({
-          title: deTitle,
-          value,
-        })),
-      },
-    },
-    {
-      type: 'string',
-      name: 'sourceTerm',
-      title: 'Quelle der Benennung',
-    },
-    {
-      title: 'Anmerkungen (fakultativ)',
-      name: 'notice',
-      type: 'blockContent',
-      description: 'Benennungsbezogenen oder begriffsbezogenen Informationen',
-    },
-    {
-      title: 'Benennung',
+      title: 'Abkürzung',
       name: 'abbreviation',
-      type: 'string',
       fieldset: 'abbreviation',
-    },
-    {
-      type: 'string',
-      name: 'abbreviationStatus',
-      title: 'Status',
-      fieldset: 'abbreviation',
-      options: {
-        list: status.map(({ deTitle, value }) => ({
-          title: deTitle,
-          value,
-        })),
-      },
-    },
-    {
-      title: 'Quelle',
-      name: 'abbreviationSource',
-      type: 'string',
-      fieldset: 'abbreviation',
+      type: 'term',
     },
   ],
   preview: {
     select: {
-      term: 'term',
-      abbreviation: 'abbreviation',
+      term: 'term.designation',
+      abbreviation: 'abbreviation.designation',
     },
     prepare({ term, abbreviation }) {
       const title = abbreviation ? `${term} (${abbreviation})` : term

@@ -5,7 +5,7 @@
   "description": "",
   "main": "package.json",
   "author": "Jérôme Pott <jeromepott@hotmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "dev": "sanity start",
     "test": "sanity check"
