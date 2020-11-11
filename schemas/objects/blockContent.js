@@ -24,8 +24,8 @@ export default {
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            title: 'Interner Link',
-            name: 'internalLink',
+            title: 'Link zum Eintrag',
+            name: 'linkToEntry',
             type: 'reference',
             to: [{ type: 'entry' }],
             validation: (Rule) =>
