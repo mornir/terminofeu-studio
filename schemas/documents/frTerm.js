@@ -1,5 +1,5 @@
 export default {
-  title: 'Termes FR',
+  title: 'Begriffe FR',
   name: 'frTerm',
   type: 'document',
   liveEdit: true,

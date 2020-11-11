@@ -1,5 +1,3 @@
-import status from '../builder/termStatus'
-
 export default {
   title: 'Begriffe DE',
   name: 'deTerm',
