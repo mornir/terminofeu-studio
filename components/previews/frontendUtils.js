@@ -12,7 +12,7 @@ export const assemblePageUrl = (document, options) => {
     url = rootURL + 'entry/' + _id
   }
 
-  if (_type == 'lang') {
+  if (_type == 'term') {
     url = rootURL + 'term/' + _id
   }
 
