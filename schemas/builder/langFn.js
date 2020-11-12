@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'part:@sanity/base/router'
 
-// Les termes à ajouter ici doivent d'abord être créés ici.
-
 export default ({ title, code }) => {
   return {
     title,

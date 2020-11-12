@@ -49,7 +49,7 @@ export default {
   ],
   preview: {
     select: {
-      term: 'content.de.title',
+      term: 'content.de.terms.0.term.designation',
       definition: 'content.de.definition',
     },
     prepare({ term, definition }) {

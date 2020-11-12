@@ -2,9 +2,6 @@ export default {
   title: 'Bild',
   name: 'illustration',
   type: 'image',
-  options: {
-    hotspot: true, // <-- Defaults to false
-  },
   fields: [
     {
       name: 'caption',
