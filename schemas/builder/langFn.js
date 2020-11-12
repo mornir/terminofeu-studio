@@ -15,7 +15,10 @@ export default ({ title, code }) => {
         description: (
           <span>
             Begriffe, die hier hinzugefügt werden sollen, müssen zuerst{' '}
-            <Link href={`/intent/create/type=${code}Term`} target="_blank">
+            <Link
+              href={`/intent/create/template=term-${code};type=term`}
+              target="_blank"
+            >
               hier erfasst werden
             </Link>
           </span>
@@ -23,9 +26,10 @@ export default ({ title, code }) => {
         of: [
           {
             type: 'reference',
-            to: [{ type: `${code}Term` }],
+            to: [{ type: 'term' }],
             options: {
-              filter: `count(*[references(^._id)]) == 0`,
+              filter: `lang == $lang && count(*[references(^._id)]) == 0`,
+              filterParams: { lang: code },
             },
           },
         ],

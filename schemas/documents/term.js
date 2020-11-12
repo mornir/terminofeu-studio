@@ -1,6 +1,8 @@
+import { langs } from '../builder/langs'
+
 export default {
-  title: 'Begriffe FR',
-  name: 'frTerm',
+  title: 'Begriffe',
+  name: 'term',
   type: 'document',
   liveEdit: true,
   fieldsets: [
@@ -15,17 +17,28 @@ export default {
   ],
   fields: [
     {
+      title: 'Sprache',
+      name: 'lang',
+      type: 'string',
+      options: {
+        list: langs.map(({ title, code }) => ({ value: code, title })),
+      },
+    },
+    {
       title: 'Begriff',
       name: 'term',
-      type: 'term',
+      type: 'termGroup',
     },
     {
       title: 'Abkürzung',
       name: 'abbreviation',
       fieldset: 'abbreviation',
-      type: 'term',
+      type: 'termGroup',
     },
   ],
+  initialValue: {
+    lang: 'de',
+  },
   preview: {
     select: {
       term: 'term.designation',

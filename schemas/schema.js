@@ -6,13 +6,11 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Import documents
 import entry from './documents/entry'
-import deTerm from './documents/deTerm'
-import frTerm from './documents/frTerm'
-import itTterm from './documents/itTerm'
+import term from './documents/term'
 
 // Import objects
 import blockContent from './objects/blockContent'
-import term from './objects/term'
+import termGroup from './objects/termGroup'
 import illustration from './objects/illustration'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -25,10 +23,8 @@ export default createSchema({
     /* Your types here! */
     blockContent,
     term,
+    termGroup,
     illustration,
-    deTerm,
-    frTerm,
-    itTterm,
     entry,
   ]),
 })

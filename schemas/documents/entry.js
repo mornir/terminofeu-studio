@@ -1,6 +1,8 @@
 import Tabs from 'sanity-plugin-tabs'
 import langFn from '../builder/langFn'
 
+import { langs } from '../builder/langs'
+
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
 export default {
@@ -35,16 +37,8 @@ export default {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
-      fieldsets: [
-        { name: 'de', title: 'Deutsch' },
-        { name: 'fr', title: 'Français' },
-        { name: 'it', title: 'Italiano' },
-      ],
-      fields: [
-        langFn({ title: 'Deutsch', code: 'de' }),
-        langFn({ title: 'Français', code: 'fr' }),
-        langFn({ title: 'Italiano', code: 'it' }),
-      ],
+      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      fields: langs.map((lang) => langFn(lang)),
     },
   ],
   preview: {

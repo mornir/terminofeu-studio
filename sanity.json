@@ -28,6 +28,14 @@
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "variableOverrides.css"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
+    },
+    {
+      "name": "part:@sanity/base/initial-value-templates",
+      "path": "./initialValueTemplates.js"
     }
   ]
 }

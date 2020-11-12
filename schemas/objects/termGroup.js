@@ -1,6 +1,6 @@
 export default {
   title: 'Begriff',
-  name: 'term',
+  name: 'termGroup',
   type: 'object',
   fields: [
     {
