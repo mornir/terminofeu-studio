@@ -6,6 +6,8 @@ import { MdVisibility, MdEdit } from 'react-icons/md'
 
 import IframePreview from './components/previews/iframe/IframePreview'
 
+import { langs } from './schemas/builder/langs'
+
 const hiddenDocTypes = (listItem) => !['term'].includes(listItem.getId())
 
 const types = ['term', 'entry']
@@ -25,21 +27,6 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
     ])
   }
 }
-
-const langs = [
-  {
-    title: 'Deutsch',
-    code: 'de',
-  },
-  {
-    title: 'Französisch',
-    code: 'fr',
-  },
-  {
-    title: 'Italienisch',
-    code: 'it',
-  },
-]
 
 export default () =>
   S.list()
