@@ -13,7 +13,9 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "tabs"
+    "@sanity/dashboard",
+    "tabs",
+    "dashboard-widget-document-list"
   ],
   "env": {
     "development": {
@@ -36,6 +38,10 @@
     {
       "name": "part:@sanity/base/initial-value-templates",
       "path": "./initialValueTemplates.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
     }
   ]
 }
