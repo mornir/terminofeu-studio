@@ -47,6 +47,7 @@ export default () =>
                 .child(
                   S.documentList().title('Alle').filter('_type == "entry"')
                 ),
+              S.divider(),
               ...statusList.map((status) => {
                 return S.listItem()
                   .title(status.title)
