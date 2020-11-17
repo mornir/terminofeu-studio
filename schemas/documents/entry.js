@@ -12,6 +12,21 @@ export default {
   liveEdit: true,
   fields: [
     {
+      type: 'string',
+      name: 'status',
+      title: 'Status',
+      options: {
+        list: [
+          { title: 'Entwurf', value: 'draft' },
+          { title: 'Im Definitionsprozess', value: 'definition' },
+          { title: 'Fachliche Freigabe', value: 'approved' },
+          { title: 'Im Übersetzungsprozess', value: 'translation' },
+          { title: 'Freigabe durch Kernausschuss', value: 'validated' },
+          { title: 'Übernommen in BSV 2026', value: 'in_force' },
+        ],
+      },
+    },
+    {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',
       type: 'array',
@@ -41,6 +56,9 @@ export default {
       fields: langs.map((lang) => langFn(lang)),
     },
   ],
+  initialValue: {
+    status: 'draft',
+  },
   preview: {
     select: {
       term: 'content.de.terms.0.term.designation',
