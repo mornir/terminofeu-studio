@@ -25,6 +25,12 @@ export default {
       },
     },
     {
+      title: 'Definitionen',
+      name: 'definitions',
+      type: 'array',
+      of: [{ type: 'definition' }],
+    },
+    {
       title: 'Begriff',
       name: 'term',
       type: 'termGroup',
