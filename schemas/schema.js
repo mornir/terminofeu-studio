@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Import documents
 import entry from './documents/entry'
 import term from './documents/term'
+import source from './documents/source'
 
 // Import objects
 import blockContent from './objects/blockContent'
@@ -26,6 +27,7 @@ export default createSchema({
     termGroup,
     illustration,
     definition,
+    source,
     term,
     entry,
   ]),

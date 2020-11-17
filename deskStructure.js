@@ -34,8 +34,6 @@ export default () =>
   S.list()
     .title('Inhalt')
     .items([
-      /*       ...S.documentTypeListItems().filter(hiddenDocTypes), */
-
       S.listItem()
         .title('Einträge')
         .child(
@@ -78,6 +76,25 @@ export default () =>
                       .initialValueTemplates([
                         S.initialValueTemplateItem('term-' + lang.code),
                       ])
+                  )
+              }),
+            ])
+        ),
+
+      S.listItem()
+        .title('Quellen')
+        .child(
+          S.list()
+            .title('Quellen')
+            .items([
+              ...langs.map((lang) => {
+                return S.listItem()
+                  .title(lang.title)
+                  .child(
+                    S.documentList()
+                      .title(lang.title)
+                      .filter('_type == "source" && lang == $lang')
+                      .params({ lang: lang.code })
                   )
               }),
             ])

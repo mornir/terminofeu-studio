@@ -26,6 +26,27 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'string',
+      type: 'reference',
+      to: [{ type: 'source' }],
+      options: {
+        filter: ({ document }) => {
+          // Always make sure to check for document properties
+          // before attempting to use them
+          if (!document.lang) {
+            return {
+              filter: 'lang == $lang',
+              params: { lang: 'de' },
+            }
+          }
+
+          return {
+            filter: 'lang == $lang',
+            params: {
+              lang: document.lang,
+            },
+          }
+        },
+      },
     },
     {
       title: 'Anmerkungen (fakultativ)',

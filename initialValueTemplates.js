@@ -1,29 +1,34 @@
 import T from '@sanity/base/initial-value-template-builder'
 
+import { langs } from './schemas/builder/langs'
+
 export default [
-  ...T.defaults(),
   T.template({
-    id: 'term-de',
-    title: 'Begriff DE',
-    schemaType: 'term',
+    id: 'entry',
+    title: 'Eintrag',
+    schemaType: 'entry',
     value: {
-      lang: 'de',
+      status: 'draft',
     },
   }),
-  T.template({
-    id: 'term-fr',
-    title: 'Begriff FR',
-    schemaType: 'term',
-    value: {
-      lang: 'fr',
-    },
-  }),
-  T.template({
-    id: 'term-it',
-    title: 'Begriff IT',
-    schemaType: 'term',
-    value: {
-      lang: 'it',
-    },
-  }),
+  ...langs.map(({ code }) =>
+    T.template({
+      id: `term-${code}`,
+      title: `Begriff ${code.toUpperCase()}`,
+      schemaType: 'term',
+      value: {
+        lang: code,
+      },
+    })
+  ),
+  ...langs.map(({ code }) =>
+    T.template({
+      id: `source-${code}`,
+      title: `Quelle ${code.toUpperCase()}`,
+      schemaType: 'source',
+      value: {
+        lang: code,
+      },
+    })
+  ),
 ]
