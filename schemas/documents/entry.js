@@ -1,9 +1,9 @@
-import Tabs from 'sanity-plugin-tabs'
-import langFn from '../builder/langFn'
-
-import { langs } from '../builder/langs'
-
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
+import Tabs from 'sanity-plugin-tabs'
+import { AiOutlineContainer } from 'react-icons/ai'
+
+import langFn from '../builder/langFn'
+import { langs } from '../builder/langs'
 
 export const statusList = [
   { title: 'Entwurf', value: 'draft' },
@@ -18,6 +18,7 @@ export default {
   name: 'entry',
   title: 'Einträge',
   type: 'document',
+  icon: AiOutlineContainer,
   liveEdit: true,
   fields: [
     {

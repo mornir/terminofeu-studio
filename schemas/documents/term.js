@@ -1,9 +1,12 @@
+import { AiOutlineFileText } from 'react-icons/ai'
+
 import { langs } from '../builder/langs'
 
 export default {
   title: 'Begriffe',
   name: 'term',
   type: 'document',
+  icon: AiOutlineFileText,
   liveEdit: true,
   fieldsets: [
     {
