@@ -5,6 +5,15 @@ import { langs } from '../builder/langs'
 
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
+export const statusList = [
+  { title: 'Entwurf', value: 'draft' },
+  { title: 'Im Definitionsprozess', value: 'definition' },
+  { title: 'Fachliche Freigabe', value: 'approved' },
+  { title: 'Im Übersetzungsprozess', value: 'translation' },
+  { title: 'Freigabe durch Kernausschuss', value: 'validated' },
+  { title: 'Übernommen in BSV 2026', value: 'in_force' },
+]
+
 export default {
   name: 'entry',
   title: 'Einträge',
@@ -16,15 +25,9 @@ export default {
       name: 'status',
       title: 'Status',
       options: {
-        list: [
-          { title: 'Entwurf', value: 'draft' },
-          { title: 'Im Definitionsprozess', value: 'definition' },
-          { title: 'Fachliche Freigabe', value: 'approved' },
-          { title: 'Im Übersetzungsprozess', value: 'translation' },
-          { title: 'Freigabe durch Kernausschuss', value: 'validated' },
-          { title: 'Übernommen in BSV 2026', value: 'in_force' },
-        ],
+        list: statusList,
       },
+      validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
       title: 'Verwandte Einträge',
