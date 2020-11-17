@@ -35,9 +35,10 @@ export default ({ title, code }) => {
         ],
       },
       {
-        type: 'blockContent',
-        name: 'definition',
-        title: 'Definition(en)',
+        title: 'Definitionen',
+        name: 'definitions',
+        type: 'array',
+        of: [{ type: 'definition' }],
       },
       {
         title: 'Abbildungen',

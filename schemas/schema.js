@@ -12,6 +12,7 @@ import term from './documents/term'
 import blockContent from './objects/blockContent'
 import termGroup from './objects/termGroup'
 import illustration from './objects/illustration'
+import definition from './objects/definition'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,9 +23,10 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     blockContent,
-    term,
     termGroup,
     illustration,
+    definition,
+    term,
     entry,
   ]),
 })
