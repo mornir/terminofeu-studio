@@ -13,19 +13,23 @@ export default {
       name: 'source',
       type: 'string',
     },
-    {
-      type: 'string',
-      name: 'status',
-      title: 'Status',
-      options: {
-        list: [
-          { title: 'genormt', value: 'normalized' },
-          { title: 'nicht genormt', value: 'unnormalized' },
-          { title: 'veraltet', value: 'new' },
-          { title: 'abzulehnen', value: 'avoid' },
-          { title: 'zulässig', value: 'allowed' },
-        ],
-      },
-    },
   ],
+  preview: {
+    select: {
+      blocks: 'definition',
+    },
+    prepare(value) {
+      const block = (value.blocks || []).find(
+        (block) => block._type === 'block'
+      )
+      return {
+        title: block
+          ? block.children
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : 'No title',
+      }
+    },
+  },
 }
