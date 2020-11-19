@@ -14,11 +14,10 @@ export default {
       title: 'Status',
       options: {
         list: [
-          { title: 'genormt', value: 'normalized' },
-          { title: 'nicht genormt', value: 'unnormalized' },
-          { title: 'veraltet', value: 'new' },
-          { title: 'abzulehnen', value: 'avoid' },
-          { title: 'zulässig', value: 'allowed' },
+          { title: 'genehmigt', value: 'allowed' },
+          { title: 'zu vermeiden', value: 'avoid' },
+          { title: 'nicht standard', value: 'not_standard' },
+          { title: 'abgelehnt', value: 'rejected' },
         ],
       },
     },
