@@ -48,11 +48,5 @@ export default {
         },
       },
     },
-    {
-      title: 'Anmerkungen (fakultativ)',
-      name: 'notice',
-      type: 'blockContent',
-      description: 'Benennungsbezogenen oder begriffsbezogenen Informationen',
-    },
   ],
 }

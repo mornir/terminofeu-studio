@@ -27,10 +27,5 @@ export default {
         ],
       },
     },
-    {
-      title: 'Anmerkungen',
-      name: 'notice',
-      type: 'blockContent',
-    },
   ],
 }
