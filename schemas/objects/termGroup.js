@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+
 export default {
   title: 'Begriff',
   name: 'termGroup',
@@ -24,8 +27,13 @@ export default {
     {
       title: 'Quelle',
       name: 'source',
-      type: 'string',
       type: 'reference',
+      description: (
+        <span>
+          Die Quelle muss vorher <Link href={'/desk/quellen'}>hier</Link>{' '}
+          erfasst werden.
+        </span>
+      ),
       to: [{ type: 'source' }],
       options: {
         filter: ({ document }) => {
