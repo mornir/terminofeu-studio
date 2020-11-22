@@ -34,6 +34,7 @@ export default {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',
       type: 'array',
+      description: 'Verweis auf einen Ober-, Unter- oder Nebenbegriff',
       validation: (Rule) => Rule.unique(),
       of: [
         {
