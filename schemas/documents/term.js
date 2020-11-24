@@ -1,13 +1,10 @@
 import { AiOutlineFileText } from 'react-icons/ai'
 
-import { langs } from '../builder/langs'
-
 export default {
   title: 'Begriffe',
   name: 'term',
-  type: 'document',
+  type: 'object',
   icon: AiOutlineFileText,
-  liveEdit: true,
   fieldsets: [
     {
       name: 'abbreviation',
@@ -20,20 +17,6 @@ export default {
   ],
   fields: [
     {
-      title: 'Sprache',
-      name: 'lang',
-      type: 'string',
-      options: {
-        list: langs.map(({ title, code }) => ({ value: code, title })),
-      },
-    },
-    {
-      title: 'Definitionen',
-      name: 'definitions',
-      type: 'array',
-      of: [{ type: 'definition' }],
-    },
-    {
       title: 'Begriff',
       name: 'term',
       type: 'termGroup',
@@ -45,9 +28,6 @@ export default {
       type: 'termGroup',
     },
   ],
-  initialValue: {
-    lang: 'de',
-  },
   preview: {
     select: {
       term: 'term.designation',

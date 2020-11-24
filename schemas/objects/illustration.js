@@ -1,26 +1,30 @@
+import Tabs from 'sanity-plugin-tabs'
+
+import illustrationFn from '../builder/illustrationFn'
+import { langs } from '../builder/langs'
+
 export default {
   title: 'Bild',
   name: 'illustration',
-  type: 'image',
+  type: 'object',
   fields: [
     {
-      name: 'caption',
-      type: 'string',
-      title: 'Bildlegende',
-      validation: (Rule) => Rule.required(),
-      options: {
-        isHighlighted: true,
-      },
+      type: 'image',
+      title: 'Abbildung',
+      name: 'image',
     },
     {
-      name: 'attribution',
-      type: 'string',
-      title: 'Zuschreibung',
-      description: 'Quelle, Urheber, usw.',
-      validation: (Rule) => Rule.required(),
-      options: {
-        isHighlighted: true,
-      },
+      name: 'content',
+      type: 'object',
+      inputComponent: Tabs,
+      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      fields: langs.map((lang) => illustrationFn(lang)),
     },
   ],
+  preview: {
+    select: {
+      media: 'image',
+      title: 'content.de.title',
+    },
+  },
 }

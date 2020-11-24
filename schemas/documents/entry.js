@@ -19,7 +19,6 @@ export default {
   title: 'Einträge',
   type: 'document',
   icon: AiOutlineContainer,
-  liveEdit: true,
   fields: [
     {
       type: 'string',
@@ -52,6 +51,13 @@ export default {
           },
         },
       ],
+    },
+    {
+      title: 'Abbildungen',
+      name: 'illustrations',
+      type: 'array',
+      description: 'Zeichnungen, grafische Darstellungen oder Schemata',
+      of: [{ type: 'illustration' }],
     },
     {
       name: 'content',

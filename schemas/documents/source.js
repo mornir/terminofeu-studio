@@ -7,7 +7,6 @@ export default {
   name: 'source',
   type: 'document',
   icon: AiOutlineFileSearch,
-  liveEdit: false,
   fields: [
     {
       title: 'Sprache',
