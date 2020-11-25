@@ -23,21 +23,21 @@ export default {
       ),
       to: [{ type: 'source' }],
       options: {
-        filter: ({ document }) => {
+        filter: ({ document, parentPath }) => {
           // Always make sure to check for document properties
           // before attempting to use them
-          if (!document.lang) {
+          if (!parentPath[0] === 'content' && !parentPath[1]) {
             return {
               filter: 'lang == $lang',
               params: { lang: 'de' },
             }
-          }
-
-          return {
-            filter: 'lang == $lang',
-            params: {
-              lang: document.lang,
-            },
+          } else {
+            return {
+              filter: 'lang == $lang',
+              params: {
+                lang: parentPath[1],
+              },
+            }
           }
         },
       },
