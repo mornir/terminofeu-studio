@@ -10,6 +10,8 @@ export default {
       title: 'Benennung',
       name: 'designation',
       type: 'string',
+      description:
+        'Bennungen sind in ihrer Grundform (Nominativ Singular) zu erfassen.',
     },
     {
       title: 'Quelle',
@@ -17,8 +19,8 @@ export default {
       type: 'reference',
       description: (
         <span>
-          Die Quelle muss vorher <Link href={'/desk/quellen'}>hier</Link>{' '}
-          erfasst werden.
+          Neue Quellen können <Link href={'/desk/quellen'}>hier</Link> erfasst
+          werden.
         </span>
       ),
       to: [{ type: 'source' }],
