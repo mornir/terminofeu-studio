@@ -41,6 +41,18 @@ export default {
     select: {
       media: 'image',
       title: 'content.de.title',
+      status: 'status',
+    },
+    prepare({ status, title, media }) {
+      const subtitle = status
+        ? generateStatus('abbildung').find((s) => s.value === status).title
+        : 'kein Status'
+
+      return {
+        media,
+        title,
+        subtitle,
+      }
     },
   },
 }

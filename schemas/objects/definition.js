@@ -49,10 +49,11 @@ export default {
       blocks: 'definition',
       status: 'status',
     },
-    prepare({ blocks }) {
+    prepare({ blocks, status }) {
       const block = (blocks || []).find((block) => block._type === 'block')
+
       const subtitle = status
-        ? generateStatus().find((s) => s.value === status).title
+        ? generateStatus('definition').find((s) => s.value === status).title
         : 'kein Status'
 
       return {
