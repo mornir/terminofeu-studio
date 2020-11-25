@@ -1,8 +1,18 @@
+import { generateStatus } from '../builder/status'
+
 export default {
   title: 'Definition',
   name: 'definition',
   type: 'object',
   fields: [
+    {
+      type: 'string',
+      name: 'status',
+      title: 'Status',
+      options: {
+        list: generateStatus('definition'),
+      },
+    },
     {
       title: 'Definition',
       name: 'definition',
