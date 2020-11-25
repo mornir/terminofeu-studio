@@ -45,8 +45,13 @@ export default {
       status: 'status',
     },
     prepare({ status, term, abbreviation }) {
+      const statusTitle = status
+        ? generateStatus().find((s) => s.value === status).title
+        : 'ohne Status'
+
       const title =
-        `[${status}] ` + (abbreviation ? `${term} (${abbreviation})` : term)
+        `[${statusTitle}] ` +
+        (abbreviation ? `${term} (${abbreviation})` : term)
       return {
         title,
       }
