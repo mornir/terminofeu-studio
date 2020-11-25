@@ -3,7 +3,7 @@ import { AiOutlineFileText } from 'react-icons/ai'
 import { generateStatus } from '../builder/status'
 
 export default {
-  title: 'Begriffe',
+  title: 'Begriff',
   name: 'term',
   type: 'object',
   icon: AiOutlineFileText,
