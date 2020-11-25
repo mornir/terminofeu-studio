@@ -14,6 +14,12 @@ export default {
       name: 'image',
     },
     {
+      title: 'Quelle der Abbildung',
+      name: 'source',
+      type: 'reference',
+      to: [{ type: 'source' }],
+    },
+    {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
