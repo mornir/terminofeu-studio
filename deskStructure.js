@@ -58,29 +58,6 @@ export default () =>
               }),
             ])
         ),
-
-      /*       S.listItem()
-        .title('Begriffe')
-        .child(
-          S.list()
-            .title('Begriffe')
-            .items([
-              ...langs.map((lang) => {
-                return S.listItem()
-                  .title(lang.title)
-                  .child(
-                    S.documentList()
-                      .title(lang.title)
-                      .filter('_type == "term" && lang == $lang')
-                      .params({ lang: lang.code })
-                      .initialValueTemplates([
-                        S.initialValueTemplateItem('term-' + lang.code),
-                      ])
-                  )
-              }),
-            ])
-        ), */
-
       S.listItem()
         .title('Quellen')
         .child(
