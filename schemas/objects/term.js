@@ -1,5 +1,7 @@
 import { AiOutlineFileText } from 'react-icons/ai'
 
+import { generateStatus } from '../builder/status'
+
 export default {
   title: 'Begriffe',
   name: 'term',
@@ -17,6 +19,14 @@ export default {
   ],
   fields: [
     {
+      type: 'string',
+      name: 'status',
+      title: 'Status',
+      options: {
+        list: generateStatus(),
+      },
+    },
+    {
       title: 'Begriff',
       name: 'term',
       type: 'termGroup',
@@ -32,9 +42,11 @@ export default {
     select: {
       term: 'term.designation',
       abbreviation: 'abbreviation.designation',
+      status: 'status',
     },
-    prepare({ term, abbreviation }) {
-      const title = abbreviation ? `${term} (${abbreviation})` : term
+    prepare({ status, term, abbreviation }) {
+      const title =
+        `[${status}] ` + (abbreviation ? `${term} (${abbreviation})` : term)
       return {
         title,
       }
