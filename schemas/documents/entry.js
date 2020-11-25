@@ -23,7 +23,7 @@ export default {
     {
       type: 'string',
       name: 'status',
-      title: 'Status',
+      title: 'Bearbeitungsstatus',
       options: {
         list: statusList,
       },
