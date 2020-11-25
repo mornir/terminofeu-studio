@@ -27,7 +27,6 @@ export default {
         filter: ({ document, parentPath }) => {
           // Always make sure to check for document properties
           // before attempting to use them
-          console.log(parentPath)
           if (!parentPath[0] === 'content' && !parentPath[1]) {
             return {
               filter: 'lang == $lang',
@@ -48,11 +47,14 @@ export default {
   preview: {
     select: {
       blocks: 'definition',
+      status: 'status',
     },
-    prepare(value) {
-      const block = (value.blocks || []).find(
-        (block) => block._type === 'block'
-      )
+    prepare({ blocks }) {
+      const block = (blocks || []).find((block) => block._type === 'block')
+      const subtitle = status
+        ? generateStatus().find((s) => s.value === status).title
+        : 'kein Status'
+
       return {
         title: block
           ? block.children
@@ -60,6 +62,7 @@ export default {
               .map((span) => span.text)
               .join('')
           : 'No title',
+        subtitle,
       }
     },
   },
