@@ -2,6 +2,8 @@ import { AiOutlineFileText } from 'react-icons/ai'
 
 import { generateStatus } from '../builder/status'
 
+import { description, filter } from '../builder/sourceData'
+
 export default {
   title: 'Begriff',
   name: 'term',
@@ -10,7 +12,7 @@ export default {
   fieldsets: [
     {
       name: 'abbreviation',
-      title: 'Abkürzung (falls vorhanden)',
+      title: 'Kurzform (falls vorhanden)',
       options: {
         collapsible: true,
         collapsed: true,
@@ -28,14 +30,37 @@ export default {
     },
     {
       title: 'Begriff',
-      name: 'term',
-      type: 'termGroup',
+      name: 'designation',
+      type: 'string',
+      description:
+        'Begriffe sind in ihrer Grundform (Nominativ Singular) zu erfassen.',
     },
     {
-      title: 'Abkürzung',
+      title: 'Quelle',
+      name: 'source',
+      type: 'reference',
+      description: description,
+      to: [{ type: 'source' }],
+      options: {
+        filter: filter,
+      },
+    },
+    {
+      title: 'Abkürzung / Akronym / Silbenkurzwort',
       name: 'abbreviation',
+      type: 'string',
       fieldset: 'abbreviation',
-      type: 'termGroup',
+    },
+    {
+      title: 'Quelle',
+      name: 'abbreviationSource',
+      type: 'reference',
+      fieldset: 'abbreviation',
+      description: description,
+      to: [{ type: 'source' }],
+      options: {
+        filter: filter,
+      },
     },
   ],
   preview: {
