@@ -1,6 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-
 export default ({ title, code }) => {
   return {
     title,
@@ -11,41 +8,16 @@ export default ({ title, code }) => {
       {
         type: 'array',
         name: 'terms',
-        title: 'Begriffe',
-        description: (
-          <span>
-            Begriffe, die hier hinzugefügt werden sollen, müssen zuerst{' '}
-            <Link
-              href={`/intent/create/template=term-${code};type=term`}
-              target="_blank"
-            >
-              hier erfasst werden
-            </Link>
-          </span>
-        ),
-        of: [
-          {
-            type: 'reference',
-            to: [{ type: 'term' }],
-            options: {
-              filter: `lang == $lang && count(*[references(^._id)]) == 0`,
-              filterParams: { lang: code },
-            },
-          },
-        ],
+        title: 'Hauptbegriff und alternative Begriffe',
+        of: [{ type: 'term' }],
       },
       {
-        title: 'Definitionen',
+        title: 'Definition',
         name: 'definitions',
         type: 'array',
+        description:
+          'Unterscheiden sich die oben umschriebenen Begriffe stark voneinander, sind mehrere Einträge zu erstellen.',
         of: [{ type: 'definition' }],
-      },
-      {
-        title: 'Abbildungen',
-        name: 'illustrations',
-        type: 'array',
-        description: 'Zeichnungen, grafische Darstellungen oder Schemata',
-        of: [{ type: 'illustration' }],
       },
     ],
   }

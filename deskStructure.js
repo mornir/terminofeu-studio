@@ -59,7 +59,7 @@ export default () =>
             ])
         ),
 
-      S.listItem()
+      /*       S.listItem()
         .title('Begriffe')
         .child(
           S.list()
@@ -79,7 +79,7 @@ export default () =>
                   )
               }),
             ])
-        ),
+        ), */
 
       S.listItem()
         .title('Quellen')

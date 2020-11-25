@@ -1,26 +1,58 @@
+import Tabs from 'sanity-plugin-tabs'
+
+import illustrationFn from '../builder/illustrationFn'
+import { langs } from '../builder/langs'
+
+import { generateStatus } from '../builder/status'
+
 export default {
   title: 'Bild',
   name: 'illustration',
-  type: 'image',
+  type: 'object',
   fields: [
     {
-      name: 'caption',
       type: 'string',
-      title: 'Bildlegende',
-      validation: (Rule) => Rule.required(),
+      name: 'status',
+      title: 'Status',
       options: {
-        isHighlighted: true,
+        list: generateStatus('abbildung'),
       },
     },
     {
-      name: 'attribution',
-      type: 'string',
-      title: 'Zuschreibung',
-      description: 'Quelle, Urheber, usw.',
-      validation: (Rule) => Rule.required(),
-      options: {
-        isHighlighted: true,
-      },
+      type: 'image',
+      title: 'Abbildung',
+      name: 'image',
+    },
+    {
+      title: 'Quelle der Abbildung',
+      name: 'source',
+      type: 'reference',
+      to: [{ type: 'source' }],
+    },
+    {
+      name: 'content',
+      type: 'object',
+      inputComponent: Tabs,
+      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      fields: langs.map((lang) => illustrationFn(lang)),
     },
   ],
+  preview: {
+    select: {
+      media: 'image',
+      title: 'content.de.title',
+      status: 'status',
+    },
+    prepare({ status, title, media }) {
+      const subtitle = status
+        ? generateStatus('abbildung').find((s) => s.value === status).title
+        : 'kein Status'
+
+      return {
+        media,
+        title,
+        subtitle,
+      }
+    },
+  },
 }

@@ -19,7 +19,6 @@ export default {
   title: 'Einträge',
   type: 'document',
   icon: AiOutlineContainer,
-  liveEdit: true,
   fields: [
     {
       type: 'string',
@@ -30,7 +29,7 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
-    {
+    /*     {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',
       type: 'array',
@@ -52,13 +51,20 @@ export default {
           },
         },
       ],
-    },
+    }, */
     {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
       fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
       fields: langs.map((lang) => langFn(lang)),
+    },
+    {
+      title: 'Abbildungen',
+      name: 'illustrations',
+      type: 'array',
+      description: 'Zeichnungen, grafische Darstellungen oder Schemata',
+      of: [{ type: 'illustration' }],
     },
   ],
   initialValue: {
@@ -67,7 +73,7 @@ export default {
   preview: {
     select: {
       term: 'content.de.terms.0.term.designation',
-      definition: 'content.de.definition',
+      definition: 'content.de.definitions.0.definition',
     },
     prepare({ term, definition }) {
       const block = (definition || []).find((block) => block._type === 'block')

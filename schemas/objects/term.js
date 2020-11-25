@@ -1,13 +1,12 @@
 import { AiOutlineFileText } from 'react-icons/ai'
 
-import { langs } from '../builder/langs'
+import { generateStatus } from '../builder/status'
 
 export default {
   title: 'Begriffe',
   name: 'term',
-  type: 'document',
+  type: 'object',
   icon: AiOutlineFileText,
-  liveEdit: true,
   fieldsets: [
     {
       name: 'abbreviation',
@@ -20,18 +19,12 @@ export default {
   ],
   fields: [
     {
-      title: 'Sprache',
-      name: 'lang',
       type: 'string',
+      name: 'status',
+      title: 'Status',
       options: {
-        list: langs.map(({ title, code }) => ({ value: code, title })),
+        list: generateStatus(),
       },
-    },
-    {
-      title: 'Definitionen',
-      name: 'definitions',
-      type: 'array',
-      of: [{ type: 'definition' }],
     },
     {
       title: 'Begriff',
@@ -45,18 +38,21 @@ export default {
       type: 'termGroup',
     },
   ],
-  initialValue: {
-    lang: 'de',
-  },
   preview: {
     select: {
       term: 'term.designation',
       abbreviation: 'abbreviation.designation',
+      status: 'status',
     },
-    prepare({ term, abbreviation }) {
+    prepare({ status, term, abbreviation }) {
       const title = abbreviation ? `${term} (${abbreviation})` : term
+      const subtitle = status
+        ? generateStatus().find((s) => s.value === status).title
+        : 'kein Status'
+
       return {
         title,
+        subtitle,
       }
     },
   },

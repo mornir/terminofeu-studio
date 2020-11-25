@@ -11,7 +11,7 @@ export default [
       status: 'draft',
     },
   }),
-  ...langs.map(({ code }) =>
+  /*   ...langs.map(({ code }) =>
     T.template({
       id: `term-${code}`,
       title: `Begriff ${code.toUpperCase()}`,
@@ -20,7 +20,7 @@ export default [
         lang: code,
       },
     })
-  ),
+  ), */
   ...langs.map(({ code }) =>
     T.template({
       id: `source-${code}`,
