@@ -3,11 +3,21 @@ import Tabs from 'sanity-plugin-tabs'
 import illustrationFn from '../builder/illustrationFn'
 import { langs } from '../builder/langs'
 
+import { generateStatus } from '../builder/status'
+
 export default {
   title: 'Bild',
   name: 'illustration',
   type: 'object',
   fields: [
+    {
+      type: 'string',
+      name: 'status',
+      title: 'Status',
+      options: {
+        list: generateStatus('abbildung'),
+      },
+    },
     {
       type: 'image',
       title: 'Abbildung',
