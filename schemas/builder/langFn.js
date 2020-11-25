@@ -12,7 +12,7 @@ export default ({ title, code }) => {
         of: [{ type: 'term' }],
       },
       {
-        title: 'Definitionen',
+        title: 'Definition',
         name: 'definitions',
         type: 'array',
         of: [{ type: 'definition' }],
