@@ -52,7 +52,6 @@ export default {
         },
       ],
     }, */
-
     {
       name: 'content',
       type: 'object',
@@ -74,7 +73,7 @@ export default {
   preview: {
     select: {
       term: 'content.de.terms.0.term.designation',
-      definition: 'content.de.definition',
+      definition: 'content.de.definitions.0.definition',
     },
     prepare({ term, definition }) {
       const block = (definition || []).find((block) => block._type === 'block')
