@@ -33,7 +33,7 @@ export default {
       name: 'designation',
       type: 'string',
       description:
-        'Begriffe sind in ihrer Grundform (Nominativ Singular) zu erfassen.',
+        'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
     },
     {
       title: 'Quelle',
@@ -65,8 +65,8 @@ export default {
   ],
   preview: {
     select: {
-      term: 'term.designation',
-      abbreviation: 'abbreviation.designation',
+      term: 'designation',
+      abbreviation: 'abbreviation',
       status: 'status',
     },
     prepare({ status, term, abbreviation }) {

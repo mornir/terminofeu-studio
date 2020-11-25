@@ -72,7 +72,7 @@ export default {
   },
   preview: {
     select: {
-      term: 'content.de.terms.0.term.designation',
+      term: 'content.de.terms.0.designation',
       definition: 'content.de.definitions.0.definition',
     },
     prepare({ term, definition }) {
