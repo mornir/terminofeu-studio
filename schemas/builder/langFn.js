@@ -8,13 +8,15 @@ export default ({ title, code }) => {
       {
         type: 'array',
         name: 'terms',
-        title: 'Begriffe',
+        title: 'Hauptbegriff und alternative Begriffe',
         of: [{ type: 'term' }],
       },
       {
         title: 'Definition',
         name: 'definitions',
         type: 'array',
+        description:
+          'Unterscheiden sich die oben umschriebenen Begriffe stark voneinander, sind mehrere Einträge zu erstellen.',
         of: [{ type: 'definition' }],
       },
     ],
