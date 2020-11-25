@@ -10,7 +10,6 @@ import source from './documents/source'
 
 // Import objects
 import blockContent from './objects/blockContent'
-import termGroup from './objects/termGroup'
 import term from './objects/term'
 import illustration from './objects/illustration'
 import definition from './objects/definition'
@@ -24,7 +23,6 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     blockContent,
-    termGroup,
     illustration,
     definition,
     source,
