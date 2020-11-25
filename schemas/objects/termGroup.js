@@ -12,19 +12,6 @@ export default {
       type: 'string',
     },
     {
-      type: 'string',
-      name: 'status',
-      title: 'Status',
-      options: {
-        list: [
-          { title: 'genehmigt', value: 'allowed' },
-          { title: 'zu vermeiden', value: 'avoid' },
-          { title: 'nicht standard', value: 'not_standard' },
-          { title: 'abgelehnt', value: 'rejected' },
-        ],
-      },
-    },
-    {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
