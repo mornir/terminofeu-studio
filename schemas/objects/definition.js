@@ -1,5 +1,7 @@
 import { generateStatus } from '../builder/status'
 
+import { description, filter } from '../builder/sourceData'
+
 export default {
   title: 'Definition',
   name: 'definition',
@@ -22,25 +24,10 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
+      description: description,
       to: [{ type: 'source' }],
       options: {
-        filter: ({ document, parentPath }) => {
-          // Always make sure to check for document properties
-          // before attempting to use them
-          if (!parentPath[0] === 'content' && !parentPath[1]) {
-            return {
-              filter: 'lang == $lang',
-              params: { lang: 'de' },
-            }
-          } else {
-            return {
-              filter: 'lang == $lang',
-              params: {
-                lang: parentPath[1],
-              },
-            }
-          }
-        },
+        filter: filter,
       },
     },
   ],

@@ -4,6 +4,7 @@ import illustrationFn from '../builder/illustrationFn'
 import { langs } from '../builder/langs'
 
 import { generateStatus } from '../builder/status'
+import { description } from '../builder/sourceData'
 
 export default {
   title: 'Bild',
@@ -27,6 +28,7 @@ export default {
       title: 'Quelle der Abbildung',
       name: 'source',
       type: 'reference',
+      description: description,
       to: [{ type: 'source' }],
     },
     {
