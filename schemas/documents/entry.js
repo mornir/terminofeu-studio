@@ -29,7 +29,7 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
-    {
+    /*     {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',
       type: 'array',
@@ -51,6 +51,14 @@ export default {
           },
         },
       ],
+    }, */
+
+    {
+      name: 'content',
+      type: 'object',
+      inputComponent: Tabs,
+      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      fields: langs.map((lang) => langFn(lang)),
     },
     {
       title: 'Abbildungen',
@@ -58,13 +66,6 @@ export default {
       type: 'array',
       description: 'Zeichnungen, grafische Darstellungen oder Schemata',
       of: [{ type: 'illustration' }],
-    },
-    {
-      name: 'content',
-      type: 'object',
-      inputComponent: Tabs,
-      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
-      fields: langs.map((lang) => langFn(lang)),
     },
   ],
   initialValue: {
