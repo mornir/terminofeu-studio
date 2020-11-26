@@ -72,19 +72,13 @@ export default {
   },
   preview: {
     select: {
-      term: 'content.de.terms.0.designation',
-      definition: 'content.de.definitions.0.definition',
+      termDE: 'content.de.terms.0.designation',
+      termFR: 'content.fr.terms.0.designation',
     },
-    prepare({ term, definition }) {
-      const block = (definition || []).find((block) => block._type === 'block')
+    prepare({ termDE, termFR }) {
       return {
-        title: term,
-        subtitle: block
-          ? block.children
-              .filter((child) => child._type === 'span')
-              .map((span) => span.text)
-              .join('')
-          : 'Keine Definition',
+        title: termDE,
+        subtitle: termFR,
       }
     },
   },
@@ -92,7 +86,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'content.de.title', direction: 'asc' }],
+      by: [{ field: 'content.de.terms.0.designation', direction: 'asc' }],
     },
   ],
 }
