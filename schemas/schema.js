@@ -13,6 +13,7 @@ import blockContent from './objects/blockContent'
 import term from './objects/term'
 import illustration from './objects/illustration'
 import definition from './objects/definition'
+import hiddenEntryTitles from './objects/hiddenEntryTitles'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,6 +26,7 @@ export default createSchema({
     blockContent,
     illustration,
     definition,
+    hiddenEntryTitles,
     source,
     term,
     entry,

@@ -21,6 +21,12 @@ export default {
   icon: AiOutlineContainer,
   fields: [
     {
+      title: 'Titel',
+      name: 'title',
+      type: 'hiddenEntryTitles',
+      hidden: true,
+    },
+    {
       type: 'string',
       name: 'status',
       title: 'Bearbeitungsstatus',
