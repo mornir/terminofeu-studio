@@ -19,14 +19,15 @@ export function setEntryTitlesAction(props) {
 
   return {
     disabled: publish.disabled,
-    label: 'test',
-    /*   label: isPublishing ? 'Publishing…' : 'Publish', */
+    label: isPublishing ? 'Publishing…' : 'Publish',
     onHandle: () => {
       // This will update the button text
       setIsPublishing(true)
 
+      //content.terms[0].designation
+
       // Set publishedAt to current date and time
-      patch.execute([{ set: { 'title.de': 'test' } }])
+      patch.execute([{ set: { deTitle: 'testing' } }])
 
       // Perform the publish
       publish.execute()

@@ -20,12 +20,14 @@ export default {
   type: 'document',
   icon: AiOutlineContainer,
   fields: [
-    {
-      title: 'Titel',
-      name: 'title',
-      type: 'hiddenEntryTitles',
-      hidden: true,
-    },
+    ...langs.map(({ title, code }) => {
+      return {
+        title,
+        type: 'string',
+        name: code + 'Title',
+        hidden: true,
+      }
+    }),
     {
       type: 'string',
       name: 'status',
