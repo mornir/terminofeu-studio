@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
 
+import { langs } from '../schemas/builder/langs'
+
 export function setEntryTitlesAction(props) {
   if (props.type !== 'entry') {
     return null
@@ -24,10 +26,26 @@ export function setEntryTitlesAction(props) {
       // This will update the button text
       setIsPublishing(true)
 
-      //content.terms[0].designation
+      const patches = langs
+        .map(({ code }) => {
+          const term = props.draft.content[code]?.terms[0]?.designation
+          if (!term) {
+            return null
+          }
+          const abbreviation = props.draft.content[code]?.terms[0]?.abbreviation
+
+          const titleObject = {}
+          const key = code + 'Title'
+          const title = term + (abbreviation ? ` ${abbreviation}` : '')
+
+          titleObject[key] = title
+
+          return { set: titleObject }
+        })
+        .filter((langPatch) => langPatch !== null)
 
       // Set publishedAt to current date and time
-      patch.execute([{ set: { deTitle: 'testing' } }])
+      patch.execute(patches)
 
       // Perform the publish
       publish.execute()
