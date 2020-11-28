@@ -29,7 +29,7 @@
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "variableOverrides.css"
+      "path": "./variableOverrides.css"
     },
     {
       "name": "part:@sanity/desk-tool/structure",
