@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
 
-export default function setEntryTitlesAction(props) {
+export function setEntryTitlesAction(props) {
   if (props.type !== 'entry') {
     return null
   }
@@ -18,7 +18,6 @@ export default function setEntryTitlesAction(props) {
   }, [props.draft])
 
   return {
-    name: 'testing',
     disabled: publish.disabled,
     label: 'test',
     /*   label: isPublishing ? 'Publishing…' : 'Publish', */
