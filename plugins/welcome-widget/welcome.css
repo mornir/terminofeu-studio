@@ -2,6 +2,7 @@
 
 .container {
   composes: container from 'part:@sanity/dashboard/widget-styles';
+  padding: var(--medium-padding);
 }
 
 .containerWithPadding {
@@ -14,14 +15,22 @@
 
 .title {
   composes: heading2 from 'part:@sanity/base/theme/typography/headings-style';
-  margin: var(--small-padding) var(--medium-padding);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 0;
+  color: #4f4f4f;
+  margin-left: 0.2rem;
+  font-style: italic;
 }
 
 .buttonContainer {
   composes: bottomButtonContainer from 'part:@sanity/dashboard/widget-styles';
 }
 
-.content {
-  padding: var(--medium-padding);
-  padding-top: 0;
+.content a {
+  margin-left: 0.2rem;
 }
