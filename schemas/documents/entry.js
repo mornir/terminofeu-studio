@@ -1,4 +1,3 @@
-import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 import Tabs from 'sanity-plugin-tabs'
 import { AiOutlineContainer } from 'react-icons/ai'
 
@@ -20,6 +19,14 @@ export default {
   type: 'document',
   icon: AiOutlineContainer,
   fields: [
+    ...langs.map(({ title, code }) => {
+      return {
+        title,
+        type: 'string',
+        name: code + 'Title',
+        hidden: true,
+      }
+    }),
     {
       type: 'string',
       name: 'status',

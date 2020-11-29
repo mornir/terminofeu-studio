@@ -12,6 +12,7 @@ export default {
       title: 'Sprache',
       name: 'lang',
       type: 'string',
+      validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
       options: {
         list: langs.map(({ title, code }) => ({ value: code, title })),
       },
@@ -20,6 +21,12 @@ export default {
       name: 'title',
       title: 'Titel',
       type: 'string',
+      validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
+    },
+    {
+      name: 'url',
+      title: 'URL',
+      type: 'url',
     },
   ],
   initialValue: {
