@@ -12,10 +12,11 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool",
     "@sanity/dashboard",
+    "@sanity/desk-tool",
     "tabs",
-    "dashboard-widget-document-list"
+    "dashboard-widget-document-list",
+    "welcome-widget"
   ],
   "env": {
     "development": {
