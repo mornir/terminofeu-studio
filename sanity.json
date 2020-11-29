@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "@sanity/dashboard",
     "tabs",
-    "dashboard-widget-document-list"
+    "dashboard-widget-document-list",
+    "welcome-widget"
   ],
   "env": {
     "development": {

@@ -1,0 +1,27 @@
+@import 'part:@sanity/base/theme/variables-style';
+
+.container {
+  composes: container from 'part:@sanity/dashboard/widget-styles';
+}
+
+.containerWithPadding {
+  composes: containerWithPadding from 'part:@sanity/dashboard/widget-styles';
+}
+
+.header {
+  composes: header from 'part:@sanity/dashboard/widget-styles';
+}
+
+.title {
+  composes: heading2 from 'part:@sanity/base/theme/typography/headings-style';
+  margin: var(--small-padding) var(--medium-padding);
+}
+
+.buttonContainer {
+  composes: bottomButtonContainer from 'part:@sanity/dashboard/widget-styles';
+}
+
+.content {
+  padding: var(--medium-padding);
+  padding-top: 0;
+}
