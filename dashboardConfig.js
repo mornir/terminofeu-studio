@@ -1,6 +1,13 @@
 export default {
   widgets: [
     {
+      name: 'welcome',
+      layout: {
+        width: 'full',
+        height: 'small',
+      },
+    },
+    {
       name: 'document-list',
       options: {
         title: 'Zuletzt bearbeitete Einträge',
