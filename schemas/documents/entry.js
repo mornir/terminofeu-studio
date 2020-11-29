@@ -1,4 +1,3 @@
-import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 import Tabs from 'sanity-plugin-tabs'
 import { AiOutlineContainer } from 'react-icons/ai'
 
