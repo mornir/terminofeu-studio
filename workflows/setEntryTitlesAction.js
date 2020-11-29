@@ -26,6 +26,7 @@ export function setEntryTitlesAction(props) {
       // This will update the button text
       setIsPublishing(true)
 
+      // Create { set: deTitle: term + abbreviation } patch for every language
       const patches = langs
         .map(({ code }) => {
           const term = props.draft.content[code]?.terms[0]?.designation
@@ -44,7 +45,6 @@ export function setEntryTitlesAction(props) {
         })
         .filter((langPatch) => langPatch !== null)
 
-      // Set publishedAt to current date and time
       patch.execute(patches)
 
       // Perform the publish
