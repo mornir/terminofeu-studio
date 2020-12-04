@@ -1,24 +1,17 @@
 // https://www.sanity.io/docs/structure-builder/how-it-works
 
 import S from '@sanity/desk-tool/structure-builder'
-
 import { MdVisibility, MdEdit } from 'react-icons/md'
 
 import IframePreview from './components/previews/iframe/IframePreview'
-
 import { langs } from './schemas/builder/langs'
-
-/* const hiddenDocTypes = (listItem) => !['term', 'entry'].includes(listItem.getId()) */
-
 import { statusList } from './schemas/documents/entry'
-
-const types = ['term', 'entry']
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
   // Only show the iframe for documents for which a preview makes sense.
 
   // types.includes(types)
-  if (types.includes(schemaType)) {
+  if (schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(MdEdit),
       S.view
@@ -43,7 +36,10 @@ export default () =>
               S.listItem()
                 .title('Alle Einträge')
                 .child(
-                  S.documentList().title('Alle').filter('_type == "entry"')
+                  S.documentList()
+                    .title('Alle')
+                    .filter('_type == "entry"')
+                    .defaultOrdering([{ field: 'deTitle', direction: 'desc' }])
                 ),
               S.divider(),
               ...statusList.map((status) => {
