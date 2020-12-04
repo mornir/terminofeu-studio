@@ -93,7 +93,7 @@ export default {
     {
       title: 'Alphabetical',
       name: 'alphabetical',
-      by: [{ field: 'deTitle', direction: 'desc' }],
+      by: [{ field: 'deTitle', direction: 'asc' }],
     },
   ],
 }

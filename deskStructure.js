@@ -39,7 +39,7 @@ export default () =>
                   S.documentList()
                     .title('Alle')
                     .filter('_type == "entry"')
-                    .defaultOrdering([{ field: 'deTitle', direction: 'desc' }])
+                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
                 ),
               S.divider(),
               ...statusList.map((status) => {
