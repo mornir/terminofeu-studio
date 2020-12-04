@@ -89,11 +89,4 @@ export default {
       }
     },
   },
-  orderings: [
-    {
-      title: 'Alphabetical',
-      name: 'alphabetical',
-      by: [{ field: 'content.de.terms.0.designation', direction: 'asc' }],
-    },
-  ],
 }

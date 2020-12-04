@@ -23,6 +23,7 @@ export default {
       type: 'image',
       title: 'Abbildung',
       name: 'image',
+      description: 'Sprachneutrale Abbildung mit Nummerierung',
     },
     {
       title: 'Quelle der Abbildung',
