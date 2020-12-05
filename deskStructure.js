@@ -7,6 +7,8 @@ import IframePreview from './components/previews/iframe/IframePreview'
 import { langs } from './schemas/builder/langs'
 import { statusList } from './schemas/documents/entry'
 
+const hiddenDocTypes = (listItem) => !['source'].includes(listItem.getId())
+
 export const getDefaultDocumentNode = ({ schemaType }) => {
   // Only show the iframe for documents for which a preview makes sense.
 
@@ -27,20 +29,13 @@ export default () =>
   S.list()
     .title('Inhalt')
     .items([
+      ...S.documentTypeListItems().filter(hiddenDocTypes),
       S.listItem()
-        .title('Einträge')
+        .title('Einträge nach Status')
         .child(
           S.list()
-            .title('Einträge')
+            .title('Einträge nach Status')
             .items([
-              S.listItem()
-                .title('Alle Einträge')
-                .child(
-                  S.documentList()
-                    .title('Alle')
-                    .filter('_type == "entry"')
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
               S.divider(),
               ...statusList.map((status) => {
                 return S.listItem()
@@ -50,6 +45,7 @@ export default () =>
                       .title(status.title)
                       .filter('_type == "entry" && status == $status')
                       .params({ status: status.value })
+                      .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
                   )
               }),
             ])
