@@ -89,4 +89,16 @@ export default {
       }
     },
   },
+  orderings: [
+    {
+      title: 'DE A->Z',
+      name: 'deAlphabetical',
+      by: [{ field: 'deTitle', direction: 'asc' }],
+    },
+    {
+      title: 'FR A->Z',
+      name: 'frAlphabetical',
+      by: [{ field: 'frTitle', direction: 'asc' }],
+    },
+  ],
 }
