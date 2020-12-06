@@ -12,4 +12,10 @@ export default {
     title,
     type: 'string',
   })),
+  preview: {
+    select: {
+      title: 'deTitle',
+      subtitle: 'frTitle',
+    },
+  },
 }
