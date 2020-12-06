@@ -1,13 +1,17 @@
 // https://www.sanity.io/docs/structure-builder/how-it-works
 
 import S from '@sanity/desk-tool/structure-builder'
-import { MdVisibility, MdEdit } from 'react-icons/md'
+import {
+  AiFillEye,
+  AiFillEdit,
+  AiOutlineContainer,
+  AiOutlineApartment,
+  AiOutlineFileSearch,
+} from 'react-icons/ai'
 
 import IframePreview from './components/previews/iframe/IframePreview'
 import { langs } from './schemas/builder/langs'
 import { statusList } from './schemas/documents/entry'
-
-const hiddenDocTypes = (listItem) => !['source'].includes(listItem.getId())
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
   // Only show the iframe for documents for which a preview makes sense.
@@ -15,12 +19,12 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
   // types.includes(types)
   if (schemaType === 'entry') {
     return S.document().views([
-      S.view.form().icon(MdEdit),
+      S.view.form().icon(AiFillEdit),
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
         .title('Vorschau')
-        .icon(MdVisibility),
+        .icon(AiFillEye),
     ])
   }
 }
@@ -29,7 +33,10 @@ export default () =>
   S.list()
     .title('Inhalt')
     .items([
-      ...S.documentTypeListItems().filter(hiddenDocTypes),
+      S.listItem()
+        .title('Einträge')
+        .icon(AiOutlineContainer)
+        .child(S.documentTypeList('entry')),
       S.listItem()
         .title('Einträge nach Status')
         .child(
@@ -52,6 +59,7 @@ export default () =>
         ),
       S.listItem()
         .title('Quellen')
+        .icon(AiOutlineFileSearch)
         .child(
           S.list()
             .title('Quellen')
@@ -68,4 +76,8 @@ export default () =>
               }),
             ])
         ),
+      S.listItem()
+        .title('Sachgebiete')
+        .icon(AiOutlineApartment)
+        .child(S.documentTypeList('domain')),
     ])
