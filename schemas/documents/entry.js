@@ -36,6 +36,12 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
+    {
+      name: 'domain',
+      title: 'Sachgebiet',
+      type: 'reference',
+      to: [{ type: 'domain' }],
+    },
     /*     {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',
@@ -79,14 +85,8 @@ export default {
   },
   preview: {
     select: {
-      termDE: 'content.de.terms.0.designation',
-      termFR: 'content.fr.terms.0.designation',
-    },
-    prepare({ termDE, termFR }) {
-      return {
-        title: termDE,
-        subtitle: termFR,
-      }
+      title: 'content.de.terms.0.designation',
+      subtitle: 'content.fr.terms.0.designation',
     },
   },
   orderings: [
