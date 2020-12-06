@@ -15,7 +15,7 @@ export const statusList = [
 
 export default {
   name: 'entry',
-  title: 'Einträge',
+  title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
   fields: [

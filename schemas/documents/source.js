@@ -3,7 +3,7 @@ import { AiOutlineFileSearch } from 'react-icons/ai'
 import { langs } from '../builder/langs'
 
 export default {
-  title: 'Quellen',
+  title: 'Quelle',
   name: 'source',
   type: 'document',
   icon: AiOutlineFileSearch,
