@@ -29,13 +29,6 @@ export default {
       },
     },
     {
-      title: 'Begriff',
-      name: 'designation',
-      type: 'string',
-      description:
-        'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
-    },
-    {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
@@ -44,6 +37,13 @@ export default {
       options: {
         filter: filter,
       },
+    },
+    {
+      title: 'Begriff',
+      name: 'designation',
+      type: 'string',
+      description:
+        'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
     },
     {
       title: 'Abkürzung / Akronym / Silbenkurzwort',

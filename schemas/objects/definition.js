@@ -16,11 +16,6 @@ export default {
       },
     },
     {
-      title: 'Definition',
-      name: 'definition',
-      type: 'blockContent',
-    },
-    {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
@@ -29,6 +24,11 @@ export default {
       options: {
         filter: filter,
       },
+    },
+    {
+      title: 'Definition',
+      name: 'definition',
+      type: 'blockContent',
     },
   ],
   preview: {
