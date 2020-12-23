@@ -20,6 +20,8 @@ export default {
       name: 'source',
       type: 'reference',
       description: description,
+      validation: (Rule) =>
+        Rule.required().error('Quelle fehlt bei der Definition'),
       to: [{ type: 'source' }],
       options: {
         filter: filter,

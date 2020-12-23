@@ -34,6 +34,7 @@ export default {
       type: 'reference',
       description: description,
       to: [{ type: 'source' }],
+      validation: (Rule) => Rule.required().error('Quelle fehlt beim Begriff'),
       options: {
         filter: filter,
       },

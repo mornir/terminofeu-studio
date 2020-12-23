@@ -30,6 +30,8 @@ export default {
       name: 'source',
       type: 'reference',
       description: description,
+      validation: (Rule) =>
+        Rule.required().error('Quelle fehlt bei der Abbildung'),
       to: [{ type: 'source' }],
     },
     {
