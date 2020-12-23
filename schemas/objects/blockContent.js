@@ -1,3 +1,8 @@
+import React from 'react'
+import { ImSuperscript } from 'react-icons/im'
+
+const superscriptRender = (props) => <sup>{props.children}</sup>
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -18,6 +23,14 @@ export default {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          {
+            title: 'Superscript',
+            value: 'sup',
+            blockEditor: {
+              icon: ImSuperscript,
+              render: superscriptRender,
+            },
+          },
           /*  { title: 'Underline', value: 'underline' }, */
           /*  { title: 'Strike', value: 'strike-through' }, */
         ],

@@ -29,27 +29,22 @@ export default {
       },
     },
     {
-      title: 'Begriff',
-      name: 'designation',
-      type: 'string',
-      description:
-        'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
-    },
-    {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
       description: description,
       to: [{ type: 'source' }],
+      validation: (Rule) => Rule.required().error('Quelle fehlt beim Begriff'),
       options: {
         filter: filter,
       },
     },
     {
-      title: 'Abkürzung / Akronym / Silbenkurzwort',
-      name: 'abbreviation',
+      title: 'Begriff',
+      name: 'designation',
       type: 'string',
-      fieldset: 'abbreviation',
+      description:
+        'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
     },
     {
       title: 'Quelle',
@@ -61,6 +56,12 @@ export default {
       options: {
         filter: filter,
       },
+    },
+    {
+      title: 'Abkürzung / Akronym / Silbenkurzwort',
+      name: 'abbreviation',
+      type: 'string',
+      fieldset: 'abbreviation',
     },
   ],
   preview: {
