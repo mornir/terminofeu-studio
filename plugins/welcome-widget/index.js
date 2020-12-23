@@ -8,7 +8,7 @@ class Welcome extends React.Component {
     return (
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>Willkommen zu terminofeu</h2>
+          <h2 className={styles.title}>Willkommen zu Terminofeu</h2>
           <h3 className={styles.subtitle}>
             Begriffsmanagment für die BSV 2026
           </h3>

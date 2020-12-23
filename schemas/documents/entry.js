@@ -36,12 +36,12 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
-    {
+    /*     {
       name: 'domain',
       title: 'Sachgebiet',
       type: 'reference',
       to: [{ type: 'domain' }],
-    },
+    }, */
     /*     {
       title: 'Verwandte Einträge',
       name: 'relatedEntries',

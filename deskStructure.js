@@ -76,8 +76,8 @@ export default () =>
               }),
             ])
         ),
-      S.listItem()
+      /*      S.listItem()
         .title('Sachgebiete')
         .icon(AiOutlineApartment)
-        .child(S.documentTypeList('domain')),
+        .child(S.documentTypeList('domain')), */
     ])
