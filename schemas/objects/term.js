@@ -47,12 +47,6 @@ export default {
         'Begriffe sind in ihrer Grundform (z.B. Nominativ Singular) zu erfassen.',
     },
     {
-      title: 'Abkürzung / Akronym / Silbenkurzwort',
-      name: 'abbreviation',
-      type: 'string',
-      fieldset: 'abbreviation',
-    },
-    {
       title: 'Quelle',
       name: 'abbreviationSource',
       type: 'reference',
@@ -62,6 +56,12 @@ export default {
       options: {
         filter: filter,
       },
+    },
+    {
+      title: 'Abkürzung / Akronym / Silbenkurzwort',
+      name: 'abbreviation',
+      type: 'string',
+      fieldset: 'abbreviation',
     },
   ],
   preview: {

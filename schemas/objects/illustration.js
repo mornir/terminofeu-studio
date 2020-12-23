@@ -20,12 +20,6 @@ export default {
       },
     },
     {
-      type: 'image',
-      title: 'Abbildung',
-      name: 'image',
-      description: 'Sprachneutrale Abbildung mit Nummerierung',
-    },
-    {
       title: 'Quelle der Abbildung',
       name: 'source',
       type: 'reference',
@@ -33,6 +27,12 @@ export default {
       validation: (Rule) =>
         Rule.required().error('Quelle fehlt bei der Abbildung'),
       to: [{ type: 'source' }],
+    },
+    {
+      type: 'image',
+      title: 'Abbildung',
+      name: 'image',
+      description: 'Sprachneutrale Abbildung mit Nummerierung',
     },
     {
       name: 'content',
