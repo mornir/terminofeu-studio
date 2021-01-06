@@ -16,6 +16,7 @@ export default {
     select: {
       title: 'deTitle',
       subtitle: 'frTitle',
+      description: 'itTitle',
     },
   },
 }

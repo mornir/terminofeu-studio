@@ -87,6 +87,7 @@ export default {
     select: {
       title: 'content.de.terms.0.designation',
       subtitle: 'content.fr.terms.0.designation',
+      description: 'content.it.terms.0.designation',
     },
   },
   orderings: [
