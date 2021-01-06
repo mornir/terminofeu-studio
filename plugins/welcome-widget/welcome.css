@@ -31,6 +31,16 @@
   composes: bottomButtonContainer from 'part:@sanity/dashboard/widget-styles';
 }
 
-.content a {
+.content {
   margin-left: 0.2rem;
+}
+
+.link {
+  color: var(--brand-primary);
+}
+
+.separator {
+  display: inline-block;
+  margin: 0 0.5rem;
+  color: var(--main-navigation-color);
 }
