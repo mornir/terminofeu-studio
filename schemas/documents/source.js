@@ -24,6 +24,16 @@ export default {
       validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
     },
     {
+      name: 'date',
+      title: 'Stand',
+      type: 'date',
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+        calendarTodayLabel: 'Today',
+      },
+      validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
+    },
+    {
       name: 'url',
       title: 'URL',
       type: 'url',
@@ -31,5 +41,27 @@ export default {
   ],
   initialValue: {
     lang: 'de',
+  },
+  preview: {
+    select: {
+      title: 'title',
+      date: 'date',
+    },
+    prepare({ title, date }) {
+      if (date) {
+        const formattedDate = new Intl.DateTimeFormat('de-CH').format(
+          new Date(date)
+        )
+        return {
+          title,
+          subtitle: `Stand: ${formattedDate}`,
+        }
+      } else {
+        return {
+          title,
+          subtitle: null,
+        }
+      }
+    },
   },
 }
