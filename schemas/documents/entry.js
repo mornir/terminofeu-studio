@@ -71,6 +71,11 @@ export default {
       inputComponent: Tabs,
       fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
       fields: langs.map((lang) => langFn(lang)),
+      options: {
+        // setting layout to object will group the tab content in an object fieldset border.
+        // ... Useful for when your tab is in between other fields inside a document.
+        layout: 'object',
+      },
     },
     {
       title: 'Abbildungen',
