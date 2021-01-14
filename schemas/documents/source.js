@@ -37,6 +37,7 @@ export default {
       name: 'url',
       title: 'URL',
       type: 'url',
+      description: 'Falls vorhanden, sonst leer lassen.',
     },
   ],
   initialValue: {
