@@ -36,6 +36,13 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
+    {
+      title: 'Interne Bemerkungen',
+      description: 'zum Eintrag',
+      name: 'internalNotes',
+      type: 'text',
+      rows: 5,
+    },
     /*     {
       name: 'domain',
       title: 'Sachgebiet',
