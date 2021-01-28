@@ -63,6 +63,11 @@ export default {
       type: 'string',
       fieldset: 'abbreviation',
     },
+    {
+      title: 'Interne Bemerkungen',
+      name: 'note',
+      type: 'text',
+    },
   ],
   preview: {
     select: {
