@@ -29,6 +29,13 @@ export default {
       },
     },
     {
+      title: 'Interne Bemerkungen',
+      description: 'zum Begriff',
+      name: 'internalNotes',
+      type: 'text',
+      rows: 5,
+    },
+    {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
