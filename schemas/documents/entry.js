@@ -11,6 +11,7 @@ export const statusList = [
   { title: 'Im Übersetzungsprozess', value: 'translation' },
   { title: 'Freigabe durch Kernausschuss', value: 'validated' },
   { title: 'Übernommen in BSV 2026', value: 'in_force' },
+  { title: 'Nicht übernommen', value: 'rejected' },
 ]
 
 export default {
