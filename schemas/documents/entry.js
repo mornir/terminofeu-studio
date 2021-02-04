@@ -39,11 +39,27 @@ export default {
     },
     {
       title: 'Interne Bemerkungen',
-      description: 'zum Eintrag',
+      description: 'FELD NICHT MEHR VERWENDEN',
       name: 'internalNotes',
       type: 'text',
       rows: 5,
     },
+    {
+      title: 'Bemerkungen / Freigabe',
+      description:
+        '✅ = freigebeben, ❌ = Anpassungen nötig, ➖ = nicht beurteilt',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+    },
+    /*   {
+      name: 'collection',
+      title: 'Terminologiesammlung',
+      type: 'string',
+      options: {
+        list: [{ title: 'BSV 10-15', value: 'bsv_10-15' }],
+      },
+    }, */
     /*     {
       name: 'domain',
       title: 'Sachgebiet',
