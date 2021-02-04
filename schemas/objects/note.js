@@ -1,10 +1,5 @@
 import React from 'react'
-
-const authors = [
-  { title: 'Hannes Häuselmann', value: 'HH' },
-  { title: 'Alois Keel', value: 'AK' },
-  { title: 'Matteo Guidinetti', value: 'MG' },
-]
+import reviewers from '../data/reviewers'
 
 export default {
   name: 'note',
@@ -16,7 +11,7 @@ export default {
       title: 'author',
       type: 'string',
       options: {
-        list: authors,
+        list: reviewers,
       },
       validation: (Rule) => Rule.required(),
     },
@@ -41,7 +36,6 @@ export default {
       approval: 'approval',
     },
     prepare({ author, text, approval }) {
-      console.log(author)
       const EMOJIS = {
         true: '✅',
         false: '❌',
