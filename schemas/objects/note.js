@@ -1,4 +1,3 @@
-import React from 'react'
 import reviewers from '../data/reviewers'
 
 export default {
@@ -16,35 +15,25 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: 'Freigeben',
-      name: 'approval',
-      type: 'boolean',
-      options: {
-        layout: 'checkbox',
-      },
+      name: 'text',
+      title: 'Kommentar',
+      type: 'text',
     },
     {
-      name: 'text',
-      title: 'Text',
-      type: 'text',
+      name: 'approvals',
+      title: 'Zustimmungen',
+      type: 'array',
+      of: [{ type: 'approval' }],
     },
   ],
   preview: {
     select: {
       author: 'author',
       text: 'text',
-      approval: 'approval',
     },
-    prepare({ author, text, approval }) {
-      const EMOJIS = {
-        true: '✅',
-        false: '❌',
-        undefined: '➖',
-      }
-
+    prepare({ author, text }) {
       return {
         title: `${author}: ${text}`,
-        media: <span style={{ fontSize: '1.5rem' }}>{EMOJIS[approval]}</span>,
       }
     },
   },

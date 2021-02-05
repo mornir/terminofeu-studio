@@ -47,8 +47,6 @@ export default {
     },
     {
       title: 'Bemerkungen / Freigabe',
-      description:
-        '✅ = freigebeben, ❌ = Anpassungen nötig, ➖ = nicht beurteilt',
       name: 'notes',
       type: 'array',
       of: [{ type: 'note' }],
