@@ -18,6 +18,7 @@ export default {
       name: 'text',
       title: 'Kommentar',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'approvals',
