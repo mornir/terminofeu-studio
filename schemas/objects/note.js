@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       name: 'author',
-      title: 'author',
+      title: 'Verfasser',
       type: 'string',
       options: {
         list: reviewers,
