@@ -5,7 +5,8 @@ import langFn from '../builder/langFn'
 import { langs } from '../builder/langs'
 
 export const statusList = [
-  { title: 'Entwurf', value: 'draft' },
+  { title: 'BSV 2015', value: 'draft' },
+  { title: 'Entwurf', value: 'new_draft' },
   { title: 'Im Definitionsprozess', value: 'definition' },
   { title: 'Fachliche Freigabe', value: 'approved' },
   { title: 'Im Übersetzungsprozess', value: 'translation' },
@@ -110,7 +111,7 @@ export default {
     },
   ],
   initialValue: {
-    status: 'draft',
+    status: 'new_draft',
   },
   preview: {
     select: {
