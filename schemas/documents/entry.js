@@ -5,13 +5,14 @@ import langFn from '../builder/langFn'
 import { langs } from '../builder/langs'
 
 export const statusList = [
-  { title: 'Entwurf', value: 'draft' },
+  { title: 'BSV 2015', value: 'draft' },
+  { title: 'Entwurf', value: 'new_draft' },
   { title: 'Im Definitionsprozess', value: 'definition' },
   { title: 'Fachliche Freigabe', value: 'approved' },
   { title: 'Im Übersetzungsprozess', value: 'translation' },
   { title: 'Freigabe durch Kernausschuss', value: 'validated' },
   { title: 'Übernommen in BSV 2026', value: 'in_force' },
-  { title: 'Nicht übernommen', value: 'rejected' },
+  { title: 'Nicht übernommen in BSV 2026', value: 'rejected' },
 ]
 
 export default {
@@ -39,11 +40,27 @@ export default {
     },
     {
       title: 'Interne Bemerkungen',
-      description: 'zum Eintrag',
+      description: 'FELD NICHT MEHR VERWENDEN',
       name: 'internalNotes',
       type: 'text',
       rows: 5,
     },
+    {
+      title: 'Bemerkungen / Freigabe',
+      description:
+        '✅ = freigebeben, ❌ = Anpassungen nötig, ➖ = nicht beurteilt',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+    },
+    /*   {
+      name: 'collection',
+      title: 'Terminologiesammlung',
+      type: 'string',
+      options: {
+        list: [{ title: 'BSV 10-15', value: 'bsv_10-15' }],
+      },
+    }, */
     /*     {
       name: 'domain',
       title: 'Sachgebiet',
@@ -94,7 +111,7 @@ export default {
     },
   ],
   initialValue: {
-    status: 'draft',
+    status: 'new_draft',
   },
   preview: {
     select: {
