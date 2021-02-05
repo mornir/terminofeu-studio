@@ -45,8 +45,16 @@ export default {
         reject: '❌',
         undefined: '➖',
       }
+
+      let title
+      if (text) {
+        title = `${author}: ${text}`
+      } else {
+        title = reviewers.find((reviewer) => reviewer.value === author).title
+      }
+
       return {
-        title: `${author}: ${text}`,
+        title,
         media: <span style={{ fontSize: '1.5rem' }}>{EMOJIS[approval]}</span>,
       }
     },
