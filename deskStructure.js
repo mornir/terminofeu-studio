@@ -11,7 +11,7 @@ import {
 
 import IframePreview from './components/previews/iframe/IframePreview'
 import { langs } from './schemas/builder/langs'
-import { statusList } from './schemas/documents/entry'
+import { statusList } from './schemas/data/statusList'
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
   // Only show the iframe for documents for which a preview makes sense.
