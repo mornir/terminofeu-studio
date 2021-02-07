@@ -42,13 +42,6 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      title: 'Interne Bemerkungen',
-      description: 'FELD NICHT MEHR VERWENDEN',
-      name: 'internalNotes',
-      type: 'text',
-      rows: 5,
-    },
-    {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
