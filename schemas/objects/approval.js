@@ -19,42 +19,29 @@ export default {
       title: 'Zustimmung',
       name: 'approval',
       type: 'string',
+      validation: (Rule) => Rule.required(),
       options: {
         list: [
           { title: 'Zustimmen', value: 'approve' },
           { title: 'Ablehnen', value: 'reject' },
-        ], // <-- predefined values
-        layout: 'radio', // <-- defaults to 'dropdown'
+        ],
+        layout: 'radio',
       },
-    },
-    {
-      name: 'text',
-      title: 'Kommentar',
-      type: 'text',
     },
   ],
   preview: {
     select: {
       author: 'author',
-      text: 'text',
       approval: 'approval',
     },
-    prepare({ author, text, approval }) {
+    prepare({ author, approval }) {
       const EMOJIS = {
         approve: '✅',
         reject: '❌',
         undefined: '➖',
       }
-
-      let title
-      if (text) {
-        title = `${author}: ${text}`
-      } else {
-        title = reviewers.find((reviewer) => reviewer.value === author).title
-      }
-
       return {
-        title,
+        title: author,
         media: <span style={{ fontSize: '1.5rem' }}>{EMOJIS[approval]}</span>,
       }
     },

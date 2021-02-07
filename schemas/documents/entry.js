@@ -21,6 +21,18 @@ export default {
   type: 'document',
   icon: AiOutlineContainer,
   fields: [
+    {
+      name: 'approvals',
+      title: 'Wollen wir diesen Begriff in den BSV 2026?',
+      type: 'array',
+      of: [{ type: 'approval' }],
+    },
+    {
+      title: 'Bemerkungen',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+    },
     ...langs.map(({ title, code }) => {
       return {
         title,
@@ -45,12 +57,7 @@ export default {
       type: 'text',
       rows: 5,
     },
-    {
-      title: 'Bemerkungen / Freigabe',
-      name: 'notes',
-      type: 'array',
-      of: [{ type: 'note' }],
-    },
+
     /*   {
       name: 'collection',
       title: 'Terminologiesammlung',

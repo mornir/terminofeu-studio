@@ -20,12 +20,6 @@ export default {
       type: 'text',
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: 'approvals',
-      title: 'Zustimmungen',
-      type: 'array',
-      of: [{ type: 'approval' }],
-    },
   ],
   preview: {
     select: {
@@ -34,7 +28,8 @@ export default {
     },
     prepare({ author, text }) {
       return {
-        title: `${author}: ${text}`,
+        title: text,
+        subtitle: author,
       }
     },
   },
