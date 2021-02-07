@@ -4,16 +4,7 @@ import { AiOutlineContainer } from 'react-icons/ai'
 import langFn from '../builder/langFn'
 import { langs } from '../builder/langs'
 
-export const statusList = [
-  { title: 'BSV 2015', value: 'draft' },
-  { title: 'Entwurf', value: 'new_draft' },
-  { title: 'Im Definitionsprozess', value: 'definition' },
-  { title: 'Fachliche Freigabe', value: 'approved' },
-  { title: 'Im Übersetzungsprozess', value: 'translation' },
-  { title: 'Freigabe durch Kernausschuss', value: 'validated' },
-  { title: 'Übernommen in BSV 2026', value: 'in_force' },
-  { title: 'Nicht übernommen in BSV 2026', value: 'rejected' },
-]
+import { statusList } from '../data/statusList'
 
 export default {
   name: 'entry',
@@ -57,44 +48,6 @@ export default {
       type: 'text',
       rows: 5,
     },
-
-    /*   {
-      name: 'collection',
-      title: 'Terminologiesammlung',
-      type: 'string',
-      options: {
-        list: [{ title: 'BSV 10-15', value: 'bsv_10-15' }],
-      },
-    }, */
-    /*     {
-      name: 'domain',
-      title: 'Sachgebiet',
-      type: 'reference',
-      to: [{ type: 'domain' }],
-    }, */
-    /*     {
-      title: 'Verwandte Einträge',
-      name: 'relatedEntries',
-      type: 'array',
-      description: 'Verweis auf einen Ober-, Unter- oder Nebenbegriff',
-      validation: (Rule) => Rule.unique(),
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'entry' }],
-          options: {
-            filter: ({ document }) => {
-              return {
-                filter: '_id != $id',
-                params: {
-                  id: getPublishedId(document._id),
-                },
-              }
-            },
-          },
-        },
-      ],
-    }, */
     {
       name: 'content',
       type: 'object',
