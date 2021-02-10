@@ -24,6 +24,7 @@ export default {
         list: [
           { title: 'Zustimmen', value: 'approve' },
           { title: 'Ablehnen', value: 'reject' },
+          { title: 'Ändern', value: 'changes_requested' },
         ],
         layout: 'radio',
       },
@@ -38,7 +39,8 @@ export default {
       const EMOJIS = {
         approve: '✅',
         reject: '❌',
-        undefined: '➖',
+        changes_requested: '➖',
+        undefined: '...',
       }
       return {
         title: author,
