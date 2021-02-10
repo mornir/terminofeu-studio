@@ -14,7 +14,7 @@ export default {
   fields: [
     {
       name: 'approvals',
-      title: 'Wollen wir diesen Begriff in den BSV 2026?',
+      title: 'Brauchen wir diesen Begriff in den BSV 2026?',
       type: 'array',
       of: [{ type: 'approval' }],
     },
