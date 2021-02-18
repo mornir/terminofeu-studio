@@ -16,11 +16,14 @@
     "@sanity/dashboard",
     "tabs",
     "dashboard-widget-document-list",
-    "welcome-widget"
+    "welcome-widget",
+    "entries-stats"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [
