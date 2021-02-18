@@ -62,7 +62,7 @@ export default {
     },
   ],
   initialValue: {
-    status: 'new_draft',
+    status: 'new',
   },
   preview: {
     select: {
