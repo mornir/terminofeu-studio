@@ -1,9 +1,11 @@
 import reviewers from '../data/reviewers'
+import { BiCommentDetail } from 'react-icons/bi'
 
 export default {
   name: 'note',
   title: 'note',
   type: 'object',
+  icon: BiCommentDetail,
   fields: [
     {
       name: 'author',

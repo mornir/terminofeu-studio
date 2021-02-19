@@ -14,7 +14,7 @@ export default {
   fields: [
     {
       name: 'approvals',
-      title: 'Wollen wir diesen Begriff in den BSV 2026?',
+      title: 'Brauchen wir diesen Begriff in den BSV 2026?',
       type: 'array',
       of: [{ type: 'approval' }],
     },
@@ -42,13 +42,6 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      title: 'Interne Bemerkungen',
-      description: 'FELD NICHT MEHR VERWENDEN',
-      name: 'internalNotes',
-      type: 'text',
-      rows: 5,
-    },
-    {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
@@ -69,7 +62,7 @@ export default {
     },
   ],
   initialValue: {
-    status: 'new_draft',
+    status: 'new',
   },
   preview: {
     select: {
