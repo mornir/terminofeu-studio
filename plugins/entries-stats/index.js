@@ -3,7 +3,7 @@ import MyToolIcon from './MyToolIcon'
 
 export default {
   title: 'Stats',
-  name: 'mytool',
+  name: 'stats',
   icon: MyToolIcon,
   component: MyTool,
 }
