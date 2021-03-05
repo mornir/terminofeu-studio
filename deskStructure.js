@@ -1,11 +1,12 @@
 // https://www.sanity.io/docs/structure-builder/how-it-works
-
+import userStore from 'part:@sanity/base/user'
 import S from '@sanity/desk-tool/structure-builder'
 import {
   AiFillEye,
   AiFillEdit,
   AiOutlineContainer,
   AiOutlineApartment,
+  AiOutlineUser,
   AiOutlineFileSearch,
 } from 'react-icons/ai'
 
@@ -29,10 +30,67 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
   }
 }
 
-export default () =>
-  S.list()
+export default async () => {
+  const { displayName } = await userStore.getUser('me')
+
+  return S.list()
     .title('Inhalt')
     .items([
+      S.listItem()
+        .title(displayName)
+        .icon(AiOutlineUser)
+        .child(
+          S.list()
+            .title('Meine Abstimmungen')
+            .items([
+              S.listItem()
+                .title('Ja')
+                .id('approve')
+                .child(
+                  S.documentList()
+                    .title('Ja')
+                    .filter(
+                      '_type == "entry" && approvals[].approval == "approve" && approvals[].author == $name'
+                    )
+                    .params({ name: displayName })
+                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('Nein')
+                .id('reject')
+                .child(
+                  S.documentList()
+                    .title('Nein')
+                    .filter(
+                      '_type == "entry" && approvals[].approval == "reject" && approvals[].author == $name'
+                    )
+                    .params({ name: displayName })
+                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('Anpassungen nötig')
+                .id('changes_requested')
+                .child(
+                  S.documentList()
+                    .title('Anpassungen nötig')
+                    .filter(
+                      '_type == "entry" && approvals[].approval == "changes_requested" && approvals[].author == $name'
+                    )
+                    .params({ name: displayName })
+                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+                ),
+              S.listItem()
+                .title('Noch keine Abstimmung')
+                .id('no_vote')
+                .child(
+                  S.documentList()
+                    .title('Noch keine Abstimmung')
+                    .filter('_type == "entry" && approvals[].author != $name')
+                    .params({ name: displayName })
+                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+                ),
+            ])
+        ),
       S.listItem()
         .title('Einträge')
         .icon(AiOutlineContainer)
@@ -43,7 +101,6 @@ export default () =>
           S.list()
             .title('Einträge nach Status')
             .items([
-              S.divider(),
               ...statusList.map((status) => {
                 return S.listItem()
                   .title(status.title)
@@ -81,3 +138,4 @@ export default () =>
         .icon(AiOutlineApartment)
         .child(S.documentTypeList('domain')), */
     ])
+}

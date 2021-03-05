@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import sanityClient from 'part:@sanity/base/client'
 import { statusList } from '../../schemas/data/statusList'
-import { Heading } from '@sanity/ui'
+import { Heading, Box } from '@sanity/ui'
 
 import {
   BarChart,
@@ -57,9 +57,11 @@ function MyTool() {
 
   return (
     <div className={styles.container}>
-      <Heading as="h2" size={3} marginBottom={3} paddinLeft={4}>
-        Einträgeanzahl je nach Status
-      </Heading>
+      <Box marginBottom={4} marginLeft={5}>
+        <Heading as="h2" size={2}>
+          Einträgeanzahl je nach Status
+        </Heading>
+      </Box>
 
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data}>
