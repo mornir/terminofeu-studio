@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import sanityClient from 'part:@sanity/base/client'
 import styles from './ApprovalTable.css'
 import { IntentLink } from 'part:@sanity/base/router'
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
-const query = /* groq */ `*[_type == "entry"][0...10] {
+const query = /* groq */ `*[_type == "entry"][0...50] {
   _id,
   "entry": deTitle,
   "approvalsCount": count(approvals[approval == "approve"]),
+  "rejectsCount": count(approvals[approval == "reject"]),
+  "changesCount": count(approvals[approval == "changes_requested"]),
 }`
 
 export default function ApprovalTable() {
@@ -19,8 +21,16 @@ export default function ApprovalTable() {
         accessor: 'entry',
       },
       {
-        Header: 'Ja',
+        Header: '✅',
         accessor: 'approvalsCount',
+      },
+      {
+        Header: '❌',
+        accessor: 'rejectsCount',
+      },
+      {
+        Header: '➖',
+        accessor: 'changesCount',
       },
     ],
     []
@@ -32,7 +42,7 @@ export default function ApprovalTable() {
     sanityClient.fetch(query).then(setData).catch(console.error)
   }, [])
 
-  const tableInstance = useTable({ columns, data })
+  const tableInstance = useTable({ columns, data }, useSortBy)
   const {
     getTableProps,
     getTableBodyProps,
@@ -54,11 +64,22 @@ export default function ApprovalTable() {
                     // Loop over the headers in each row
                     headerGroup.headers.map((column) => (
                       // Apply the header cell props
-                      <th {...column.getHeaderProps()}>
+                      <th
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                      >
                         {
                           // Render the header
                           column.render('Header')
                         }
+                        <span>
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? ' 🔽'
+                              : ' 🔼'
+                            : ''}
+                        </span>
                       </th>
                     ))
                   }
@@ -81,19 +102,29 @@ export default function ApprovalTable() {
                       row.cells.map((cell) => {
                         // Apply the cell props
                         console.log(cell)
-                        return (
-                          <td {...cell.getCellProps()}>
-                            <IntentLink
-                              intent="edit"
-                              params={{
-                                type: 'entry',
-                                id: getPublishedId(cell.row.original._id),
-                              }}
-                            >
+
+                        if (cell.column.id !== 'entry') {
+                          return (
+                            <td {...cell.getCellProps()}>
                               {cell.render('Cell')}
-                            </IntentLink>
-                          </td>
-                        )
+                            </td>
+                          )
+                        } else {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              <IntentLink
+                                intent="edit"
+                                params={{
+                                  type: 'entry',
+                                  id: getPublishedId(cell.row.original._id),
+                                }}
+                                className={styles.link}
+                              >
+                                {cell.render('Cell')}
+                              </IntentLink>
+                            </td>
+                          )
+                        }
                       })
                     }
                   </tr>

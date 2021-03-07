@@ -49,3 +49,7 @@ td.collapse {
 .pagination {
   padding: 0.5rem;
 }
+
+.link {
+  color: black;
+}
