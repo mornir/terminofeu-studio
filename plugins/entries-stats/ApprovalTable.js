@@ -90,15 +90,24 @@ export default function ApprovalTable() {
             // Loop over the table rows
             rows.map((row) => {
               // Prepare the row for display
+
               prepareRow(row)
+
+              let voteTypes = row.cells
+                .map((c) => c.value)
+                .filter(Number)
+                .filter(Boolean).length
+
               return (
                 // Apply the row props
-                <tr {...row.getRowProps()}>
+                <tr
+                  {...row.getRowProps()}
+                  className={voteTypes > 1 && styles.divergence}
+                >
                   {
                     // Loop over the rows cells
                     row.cells.map((cell) => {
                       // Apply the cell props
-                      console.log(cell)
 
                       if (cell.column.id !== 'entry') {
                         return (
