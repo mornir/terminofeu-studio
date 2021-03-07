@@ -66,7 +66,7 @@ function MyTool() {
         </Heading>
       </Box>
 
-      <ResponsiveContainer width="100%" height={200} marginBottom={8}>
+      <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="title" />
