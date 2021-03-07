@@ -75,7 +75,7 @@ export default function ApprovalTable() {
                           ? column.isSortedDesc
                             ? ' 🔽'
                             : ' 🔼'
-                          : ''}
+                          : ' ↕ '}
                       </span>
                     </th>
                   ))
