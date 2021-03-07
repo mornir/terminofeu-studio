@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
+
 import sanityClient from 'part:@sanity/base/client'
 import { statusList } from '../../schemas/data/statusList'
 import { Heading, Box } from '@sanity/ui'
+
+import ApprovalTable from './ApprovalTable'
 
 import {
   BarChart,
@@ -87,6 +90,12 @@ function MyTool() {
 
         <Tooltip />
       </PieChart> */}
+      <Box marginBottom={4} marginLeft={5} marginTop={5}>
+        <Heading as="h2" size={2} style={{ textAlign: 'center' }}>
+          Abstimmungen
+        </Heading>
+      </Box>
+      <ApprovalTable />
     </div>
   )
 }
