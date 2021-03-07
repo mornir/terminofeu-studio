@@ -1,27 +1,17 @@
-/* This is required to make the table full-width */
-
-.container {
-  display: block;
-  max-width: 100%;
-}
-
 /* This will make the table scrollable when it gets too small */
 .tableWrap {
   display: block;
   max-width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  padding-bottom: 4rem;
   border-bottom: 1px solid black;
 }
 
 table {
   /* Make sure the inner table is always as wide as needed */
-  width: 100%;
+  margin: 0 auto;
   border-spacing: 0;
-}
-
-tr:last-child td {
-  border-bottom: 0;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
 }
 
 th,
@@ -32,18 +22,14 @@ td {
   border-right: 1px solid black;
   /* The secret sauce */
   /* Each cell should grow equally */
-  width: 1%;
 }
 
-th:last-child,
-td:last-child {
-  border-right: 0;
-}
-
-th.collapse,
-td.collapse {
-  /*  "collapsed" cells should be as small as possible */
-  width: 0.0000000001%;
+tbody tr td:first-child a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 18rem;
+  text-overflow: ellipsis;
 }
 
 .pagination {

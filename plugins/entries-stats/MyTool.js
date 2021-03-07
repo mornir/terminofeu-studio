@@ -66,7 +66,7 @@ function MyTool() {
         </Heading>
       </Box>
 
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={200} marginBottom={8}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="title" />
@@ -90,8 +90,8 @@ function MyTool() {
 
         <Tooltip />
       </PieChart> */}
-      <Box marginBottom={4} marginLeft={5}>
-        <Heading as="h2" size={2}>
+      <Box marginBottom={4} marginLeft={5} marginTop={5}>
+        <Heading as="h2" size={2} style={{ textAlign: 'center' }}>
           Abstimmungen
         </Heading>
       </Box>

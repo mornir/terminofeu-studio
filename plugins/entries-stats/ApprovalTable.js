@@ -5,7 +5,7 @@ import styles from './ApprovalTable.css'
 import { IntentLink } from 'part:@sanity/base/router'
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
-const query = /* groq */ `*[_type == "entry"][0...50] {
+const query = /* groq */ `*[_type == "entry"] {
   _id,
   "entry": deTitle,
   "approvalsCount": count(approvals[approval == "approve"]),
@@ -51,89 +51,85 @@ export default function ApprovalTable() {
     prepareRow,
   } = tableInstance
   return (
-    <div className={styles.container}>
-      <div className={styles.tableWrap}>
-        <table {...getTableProps()}>
-          <thead>
-            {
-              // Loop over the header rows
-              headerGroups.map((headerGroup) => (
-                // Apply the header row props
-                <tr {...headerGroup.getHeaderGroupProps()}>
+    <div className={styles.tableWrap}>
+      <table {...getTableProps()}>
+        <thead>
+          {
+            // Loop over the header rows
+            headerGroups.map((headerGroup) => (
+              // Apply the header row props
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {
+                  // Loop over the headers in each row
+                  headerGroup.headers.map((column) => (
+                    // Apply the header cell props
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
+                      {
+                        // Render the header
+                        column.render('Header')
+                      }
+                      <span>
+                        {column.isSorted
+                          ? column.isSortedDesc
+                            ? ' 🔽'
+                            : ' 🔼'
+                          : ''}
+                      </span>
+                    </th>
+                  ))
+                }
+              </tr>
+            ))
+          }
+        </thead>
+        {/* Apply the table body props */}
+        <tbody {...getTableBodyProps()}>
+          {
+            // Loop over the table rows
+            rows.map((row) => {
+              // Prepare the row for display
+              prepareRow(row)
+              return (
+                // Apply the row props
+                <tr {...row.getRowProps()}>
                   {
-                    // Loop over the headers in each row
-                    headerGroup.headers.map((column) => (
-                      // Apply the header cell props
-                      <th
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps()
-                        )}
-                      >
-                        {
-                          // Render the header
-                          column.render('Header')
-                        }
-                        <span>
-                          {column.isSorted
-                            ? column.isSortedDesc
-                              ? ' 🔽'
-                              : ' 🔼'
-                            : ''}
-                        </span>
-                      </th>
-                    ))
+                    // Loop over the rows cells
+                    row.cells.map((cell) => {
+                      // Apply the cell props
+                      console.log(cell)
+
+                      if (cell.column.id !== 'entry') {
+                        return (
+                          <td {...cell.getCellProps()}>
+                            {cell.render('Cell')}
+                          </td>
+                        )
+                      } else {
+                        return (
+                          <td {...cell.getCellProps()}>
+                            <IntentLink
+                              intent="edit"
+                              params={{
+                                type: 'entry',
+                                id: getPublishedId(cell.row.original._id),
+                              }}
+                              className={styles.link}
+                            >
+                              {cell.render('Cell')}
+                            </IntentLink>
+                          </td>
+                        )
+                      }
+                    })
                   }
                 </tr>
-              ))
-            }
-          </thead>
-          {/* Apply the table body props */}
-          <tbody {...getTableBodyProps()}>
-            {
-              // Loop over the table rows
-              rows.map((row) => {
-                // Prepare the row for display
-                prepareRow(row)
-                return (
-                  // Apply the row props
-                  <tr {...row.getRowProps()}>
-                    {
-                      // Loop over the rows cells
-                      row.cells.map((cell) => {
-                        // Apply the cell props
-                        console.log(cell)
-
-                        if (cell.column.id !== 'entry') {
-                          return (
-                            <td {...cell.getCellProps()}>
-                              {cell.render('Cell')}
-                            </td>
-                          )
-                        } else {
-                          return (
-                            <td {...cell.getCellProps()}>
-                              <IntentLink
-                                intent="edit"
-                                params={{
-                                  type: 'entry',
-                                  id: getPublishedId(cell.row.original._id),
-                                }}
-                                className={styles.link}
-                              >
-                                {cell.render('Cell')}
-                              </IntentLink>
-                            </td>
-                          )
-                        }
-                      })
-                    }
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
-      </div>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   )
 }
