@@ -93,7 +93,7 @@ export default function ApprovalTable() {
               prepareRow(row)
 
               // Check if divergence in votes
-              let voteTypes = row.cells
+              const voteTypes = row.cells
                 .map((c) => c.value)
                 .filter(Number)
                 .filter(Boolean).length
