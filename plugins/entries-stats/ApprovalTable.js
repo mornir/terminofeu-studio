@@ -90,9 +90,9 @@ export default function ApprovalTable() {
             // Loop over the table rows
             rows.map((row) => {
               // Prepare the row for display
-
               prepareRow(row)
 
+              // Check if divergence in votes
               let voteTypes = row.cells
                 .map((c) => c.value)
                 .filter(Number)
@@ -107,8 +107,7 @@ export default function ApprovalTable() {
                   {
                     // Loop over the rows cells
                     row.cells.map((cell) => {
-                      // Apply the cell props
-
+                      // Display first column values (entries) as links
                       if (cell.column.id !== 'entry') {
                         return (
                           <td {...cell.getCellProps()}>
