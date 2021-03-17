@@ -13,6 +13,15 @@ export default {
   icon: AiOutlineContainer,
   fields: [
     {
+      type: 'string',
+      name: 'status',
+      title: 'Bearbeitungsstatus',
+      options: {
+        list: statusList,
+      },
+      validation: (Rule) => Rule.required().error('Pflichtfeld'),
+    },
+    {
       name: 'approvals',
       title: 'Brauchen wir diesen Begriff in den BSV 2026?',
       type: 'array',
@@ -32,15 +41,6 @@ export default {
         hidden: true,
       }
     }),
-    {
-      type: 'string',
-      name: 'status',
-      title: 'Bearbeitungsstatus',
-      options: {
-        list: statusList,
-      },
-      validation: (Rule) => Rule.required().error('Pflichtfeld'),
-    },
     {
       name: 'content',
       type: 'object',
