@@ -11,6 +11,13 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
+  fieldsets: [
+    {
+      name: 'draftVotes',
+      title: 'Soll der Begriff in Entwurf übernommen?',
+      options: { collapsible: true },
+    },
+  ],
   fields: [
     {
       type: 'string',
@@ -23,15 +30,23 @@ export default {
     },
     {
       name: 'approvals',
-      title: 'Brauchen wir diesen Begriff in den BSV 2026?',
+      title: 'Abstimmungen',
       type: 'array',
       of: [{ type: 'approval' }],
+      fieldset: 'draftVotes',
+      options: {
+        sortable: false,
+      },
     },
     {
       title: 'Bemerkungen',
       name: 'notes',
       type: 'array',
       of: [{ type: 'note' }],
+      fieldset: 'draftVotes',
+      options: {
+        sortable: false,
+      },
     },
     ...langs.map(({ title, code }) => {
       return {

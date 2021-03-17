@@ -22,9 +22,8 @@ export default {
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          { title: 'Zustimmen', value: 'approve' },
-          { title: 'Ablehnen', value: 'reject' },
-          { title: 'Ändern', value: 'changes_requested' },
+          { title: 'Ja', value: 'approve' },
+          { title: 'Nein', value: 'reject' },
         ],
         layout: 'radio',
       },
