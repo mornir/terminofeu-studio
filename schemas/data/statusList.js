@@ -1,6 +1,5 @@
 export const statusList = [
-  { title: 'BSV 2015', value: 'draft' },
-  { title: 'Neu', value: 'new' },
+  { title: 'Bestehende Begriffe', value: 'draft' },
   { title: 'Entwurf', value: 'new_draft' },
   { title: 'Im Definitionsprozess', value: 'definition' },
   { title: 'Fachliche Freigabe', value: 'approved' },
