@@ -68,18 +68,6 @@ export default async () => {
                     .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
                 ),
               S.listItem()
-                .title('Anpassungen nötig')
-                .id('changes_requested')
-                .child(
-                  S.documentList()
-                    .title('Anpassungen nötig')
-                    .filter(
-                      '_type == "entry" && approvals[].approval == "changes_requested" && approvals[].author == $name'
-                    )
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-              S.listItem()
                 .title('Noch keine Abstimmung')
                 .id('no_vote')
                 .child(
