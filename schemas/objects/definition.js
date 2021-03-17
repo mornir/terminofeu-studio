@@ -1,4 +1,7 @@
-import { generateStatus } from '../builder/status'
+const statusList = [
+  { title: 'Definition', value: 'main' },
+  { title: 'Alternative Definition', value: 'variant' },
+]
 
 import { description, filter } from '../builder/sourceData'
 
@@ -12,7 +15,7 @@ export default {
       name: 'status',
       title: 'Status',
       options: {
-        list: generateStatus('definition'),
+        list: statusList,
       },
     },
     {
@@ -42,7 +45,7 @@ export default {
       const block = (blocks || []).find((block) => block._type === 'block')
 
       const subtitle = status
-        ? generateStatus('definition').find((s) => s.value === status).title
+        ? statusList.find((s) => s.value === status).title
         : 'kein Status'
 
       return {

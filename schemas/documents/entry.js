@@ -11,27 +11,14 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
+  fieldsets: [
+    {
+      name: 'draftVotes',
+      title: 'Soll der Begriff in Entwurf übernommen?',
+      options: { collapsible: true },
+    },
+  ],
   fields: [
-    {
-      name: 'approvals',
-      title: 'Brauchen wir diesen Begriff in den BSV 2026?',
-      type: 'array',
-      of: [{ type: 'approval' }],
-    },
-    {
-      title: 'Bemerkungen',
-      name: 'notes',
-      type: 'array',
-      of: [{ type: 'note' }],
-    },
-    ...langs.map(({ title, code }) => {
-      return {
-        title,
-        type: 'string',
-        name: code + 'Title',
-        hidden: true,
-      }
-    }),
     {
       type: 'string',
       name: 'status',
@@ -41,6 +28,34 @@ export default {
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
+    {
+      name: 'approvals',
+      title: 'Abstimmungen',
+      type: 'array',
+      of: [{ type: 'approval' }],
+      fieldset: 'draftVotes',
+      options: {
+        sortable: false,
+      },
+    },
+    {
+      title: 'Bemerkungen',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+      fieldset: 'draftVotes',
+      options: {
+        sortable: false,
+      },
+    },
+    ...langs.map(({ title, code }) => {
+      return {
+        title,
+        type: 'string',
+        name: code + 'Title',
+        hidden: true,
+      }
+    }),
     {
       name: 'content',
       type: 'object',
