@@ -8,19 +8,21 @@ import {
   AiOutlineApartment,
   AiOutlineUser,
   AiOutlineFileSearch,
+  AiFillCheckSquare,
 } from 'react-icons/ai'
 
 import IframePreview from './components/previews/iframe/IframePreview'
+import Review from './components/review/Review'
 import { langs } from './schemas/builder/langs'
 import { statusList } from './schemas/data/statusList'
 
-export const getDefaultDocumentNode = ({ schemaType }) => {
+export const getDefaultDocumentNode = (doc) => {
   // Only show the iframe for documents for which a preview makes sense.
-
   // types.includes(types)
-  if (schemaType === 'entry') {
+  if (doc.schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
+      S.view.component(Review).title('Abstimmung').icon(AiFillCheckSquare),
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })

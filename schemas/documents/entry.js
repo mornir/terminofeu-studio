@@ -15,7 +15,7 @@ export default {
     {
       name: 'draftVotes',
       title: 'Soll der Begriff in Entwurf übernommen?',
-      options: { collapsible: true },
+      options: { collapsible: true, collapsed: false },
     },
   ],
   fields: [
