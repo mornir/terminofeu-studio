@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Stack, Card, Text, TextArea, Button, Label, Box } from '@sanity/ui'
+import {
+  Stack,
+  Card,
+  Text,
+  TextArea,
+  Button,
+  Label,
+  Box,
+  Heading,
+} from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
 import { useDocumentOperation } from '@sanity/react-hooks'
 import userStore from 'part:@sanity/base/user'
@@ -8,10 +17,12 @@ import { nanoid } from 'nanoid'
 import styles from './Review.css'
 
 function Review({ document }) {
-  const { displayed } = document
+  const { displayed, published } = document
 
   const [text, setText] = useState('')
-  const { publish } = useDocumentOperation(displayed._id, displayed._type)
+
+  const { publish } = useDocumentOperation(published._id, 'entry')
+
   async function postText(event) {
     event.preventDefault()
     const { displayName } = await userStore.getUser('me')
@@ -33,6 +44,9 @@ function Review({ document }) {
   return (
     <div className={styles.container} lang="de">
       <Stack space={[3, 3, 4]} marginBottom={6}>
+        <Heading as="h2" size={2}>
+          Kommentare
+        </Heading>
         {displayed.notes?.map((note) => {
           return (
             <Card padding={[3, 3, 4]} radius={2} shadow={1}>
