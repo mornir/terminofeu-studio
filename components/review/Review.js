@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Stack, Card, Text, TextArea, Button, Label, Box } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
+import { useDocumentOperation } from '@sanity/react-hooks'
 import userStore from 'part:@sanity/base/user'
 import { nanoid } from 'nanoid'
 
@@ -8,8 +9,9 @@ import styles from './Review.css'
 
 function Review({ document }) {
   const { displayed } = document
-  const [text, setText] = useState('')
 
+  const [text, setText] = useState('')
+  const { publish } = useDocumentOperation(displayed._id, displayed._type)
   async function postText(event) {
     event.preventDefault()
     const { displayName } = await userStore.getUser('me')
@@ -24,6 +26,8 @@ function Review({ document }) {
       })
 
     setText('')
+
+    publish.execute()
   }
 
   return (
