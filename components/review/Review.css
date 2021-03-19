@@ -5,3 +5,8 @@
   max-width: 65ch;
   margin: 0 auto;
 }
+
+.radioLabel {
+  padding-left: 0.5rem;
+  font-weight: 600;
+}

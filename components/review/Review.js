@@ -8,6 +8,9 @@ import {
   Label,
   Box,
   Heading,
+  Inline,
+  Radio,
+  Flex,
 } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
 import { useDocumentOperation } from '@sanity/react-hooks'
@@ -20,6 +23,7 @@ function Review({ document }) {
   const { displayed, published } = document
 
   const [text, setText] = useState('')
+  const [vote, setVote] = useState('')
 
   const { publish } = useDocumentOperation(published._id, 'entry')
 
@@ -40,10 +44,46 @@ function Review({ document }) {
 
     publish.execute()
   }
+  function postVote(event) {
+    setVote(event.target.value)
+  }
 
   return (
     <div className={styles.container} lang="de">
-      <Stack space={[3, 3, 4]} marginBottom={6}>
+      <Box marginBottom={4}>
+        <Heading as="h2" size={2}>
+          Soll der Begriff in Entwurf übernommen?
+        </Heading>
+      </Box>
+      <Inline space={6}>
+        <Flex align="center">
+          <Radio
+            checked={vote === 'ja'}
+            name="ja"
+            value="ja"
+            id="ja"
+            onChange={postVote}
+          />
+
+          <label htmlFor="ja" class={styles.radioLabel}>
+            Ja
+          </label>
+        </Flex>
+        <Flex align="center">
+          <Radio
+            checked={vote === 'nein'}
+            name="nein"
+            value="nein"
+            id="nein"
+            onChange={postVote}
+          />
+          <label htmlFor="nein" class={styles.radioLabel}>
+            Nein
+          </label>
+        </Flex>
+      </Inline>
+
+      <Stack space={[3, 3, 4]} marginY={6}>
         <Heading as="h2" size={2}>
           Kommentare
         </Heading>
