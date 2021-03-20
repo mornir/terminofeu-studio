@@ -14,7 +14,7 @@ export default {
   fieldsets: [
     {
       name: 'draftVotes',
-      title: 'Soll der Begriff in Entwurf übernommen?',
+      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen?',
       options: { collapsible: true, collapsed: false },
     },
   ],

@@ -52,7 +52,7 @@ function Review({ document }) {
     <div className={styles.container} lang="de">
       <Box marginBottom={4}>
         <Heading as="h2" size={2}>
-          Soll der Begriff in Entwurf übernommen?
+          Soll der Begriff bzw. das Konzept in Entwurf übernommen?
         </Heading>
       </Box>
       <Inline space={6}>
