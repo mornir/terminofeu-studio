@@ -58,26 +58,26 @@ function Review({ document }) {
       <Inline space={6}>
         <Flex align="center">
           <Radio
-            checked={vote === 'ja'}
-            name="ja"
-            value="ja"
-            id="ja"
+            checked={vote === 'approve'}
+            name="approve"
+            value="approve"
+            id="approve"
             onChange={postVote}
           />
 
-          <label htmlFor="ja" class={styles.radioLabel}>
+          <label htmlFor="approve" class={styles.radioLabel}>
             Ja
           </label>
         </Flex>
         <Flex align="center">
           <Radio
-            checked={vote === 'nein'}
-            name="nein"
-            value="nein"
-            id="nein"
+            checked={vote === 'reject'}
+            name="reject"
+            value="reject"
+            id="reject"
             onChange={postVote}
           />
-          <label htmlFor="nein" class={styles.radioLabel}>
+          <label htmlFor="reject" class={styles.radioLabel}>
             Nein
           </label>
         </Flex>
