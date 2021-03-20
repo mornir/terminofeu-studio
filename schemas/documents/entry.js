@@ -77,7 +77,7 @@ export default {
     },
   ],
   initialValue: {
-    status: 'new',
+    status: statusList[0].value,
   },
   preview: {
     select: {

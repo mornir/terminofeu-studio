@@ -14,6 +14,7 @@ export default {
       type: 'string',
       name: 'status',
       title: 'Status',
+      hidden: true,
       options: {
         list: statusList,
       },
@@ -39,14 +40,10 @@ export default {
   preview: {
     select: {
       blocks: 'definition',
-      status: 'status',
+      subtitle: 'source.title',
     },
-    prepare({ blocks, status }) {
+    prepare({ blocks, subtitle }) {
       const block = (blocks || []).find((block) => block._type === 'block')
-
-      const subtitle = status
-        ? statusList.find((s) => s.value === status).title
-        : 'kein Status'
 
       return {
         title: block
@@ -54,7 +51,7 @@ export default {
               .filter((child) => child._type === 'span')
               .map((span) => span.text)
               .join('')
-          : 'No title',
+          : 'Keine Definition',
         subtitle,
       }
     },
