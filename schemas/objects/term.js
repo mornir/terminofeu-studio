@@ -24,6 +24,7 @@ export default {
       type: 'string',
       name: 'status',
       title: 'Status',
+      hidden: true,
       options: {
         list: generateStatus(),
       },
@@ -68,14 +69,10 @@ export default {
     select: {
       term: 'designation',
       abbreviation: 'abbreviation',
-      status: 'status',
+      subtitle: 'source.title',
     },
-    prepare({ status, term, abbreviation }) {
+    prepare({ subtitle, term, abbreviation }) {
       const title = abbreviation ? `${term} (${abbreviation})` : term
-      const subtitle = status
-        ? generateStatus().find((s) => s.value === status).title
-        : 'kein Status'
-
       return {
         title,
         subtitle,
