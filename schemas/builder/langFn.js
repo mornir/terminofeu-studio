@@ -8,15 +8,18 @@ export default ({ title, code }) => {
       {
         type: 'array',
         name: 'terms',
-        title: 'Hauptbegriff und alternative Begriffe',
+        title: 'Benennung(en)',
         of: [{ type: 'term' }],
       },
       {
-        title: 'Definition',
+        name: 'definition',
+        title: 'Definition BSV 2026',
+        type: 'blockContent',
+      },
+      {
+        title: 'Definitionen aus bestehenden Regelwerken',
         name: 'definitions',
         type: 'array',
-        description:
-          'Unterscheiden sich die oben umschriebenen Begriffe stark voneinander, sind mehrere Einträge zu erstellen.',
         of: [{ type: 'definition' }],
       },
     ],
