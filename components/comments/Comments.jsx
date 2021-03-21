@@ -12,7 +12,7 @@ function Comments({ document }) {
 
   const [text, setText] = useState('')
 
-  const { publish } = useDocumentOperation(published._id, 'entry')
+  // const { publish } = useDocumentOperation(published._id, 'entry')
 
   async function postText(event) {
     event.preventDefault()
@@ -23,13 +23,13 @@ function Comments({ document }) {
       .setIfMissing({ notes: [] })
       .append('notes', [{ _key: nanoid(), author: displayName, text }])
       .commit()
-      .catch((err) => {
-        console.error('Transaction failed: ', err.message)
+      .catch((error) => {
+        console.error('Transaction failed: ', error.message)
       })
 
     setText('')
 
-    publish.execute()
+    // publish.execute()
   }
 
   return (
@@ -53,7 +53,7 @@ function Comments({ document }) {
       <form onSubmit={postText}>
         <Stack space={[3, 3, 4]} marginBottom={2}>
           <TextArea
-            fontSize={[2, 2, 3, 4]}
+            fontSize={2}
             padding={[3, 3, 4]}
             value={text}
             name="text"
