@@ -34,8 +34,8 @@ function Comments({ document }) {
 
   return (
     <div className={styles.container} lang="de">
-      <Stack space={[3, 3, 4]} marginY={6}>
-        <Heading as="h2" size={1}>
+      <Stack space={[3, 3, 4]} marginBottom={6}>
+        <Heading as="h2" size={2}>
           Kommentare
         </Heading>
         {displayed.notes?.map((note) => {
@@ -63,7 +63,7 @@ function Comments({ document }) {
           <Button
             fontSize={[2, 2, 3]}
             padding={[3, 3, 4]}
-            text="Abschicken"
+            text="Kommentieren"
             tone="primary"
             type="submit"
           />
