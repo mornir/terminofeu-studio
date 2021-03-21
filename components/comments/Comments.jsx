@@ -11,11 +11,16 @@ function Comments({ document }) {
   const { displayed, published } = document
 
   const [text, setText] = useState('')
+  const [isSending, setIsSending] = useState(false)
 
   // const { publish } = useDocumentOperation(published._id, 'entry')
 
   async function postText(event) {
     event.preventDefault()
+    if (isSending) return
+
+    setIsSending(true)
+
     const { displayName } = await userStore.getUser('me')
 
     await sanityClient
@@ -28,7 +33,7 @@ function Comments({ document }) {
       })
 
     setText('')
-
+    setIsSending(false)
     // publish.execute()
   }
 
@@ -59,6 +64,7 @@ function Comments({ document }) {
             name="text"
             onChange={(event) => setText(event.target.value)}
             placeholder="Kommentar hier schreiben"
+            required
           />
           <Button
             fontSize={[2, 2, 3]}
@@ -66,6 +72,7 @@ function Comments({ document }) {
             text="Kommentieren"
             tone="primary"
             type="submit"
+            disabled={isSending}
           />
         </Stack>
       </form>
