@@ -11,15 +11,15 @@ function Votes({ document }) {
   const [vote, setVote] = useState('')
   const [voteIndex, setVoteIndex] = useState('')
   const [username, setUsername] = useState('')
+  const [isSending, setIsSending] = useState(false)
 
   const { displayed, published } = document
+  const approvals = displayed.approvals
 
   useEffect(() => {
     userStore.getUser('me').then((user) => {
       setUsername(user.displayName)
-      let approvalObj = displayed.approvals.find(
-        (app) => app.author === user.displayName
-      )
+      let approvalObj = approvals.find((app) => app.author === user.displayName)
       if (approvalObj?.approval) {
         setVote(approvalObj.approval)
         setVoteIndex(approvalObj._key)
@@ -28,17 +28,25 @@ function Votes({ document }) {
   }, [])
 
   async function postVote(event) {
-    const approval = event.target.value
-    setVote(approval)
+    if (isSending) return
+    setIsSending(true)
 
-    if (vote) {
+    const radioValue = event.target.value
+    setVote(radioValue)
+
+    const key = nanoid()
+
+    if (voteIndex) {
+      console.log('vote already exist!', voteIndex)
       const voteToRemove = `approvals[_key=="${voteIndex}"]`
 
       await sanityClient
         .patch(displayed._id)
         .unset([voteToRemove])
         .setIfMissing({ approvals: [] })
-        .append('approvals', [{ _key: nanoid(), author: username, approval }])
+        .append('approvals', [
+          { _key: key, author: username, approval: radioValue },
+        ])
         .commit()
         .catch((err) => {
           console.error('Transaction failed: ', err.message)
@@ -47,12 +55,17 @@ function Votes({ document }) {
       await sanityClient
         .patch(displayed._id)
         .setIfMissing({ approvals: [] })
-        .append('approvals', [{ _key: nanoid(), author: username, approval }])
+        .append('approvals', [
+          { _key: key, author: username, approval: radioValue },
+        ])
         .commit()
         .catch((err) => {
           console.error('Transaction failed: ', err.message)
         })
     }
+
+    setVoteIndex(key)
+    setIsSending(false)
   }
 
   return (
@@ -70,6 +83,7 @@ function Votes({ document }) {
             value="approve"
             id="approve"
             onChange={postVote}
+            disabled={isSending}
           />
 
           <label htmlFor="approve" class={styles.radioLabel}>
@@ -83,12 +97,26 @@ function Votes({ document }) {
             value="reject"
             id="reject"
             onChange={postVote}
+            disabled={isSending}
           />
           <label htmlFor="reject" class={styles.radioLabel}>
             Nein
           </label>
         </Flex>
       </Inline>
+      <div>
+        <ul>
+          {approvals.map((approve) => {
+            if (!approve.approval) return null
+            const vote = approve.approval === 'approve' ? '✅' : '❌'
+            return (
+              <li>
+                {approve.author} {vote}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
