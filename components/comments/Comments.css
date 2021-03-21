@@ -1,0 +1,13 @@
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.noteText {
+  hyphens: auto;
+  line-height: 1.4;
+  margin: 0;
+}
