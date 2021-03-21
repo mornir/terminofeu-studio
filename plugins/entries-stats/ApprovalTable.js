@@ -9,8 +9,7 @@ const query = /* groq */ `*[_type == "entry"] {
   _id,
   "entry": deTitle,
   "approvalsCount": count(approvals[approval == "approve"]),
-  "rejectsCount": count(approvals[approval == "reject"]),
-  "changesCount": count(approvals[approval == "changes_requested"]),
+  "rejectsCount": count(approvals[approval == "reject"])
 }`
 
 export default function ApprovalTable() {
@@ -27,10 +26,6 @@ export default function ApprovalTable() {
       {
         Header: '❌',
         accessor: 'rejectsCount',
-      },
-      {
-        Header: '➖',
-        accessor: 'changesCount',
       },
     ],
     []
