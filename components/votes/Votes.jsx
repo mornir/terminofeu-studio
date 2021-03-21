@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Heading, Inline, Radio, Flex } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
 import { useDocumentOperation } from '@sanity/react-hooks'
@@ -8,10 +8,51 @@ import { nanoid } from 'nanoid'
 import styles from './Votes.css'
 
 function Votes({ document }) {
-  const { displayed, published } = document
   const [vote, setVote] = useState('')
-  function postVote(event) {
-    setVote(event.target.value)
+  const [voteIndex, setVoteIndex] = useState('')
+  const [username, setUsername] = useState('')
+
+  const { displayed, published } = document
+
+  useEffect(() => {
+    userStore.getUser('me').then((user) => {
+      setUsername(user.displayName)
+      let approvalObj = displayed.approvals.find(
+        (app) => app.author === user.displayName
+      )
+      if (approvalObj?.approval) {
+        setVote(approvalObj.approval)
+        setVoteIndex(approvalObj._key)
+      }
+    })
+  }, [])
+
+  async function postVote(event) {
+    const approval = event.target.value
+    setVote(approval)
+
+    if (vote) {
+      const voteToRemove = `approvals[_key=="${voteIndex}"]`
+
+      await sanityClient
+        .patch(displayed._id)
+        .unset([voteToRemove])
+        .setIfMissing({ approvals: [] })
+        .append('approvals', [{ _key: nanoid(), author: username, approval }])
+        .commit()
+        .catch((err) => {
+          console.error('Transaction failed: ', err.message)
+        })
+    } else {
+      await sanityClient
+        .patch(displayed._id)
+        .setIfMissing({ approvals: [] })
+        .append('approvals', [{ _key: nanoid(), author: username, approval }])
+        .commit()
+        .catch((err) => {
+          console.error('Transaction failed: ', err.message)
+        })
+    }
   }
 
   return (
