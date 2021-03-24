@@ -37,7 +37,6 @@ function Votes({ document }) {
     const key = nanoid()
 
     if (voteIndex) {
-      console.log('vote already exist!', voteIndex)
       const voteToRemove = `approvals[_key=="${voteIndex}"]`
 
       await sanityClient
