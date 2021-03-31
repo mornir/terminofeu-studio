@@ -11,6 +11,7 @@ export default {
   type: 'object',
   fields: [
     {
+      // TODO: Delete field if no longer needed in the future
       type: 'string',
       name: 'status',
       title: 'Status',
