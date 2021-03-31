@@ -14,7 +14,7 @@ import {
 
 //import IframePreview from './components/previews/iframe/IframePreview'
 import Comments from './components/comments/Comments'
-import Votes from './components/votes/Votes'
+/* import Votes from './components/votes/Votes' */
 
 import { langs } from './schemas/builder/langs'
 import { statusList } from './schemas/data/statusList'
@@ -23,7 +23,7 @@ export const getDefaultDocumentNode = (doc) => {
   if (doc.schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
-      S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare),
+      /* S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare), */
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
       /* S.view
         .component(IframePreview)
