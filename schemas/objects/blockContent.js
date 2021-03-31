@@ -1,6 +1,8 @@
 import React from 'react'
 import { ImSuperscript } from 'react-icons/im'
 
+import { FaExternalLinkAlt, FaLink } from 'react-icons/fa'
+
 const superscriptRender = (props) => <sup>{props.children}</sup>
 
 export default {
@@ -44,7 +46,7 @@ export default {
             validation: (Rule) =>
               Rule.required().error('Feld darf nicht leer sein'),
             blockEditor: {
-              icon: () => '🔗',
+              icon: FaLink,
             },
           },
           {
@@ -54,7 +56,7 @@ export default {
             validation: (Rule) =>
               Rule.required().error('Feld darf nicht leer sein'),
             blockEditor: {
-              icon: () => '🌍',
+              icon: FaExternalLinkAlt,
             },
             fields: [
               {

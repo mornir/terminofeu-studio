@@ -11,13 +11,6 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
-  fieldsets: [
-    {
-      name: 'draftVotes',
-      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen?',
-      options: { collapsible: true, collapsed: false },
-    },
-  ],
   fields: [
     {
       type: 'string',
@@ -30,20 +23,9 @@ export default {
     },
     {
       name: 'approvals',
-      title: 'Abstimmungen',
+      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen?',
       type: 'array',
       of: [{ type: 'approval' }],
-      fieldset: 'draftVotes',
-      options: {
-        sortable: false,
-      },
-    },
-    {
-      title: 'Bemerkungen',
-      name: 'notes',
-      type: 'array',
-      of: [{ type: 'note' }],
-      fieldset: 'draftVotes',
       options: {
         sortable: false,
       },
@@ -74,6 +56,15 @@ export default {
       type: 'array',
       description: 'Zeichnungen, grafische Darstellungen oder Schemata',
       of: [{ type: 'illustration' }],
+    },
+    {
+      title: 'Bemerkungen',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+      options: {
+        sortable: false,
+      },
     },
   ],
   initialValue: {
