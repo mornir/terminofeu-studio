@@ -21,6 +21,9 @@ export default ({ title, code }) => {
         name: 'definitions',
         type: 'array',
         of: [{ type: 'definition' }],
+        options: {
+          sortable: false,
+        },
       },
     ],
   }
