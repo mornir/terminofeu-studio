@@ -1,10 +1,9 @@
 import Tabs from 'sanity-plugin-tabs'
 
-import illustrationFn from '../builder/illustrationFn'
-import { langs } from '../builder/langs'
-
-import { generateStatus } from '../builder/status'
-import { description } from '../builder/sourceData'
+import illustrationFn from '../functions/illustrationFn'
+import { langs } from '../data/langs'
+import { generateStatus } from '../functions/statusFn'
+import { description } from '../functions/sourceFn'
 
 export default {
   title: 'Bild',

@@ -1,6 +1,6 @@
 import { AiOutlineFileSearch } from 'react-icons/ai'
 
-import { langs } from '../builder/langs'
+import { langs } from '../data/langs'
 
 export default {
   title: 'Quelle',

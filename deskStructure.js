@@ -16,7 +16,7 @@ import {
 import Comments from './components/comments/Comments'
 /* import Votes from './components/votes/Votes' */
 
-import { langs } from './schemas/builder/langs'
+import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
 
 export const getDefaultDocumentNode = (doc) => {

@@ -1,8 +1,7 @@
 import { AiOutlineFileText } from 'react-icons/ai'
 
-import { generateStatus } from '../builder/status'
-
-import { description, filter } from '../builder/sourceData'
+import { generateStatus } from '../functions/statusFn'
+import { description, filter } from '../functions/sourceFn'
 
 export default {
   title: 'Begriff',

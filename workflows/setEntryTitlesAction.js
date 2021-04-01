@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
 
-import { langs } from '../schemas/builder/langs'
+import { langs } from '../schemas/data/langs'
 
 export function setEntryTitlesAction(props) {
   if (props.type !== 'entry') {
