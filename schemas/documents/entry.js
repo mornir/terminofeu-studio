@@ -57,7 +57,7 @@ export default {
       of: [{ type: 'illustration' }],
     },
     {
-      title: 'Bemerkungen',
+      title: 'Kommentare',
       name: 'notes',
       type: 'array',
       of: [{ type: 'note' }],
