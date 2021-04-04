@@ -1,9 +1,8 @@
 import Tabs from 'sanity-plugin-tabs'
 import { AiOutlineContainer } from 'react-icons/ai'
 
-import langFn from '../builder/langFn'
-import { langs } from '../builder/langs'
-
+import langFn from '../functions/langFn'
+import { langs } from '../data/langs'
 import { statusList } from '../data/statusList'
 
 export default {
@@ -58,7 +57,7 @@ export default {
       of: [{ type: 'illustration' }],
     },
     {
-      title: 'Bemerkungen',
+      title: 'Kommentare',
       name: 'notes',
       type: 'array',
       of: [{ type: 'note' }],

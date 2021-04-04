@@ -8,7 +8,7 @@ export default ({ title, code }) => {
       {
         type: 'array',
         name: 'terms',
-        title: 'Benennung(en)',
+        title: 'Benennung',
         of: [{ type: 'term' }],
       },
       {
