@@ -17,6 +17,16 @@ export default ({ title, code }) => {
         type: 'blockContent',
       },
       {
+        name: 'approvals',
+        title: 'Ich bin mit dem obigen Definitionsvorschlag einverstanden.',
+        description: 'Ja oder Nein abstimmen',
+        type: 'array',
+        of: [{ type: 'approval' }],
+        options: {
+          sortable: false,
+        },
+      },
+      {
         title: 'Definitionen aus bestehenden Regelwerken',
         name: 'definitions',
         type: 'array',
