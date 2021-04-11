@@ -22,7 +22,7 @@ export default {
     },
     {
       name: 'approvals',
-      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen?',
+      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen werden?',
       type: 'array',
       of: [{ type: 'approval' }],
       options: {
