@@ -5,7 +5,7 @@ import styles from './ApprovalTable.css'
 import { IntentLink } from 'part:@sanity/base/router'
 import { getPublishedId } from 'part:@sanity/base/util/draft-utils'
 
-const query = /* groq */ `*[_type == "entry"] {
+const query = /* groq */ `*[_type == "entry" && !(_id in path('drafts.**'))] {
   _id,
   "entry": deTitle,
   "approvalsCount": count(approvals[approval == "approve"]),
@@ -38,13 +38,8 @@ export default function ApprovalTable() {
   }, [])
 
   const tableInstance = useTable({ columns, data }, useSortBy)
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = tableInstance
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance
   return (
     <div className={styles.tableWrap}>
       <table {...getTableProps()}>
