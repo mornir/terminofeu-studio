@@ -38,13 +38,8 @@ export default function ApprovalTable() {
   }, [])
 
   const tableInstance = useTable({ columns, data }, useSortBy)
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = tableInstance
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance
   return (
     <div className={styles.tableWrap}>
       <table {...getTableProps()}>
