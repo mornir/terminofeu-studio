@@ -21,12 +21,14 @@ export default {
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
     },
     {
-      name: 'approvals',
-      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen werden?',
-      type: 'array',
-      of: [{ type: 'approval' }],
+      type: 'string',
+      name: 'level',
+      title: 'Stufe',
       options: {
-        sortable: false,
+        list: [
+          { title: 'IOTH-Begriff', value: 'IOTH' },
+          { title: 'VKF-Begriff', value: 'VKF' },
+        ],
       },
     },
     ...langs.map(({ title, code }) => {
@@ -56,11 +58,22 @@ export default {
       description: 'Zeichnungen, grafische Darstellungen oder Schemata',
       of: [{ type: 'illustration' }],
     },
+
     {
       title: 'Kommentare',
       name: 'notes',
       type: 'array',
       of: [{ type: 'note' }],
+      options: {
+        sortable: false,
+      },
+    },
+
+    {
+      name: 'approvals',
+      title: 'Soll der Begriff bzw. das Konzept in Entwurf übernommen werden?',
+      type: 'array',
+      of: [{ type: 'approval' }],
       options: {
         sortable: false,
       },
