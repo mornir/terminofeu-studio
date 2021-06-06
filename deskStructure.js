@@ -24,12 +24,12 @@ export const getDefaultDocumentNode = (doc) => {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
       /* S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare), */
-      S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
         .title('Vorschau')
         .icon(AiFillEye),
+      S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
     ])
   }
 }
