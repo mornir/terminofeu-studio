@@ -17,7 +17,8 @@
     "tabs",
     "dashboard-widget-document-list",
     "welcome-widget",
-    "entries-stats"
+    "entries-stats",
+    "miro"
   ],
   "env": {
     "development": {
