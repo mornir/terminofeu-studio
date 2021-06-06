@@ -12,7 +12,7 @@ import {
   AiOutlineMessage,
 } from 'react-icons/ai'
 
-//import IframePreview from './components/previews/iframe/IframePreview'
+import IframePreview from './components/previews/iframe/IframePreview'
 import Comments from './components/comments/Comments'
 /* import Votes from './components/votes/Votes' */
 
@@ -25,11 +25,11 @@ export const getDefaultDocumentNode = (doc) => {
       S.view.form().icon(AiFillEdit),
       /* S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare), */
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
-      /* S.view
+      S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
         .title('Vorschau')
-        .icon(AiFillEye), */
+        .icon(AiFillEye),
     ])
   }
 }
