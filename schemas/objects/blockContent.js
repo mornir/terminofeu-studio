@@ -33,8 +33,6 @@ export default {
               render: superscriptRender,
             },
           },
-          /*  { title: 'Underline', value: 'underline' }, */
-          /*  { title: 'Strike', value: 'strike-through' }, */
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
