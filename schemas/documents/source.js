@@ -19,9 +19,14 @@ export default {
     },
     {
       name: 'title',
-      title: 'Titel',
+      title: 'Kurztitel',
       type: 'string',
       validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
+    },
+    {
+      name: 'longTitle',
+      title: 'Volltitel',
+      type: 'string',
     },
     {
       name: 'date',
