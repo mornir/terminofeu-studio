@@ -1,3 +1,5 @@
+// import { description } from './sourceFn'
+
 export default ({ title, code }) => {
   return {
     title,
@@ -15,6 +17,26 @@ export default ({ title, code }) => {
         name: 'definition',
         title: 'Definition BSV 2026',
         type: 'blockContent',
+      },
+      {
+        name: 'definitionSource',
+        title: 'Quelle der Definition',
+        type: 'sourceReference',
+        description:
+          'Sind mehrere Quellen vorhanden, ist die zuverlässigste aufzuführen.',
+      },
+
+      {
+        name: 'note',
+        title: 'Anmerkung',
+        type: 'blockContent',
+      },
+      {
+        name: 'notesSource',
+        title: 'Quelle der Anmerkung',
+        type: 'sourceReference',
+        description:
+          'Sind mehrere Quellen vorhanden, ist die zuverlässigste aufzuführen.',
       },
       {
         name: 'approvals',
