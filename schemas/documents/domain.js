@@ -1,3 +1,5 @@
+/*** This document type is currently unused. ***/
+
 import { AiOutlineApartment } from 'react-icons/ai'
 
 import { langs } from '../data/langs'

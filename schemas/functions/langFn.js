@@ -29,7 +29,7 @@ export default ({ title, code }) => {
       {
         name: 'note',
         title: 'Anmerkung',
-        type: 'blockContent',
+        type: 'noteRedactor',
       },
       {
         name: 'notesSource',

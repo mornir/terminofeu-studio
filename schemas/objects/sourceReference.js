@@ -20,7 +20,6 @@ export default {
         list: [
           { title: 'überarbeitete Quelle', value: 'after' },
           { title: 'wörtlich übernommen', value: 'original' },
-          { title: 'eigene Quelle', value: 'VKF' },
         ],
       },
     },

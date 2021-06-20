@@ -7,7 +7,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Import documents
 import entry from './documents/entry'
 import source from './documents/source'
-/* import domain from './documents/domain' */
 
 // Import objects
 import blockContent from './objects/blockContent'
@@ -15,6 +14,7 @@ import term from './objects/term'
 import illustration from './objects/illustration'
 import definition from './objects/definition'
 import note from './objects/note'
+import noteRedactor from './objects/noteRedactor'
 import approval from './objects/approval'
 import sourceReference from './objects/sourceReference'
 
@@ -31,10 +31,10 @@ export default createSchema({
     sourceReference,
     approval,
     note,
+    noteRedactor,
     definition,
     source,
     term,
-    /*  domain, */
     entry,
   ]),
 })
