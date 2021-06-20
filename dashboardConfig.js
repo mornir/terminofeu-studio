@@ -8,12 +8,23 @@ export default {
       },
     },
     {
+      name: 'downloads-list',
+      layout: {
+        width: 'small',
+        height: 'small',
+      },
+    },
+    {
       name: 'document-list',
       options: {
         title: 'Zuletzt bearbeitete Einträge',
         order: '_updatedAt desc',
-        limit: 10,
+        limit: 5,
         types: ['entry'],
+      },
+      layout: {
+        width: 'small',
+        height: 'small',
       },
     },
     {
@@ -21,12 +32,9 @@ export default {
       options: {
         title: 'Zuletzt bearbeitete Quellen',
         order: '_updatedAt desc',
-        limit: 10,
+        limit: 5,
         types: ['source'],
       },
-    },
-    {
-      name: 'project-users',
     },
   ],
 }

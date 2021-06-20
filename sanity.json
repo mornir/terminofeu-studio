@@ -18,13 +18,12 @@
     "dashboard-widget-document-list",
     "welcome-widget",
     "entries-stats",
-    "miro"
+    "miro",
+    "downloads-widget"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
