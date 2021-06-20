@@ -10,6 +10,15 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
+  fieldsets: [
+    {
+      name: 'admin',
+      title: 'Verwaltungsdaten',
+      options: {
+        columns: 2,
+      },
+    },
+  ],
   fields: [
     {
       type: 'string',
@@ -19,11 +28,13 @@ export default {
         list: statusList,
       },
       validation: (Rule) => Rule.required().error('Pflichtfeld'),
+      fieldset: 'admin',
     },
     {
       type: 'string',
       name: 'level',
       title: 'Stufe',
+      fieldset: 'admin',
       options: {
         list: [
           { title: 'IOTH-Begriff', value: 'IOTH' },
