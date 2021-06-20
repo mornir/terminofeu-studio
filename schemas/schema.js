@@ -7,7 +7,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Import documents
 import entry from './documents/entry'
 import source from './documents/source'
-/* import domain from './documents/domain' */
 
 // Import objects
 import blockContent from './objects/blockContent'
@@ -34,7 +33,6 @@ export default createSchema({
     definition,
     source,
     term,
-    /*  domain, */
     entry,
   ]),
 })
