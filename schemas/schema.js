@@ -14,6 +14,7 @@ import term from './objects/term'
 import illustration from './objects/illustration'
 import definition from './objects/definition'
 import note from './objects/note'
+import noteRedactor from './objects/noteRedactor'
 import approval from './objects/approval'
 import sourceReference from './objects/sourceReference'
 
@@ -30,6 +31,7 @@ export default createSchema({
     sourceReference,
     approval,
     note,
+    noteRedactor,
     definition,
     source,
     term,
