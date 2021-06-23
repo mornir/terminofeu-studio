@@ -33,4 +33,6 @@
   padding: var(--small-padding) var(--medium-padding);
   height: 100%;
   font-weight: 600;
+  width: 100%;
+  border: 0;
 }
