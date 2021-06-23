@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ExcelJS from 'exceljs'
 import { saveAs } from 'file-saver'
 import sanityClient from 'part:@sanity/base/client'
