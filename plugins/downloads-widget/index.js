@@ -28,13 +28,15 @@ function toPlainText(blocks = []) {
 }
 
 function DownloadsList() {
-  const [values, setValues] = useState([])
+  // Options for the select input
+  const [options, setOptions] = useState(['definition'])
 
   async function saveAsExcel() {
     try {
-      if (values.length === 0) return
+      // Prevent the generation of the xlsx if no option is selected
+      if (options.length === 0) return
 
-      const selectedStatus = values.map((s) => `"${s}"`).join(', ')
+      const selectedStatus = options.map((s) => `"${s}"`).join(', ')
 
       const query = /* groq */ `*[_type == 'entry' && status in [${selectedStatus}]] {status, deTitle, 'definition': content.de.definition, 'note': content.de.note} | order(deTitle desc)`
 
@@ -73,12 +75,13 @@ function DownloadsList() {
     }
   }
 
-  function setOptions(e) {
-    const values = Array.from(
+  function updateSelectedOptions(e) {
+    // selectedOptions is array-like (HTMLCollection)
+    const selectedOptions = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     )
-    setValues(values)
+    setOptions(selectedOptions)
   }
 
   return (
@@ -98,11 +101,15 @@ function DownloadsList() {
             padding={[2, 2, 3]}
             space={[2, 2, 3]}
             multiple
-            onChange={setOptions}
+            onChange={updateSelectedOptions}
             className={styles.select}
           >
             {statusList.map(({ title, value }) => (
-              <option value={value} selected={value === 'definition'}>
+              <option
+                value={value}
+                selected={value === 'definition'}
+                key={value}
+              >
                 {title}
               </option>
             ))}
