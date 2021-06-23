@@ -54,8 +54,11 @@ function DownloadsList() {
       entries.forEach((entry) => {
         const note = entry.note ? toPlainText(entry.note) : ''
         const definition = entry.definition ? toPlainText(entry.definition) : ''
+        const status = statusList.find(
+          (item) => item.value === entry.status
+        ).title
         worksheet.addRow({
-          status: entry.status,
+          status,
           term: entry.deTitle,
           definition,
           note,
