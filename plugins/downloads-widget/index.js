@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver'
 import sanityClient from 'part:@sanity/base/client'
 import styles from './styles.css'
 import { List, Item } from 'part:@sanity/components/lists/default'
-import { Select, Label, Card, Stack, Text } from '@sanity/ui'
+import { Select, Stack, Text } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { statusList } from '../../schemas/data/statusList'
 
