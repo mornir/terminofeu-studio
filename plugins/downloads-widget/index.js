@@ -99,7 +99,7 @@ function DownloadsList() {
             space={[2, 2, 3]}
             multiple
             onChange={setOptions}
-            style={{ height: '150px' }}
+            className={styles.select}
           >
             {statusList.map(({ title, value }) => (
               <option value={value} selected={value === 'definition'}>

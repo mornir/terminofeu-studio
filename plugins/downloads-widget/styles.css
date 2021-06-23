@@ -36,3 +36,12 @@
   width: 100%;
   border: 0;
 }
+
+.select {
+  overflow: hidden;
+  height: 150px;
+}
+
+.select + div {
+  display: none !important;
+}
