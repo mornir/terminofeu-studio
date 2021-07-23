@@ -27,7 +27,7 @@ export const getDefaultDocumentNode = (doc) => {
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
-        .title('Vorschau')
+        .title('Eintrag anzeigen')
         .icon(AiFillEye),
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
     ])
