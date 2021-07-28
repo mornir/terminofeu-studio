@@ -29,11 +29,12 @@ export function setEntryTitlesAction(props) {
       // Create { set: deTitle: term + abbreviation } patch for every language
       const patches = langs
         .map(({ code }) => {
-          const term = props.draft.content[code]?.terms[0]?.designation
+          const term = props.draft.content[code]?.terms?.[0]?.designation
           if (!term) {
             return null
           }
-          const abbreviation = props.draft.content[code]?.terms[0]?.abbreviation
+          const abbreviation =
+            props.draft.content[code]?.terms?.[0]?.abbreviation
 
           const titleObject = {}
           const key = code + 'Title'
