@@ -4,6 +4,7 @@ import { AiOutlineContainer } from 'react-icons/ai'
 import langFn from '../functions/langFn'
 import { langs } from '../data/langs'
 import { statusList } from '../data/statusList'
+import { translationStatusList } from '../data/translationStatusList'
 
 export default {
   name: 'entry',
@@ -20,6 +21,14 @@ export default {
     },
   ],
   fields: [
+    {
+      type: 'string',
+      name: 'translationStatus',
+      // hidden: true,
+      options: {
+        list: translationStatusList,
+      },
+    },
     {
       type: 'string',
       name: 'status',

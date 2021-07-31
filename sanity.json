@@ -40,6 +40,10 @@
       "path": "./resolveDocumentActions.js"
     },
     {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "resolveDocumentBadges.js"
+    },
+    {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
     },
