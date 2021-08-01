@@ -1,6 +1,4 @@
-// import the default document badge resolver
 import defaultResolve from 'part:@sanity/base/document-badges'
-
 import { TranslationBadge } from './workflows/TranslationBadge'
 
 export default function resolveDocumentBadges(props) {
@@ -10,7 +8,7 @@ export default function resolveDocumentBadges(props) {
 
   const status = props?.published?.translationStatus
 
-  if (status === 'in_translation') {
+  if (status) {
     return [...defaultResolve(props), TranslationBadge]
   } else {
     return defaultResolve(props)

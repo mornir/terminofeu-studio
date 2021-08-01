@@ -1,7 +1,12 @@
+import { translationStatusList } from '../schemas/data/translationStatusList'
+
 export function TranslationBadge(props) {
+  const status = translationStatusList.find(
+    (s) => s.value === props.published.translationStatus
+  )
   return {
-    label: 'In Übersetzung',
-    title: 'Der Eintrag wird auf FR übersetzt',
-    color: 'warning',
+    label: status.title,
+    title: status.desc,
+    color: status.value === 'reviewed' ? 'success' : 'warning',
   }
 }
