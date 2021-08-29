@@ -12,28 +12,13 @@ function Welcome() {
       <div className={styles.content}>
         <a
           className={styles.link}
-          rel="noopener nofollow"
           target="_blank"
           href="https://www.notion.so/terminofeu-Handbuch-e13f172c758b418c9e603d482462a58d"
         >
           Handbuch lesen
         </a>
         <span className={styles.separator}>|</span>
-        <a
-          className={styles.link}
-          rel="noopener nofollow"
-          target="_blank"
-          href="https://www.notion.so/Changelog-583f82bb03454ca591797d544e393544"
-        >
-          Changelog ansehen
-        </a>
-        <span className={styles.separator}>|</span>
-        <a
-          className={styles.link}
-          rel="noopener nofollow"
-          target="_blank"
-          href="https://terminofeu.ch"
-        >
+        <a className={styles.link} target="_blank" href="https://terminofeu.ch">
           terminofeu.ch öffnen
         </a>
       </div>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
+import isEqual from 'lodash.isequal'
 
 import { langs } from '../schemas/data/langs'
 
-export function setEntryTitlesAction(props) {
+export function CustomPublishAction(props) {
   if (props.type !== 'entry') {
     return null
   }
@@ -21,7 +22,7 @@ export function setEntryTitlesAction(props) {
 
   return {
     disabled: publish.disabled,
-    label: isPublishing ? 'Publishing…' : 'Publish',
+    label: isPublishing ? 'Wird veröffentlicht…' : 'Veröffentlichen',
     onHandle: () => {
       // This will update the button text
       setIsPublishing(true)
@@ -47,6 +48,21 @@ export function setEntryTitlesAction(props) {
         .filter((langPatch) => langPatch !== null)
 
       patch.execute(patches)
+
+      if (
+        props.draft &&
+        props.published &&
+        ['approved', 'validated', 'in_force'].includes(props.published.status)
+      ) {
+        const areVersionsEqual = isEqual(
+          props.draft.content.de,
+          props.published.content.de
+        )
+
+        if (!areVersionsEqual) {
+          patch.execute([{ set: { translationStatus: 'translation' } }])
+        }
+      }
 
       // Perform the publish
       publish.execute()
