@@ -5,16 +5,12 @@ import {
   AiFillEye,
   AiFillEdit,
   AiOutlineContainer,
-  AiOutlineApartment,
-  AiOutlineUser,
   AiOutlineFileSearch,
-  AiFillCheckSquare,
   AiOutlineMessage,
 } from 'react-icons/ai'
 
 import IframePreview from './components/previews/iframe/IframePreview'
 import Comments from './components/comments/Comments'
-/* import Votes from './components/votes/Votes' */
 
 import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
@@ -23,7 +19,6 @@ export const getDefaultDocumentNode = (doc) => {
   if (doc.schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
-      /* S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare), */
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
@@ -35,54 +30,47 @@ export const getDefaultDocumentNode = (doc) => {
 }
 
 export default async () => {
-  const { displayName } = await userStore.getUser('me')
+  const { id } = await userStore.getUser('me')
+
+  const translators = ['puCcAHT8N', 'pfoCdHT74']
+  const experts = [...translators, 'pNqrbwTtv']
+
+  const translationsItems = [
+    S.listItem()
+      .title('Traductions')
+      .child(
+        S.documentList()
+          .id('translations')
+          .title('Traductions')
+          .filter('_type == "entry" && translationStatus == "translation"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+    S.listItem()
+      .title('Révisions')
+      .child(
+        S.documentList()
+          .id('revisions')
+          .title('Révisions')
+          .filter('_type == "entry" && translationStatus == "review"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+  ]
+
+  const expertsItems = [
+    S.listItem()
+      .title('Vérifications')
+      .child(
+        S.documentList()
+          .id('controls')
+          .title('Vérifications')
+          .filter('_type == "entry" && translationStatus == "validation"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+  ]
 
   return S.list()
     .title('Inhalt')
     .items([
-      S.listItem()
-        .title(displayName)
-        .icon(AiOutlineUser)
-        .child(
-          S.list()
-            .title('Meine Abstimmungen')
-            .items([
-              S.listItem()
-                .title('Ja')
-                .id('approve')
-                .child(
-                  S.documentList()
-                    .title('Ja')
-                    .filter(
-                      '_type == "entry" && approvals[].approval == "approve" && approvals[].author == $name'
-                    )
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-              S.listItem()
-                .title('Nein')
-                .id('reject')
-                .child(
-                  S.documentList()
-                    .title('Nein')
-                    .filter(
-                      '_type == "entry" && approvals[].approval == "reject" && approvals[].author == $name'
-                    )
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-              S.listItem()
-                .title('Noch keine Abstimmung')
-                .id('no_vote')
-                .child(
-                  S.documentList()
-                    .title('Noch keine Abstimmung')
-                    .filter('_type == "entry" && approvals[].author != $name')
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-            ])
-        ),
       S.listItem()
         .title('Einträge')
         .icon(AiOutlineContainer)
@@ -125,9 +113,7 @@ export default async () => {
               }),
             ])
         ),
-      /*      S.listItem()
-        .title('Sachgebiete')
-        .icon(AiOutlineApartment)
-        .child(S.documentTypeList('domain')), */
+      ...(translators.includes(id) ? translationsItems : []),
+      ...(experts.includes(id) ? expertsItems : []),
     ])
 }

@@ -24,7 +24,4 @@ export default {
       },
     },
   ],
-  initialValue: {
-    type: 'after',
-  },
 }

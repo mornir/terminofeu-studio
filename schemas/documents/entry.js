@@ -4,6 +4,7 @@ import { AiOutlineContainer } from 'react-icons/ai'
 import langFn from '../functions/langFn'
 import { langs } from '../data/langs'
 import { statusList } from '../data/statusList'
+import { translationStatusList } from '../data/translationStatusList'
 
 export default {
   name: 'entry',
@@ -40,6 +41,21 @@ export default {
           { title: 'IOTH-Begriff', value: 'IOTH' },
           { title: 'VKF-Begriff', value: 'VKF' },
         ],
+      },
+    },
+    {
+      title: 'Übersetzungstatus',
+      type: 'string',
+      name: 'translationStatus',
+      hidden: ({ currentUser, document }) => {
+        return (
+          !['puCcAHT8N', 'pfoCdHT74', 'pNqrbwTtv'].includes(currentUser.id) ||
+          !['approved', 'validated', 'in_force'].includes(document.status)
+        )
+      },
+      fieldset: 'admin',
+      options: {
+        list: translationStatusList,
       },
     },
     ...langs.map(({ title, code }) => {
