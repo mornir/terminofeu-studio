@@ -41,49 +41,6 @@ export default async () => {
     .title('Inhalt')
     .items([
       S.listItem()
-        .title(displayName)
-        .icon(AiOutlineUser)
-        .child(
-          S.list()
-            .title('Meine Abstimmungen')
-            .items([
-              S.listItem()
-                .title('Ja')
-                .id('approve')
-                .child(
-                  S.documentList()
-                    .title('Ja')
-                    .filter(
-                      '_type == "entry" && approvals[].approval == "approve" && approvals[].author == $name'
-                    )
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-              S.listItem()
-                .title('Nein')
-                .id('reject')
-                .child(
-                  S.documentList()
-                    .title('Nein')
-                    .filter(
-                      '_type == "entry" && approvals[].approval == "reject" && approvals[].author == $name'
-                    )
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-              S.listItem()
-                .title('Noch keine Abstimmung')
-                .id('no_vote')
-                .child(
-                  S.documentList()
-                    .title('Noch keine Abstimmung')
-                    .filter('_type == "entry" && approvals[].author != $name')
-                    .params({ name: displayName })
-                    .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-                ),
-            ])
-        ),
-      S.listItem()
         .title('Einträge')
         .icon(AiOutlineContainer)
         .child(S.documentTypeList('entry')),
