@@ -86,5 +86,32 @@ export default async () => {
         .title('Sachgebiete')
         .icon(AiOutlineApartment)
         .child(S.documentTypeList('domain')), */
+      S.listItem()
+        .title('Traductions')
+        .child(
+          S.documentList()
+            .id('translations')
+            .title('Traductions')
+            .filter('_type == "entry" && translationStatus == "in_translation"')
+            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+        ),
+      S.listItem()
+        .title('Révisions')
+        .child(
+          S.documentList()
+            .id('revisions')
+            .title('Révisions')
+            .filter('_type == "entry" && translationStatus == "in_review"')
+            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+        ),
+      S.listItem()
+        .title('Vérifications')
+        .child(
+          S.documentList()
+            .id('controls')
+            .title('Vérifications')
+            .filter('_type == "entry" && translationStatus == "in_translation"')
+            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+        ),
     ])
 }
