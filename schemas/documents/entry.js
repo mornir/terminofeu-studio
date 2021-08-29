@@ -24,7 +24,10 @@ export default {
     {
       type: 'string',
       name: 'translationStatus',
-      // hidden: true,
+      hidden: ({ currentUser }) => {
+        return currentUser.id === 'puCcAHT8N'
+      },
+      fieldset: 'admin',
       options: {
         list: translationStatusList,
       },
