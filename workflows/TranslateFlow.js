@@ -6,6 +6,7 @@ export function TranslateFlow(props) {
   const { patch, publish } = useDocumentOperation(props.id, props.type)
   const [dialogOpen, setDialogOpen] = useState(false)
   const toast = useToast()
+
   let action = {
     value: 'in_translation',
     message: 'Auftrag an VKF-Übersetzungsdienst schicken?',
@@ -13,7 +14,7 @@ export function TranslateFlow(props) {
     toast: 'Auftrag wurde verschickt!',
   }
 
-  const status = props?.published.translationStatus
+  const status = props?.published?.translationStatus
 
   if (status === 'in_translation') {
     action = {
@@ -42,7 +43,7 @@ export function TranslateFlow(props) {
       type: 'confirm',
       onCancel: props.onComplete,
       message: action.message,
-      onConfirm: async () => {
+      onConfirm: () => {
         // Set publishedAt to current date and time
         patch.execute([{ set: { translationStatus: action.value } }])
 
