@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
+import isEqual from 'lodash.isequal'
 
 import { langs } from '../schemas/data/langs'
 
@@ -21,10 +22,12 @@ export function setEntryTitlesAction(props) {
 
   return {
     disabled: publish.disabled,
-    label: isPublishing ? 'Publishing…' : 'Publish',
+    label: isPublishing ? 'Wird veröffentlicht…' : 'Veröffentlichen',
     onHandle: () => {
       // This will update the button text
       setIsPublishing(true)
+
+      console.log(props)
 
       // Create { set: deTitle: term + abbreviation } patch for every language
       const patches = langs
@@ -47,6 +50,23 @@ export function setEntryTitlesAction(props) {
         .filter((langPatch) => langPatch !== null)
 
       patch.execute(patches)
+
+      if (props.draft && props.published) {
+        console.log('draft', props.draft)
+        console.log('published', props.published)
+
+        const shouldRequestTranslation = isEqual(
+          props.draft.content.de,
+          props.published.content.de
+        )
+
+        if (shouldRequestTranslation) {
+          // TODO: Send email
+
+          patch.execute([{ set: { translationStatus: 'in_translation' } }])
+          console.log('SEND EMAIL TO UD!')
+        }
+      }
 
       // Perform the publish
       publish.execute()
