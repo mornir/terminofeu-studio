@@ -16,6 +16,7 @@
 .title {
   composes: heading2 from 'part:@sanity/base/theme/typography/headings-style';
   margin: 0;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
