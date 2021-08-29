@@ -35,7 +35,43 @@ export const getDefaultDocumentNode = (doc) => {
 }
 
 export default async () => {
-  const { displayName } = await userStore.getUser('me')
+  const { id } = await userStore.getUser('me')
+
+  const translators = ['puCcAHT8N', 'pfoCdHT74']
+  const experts = [...translators, 'pNqrbwTtv']
+
+  const translationsItems = [
+    S.listItem()
+      .title('Traductions')
+      .child(
+        S.documentList()
+          .id('translations')
+          .title('Traductions')
+          .filter('_type == "entry" && translationStatus == "in_translation"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+    S.listItem()
+      .title('Révisions')
+      .child(
+        S.documentList()
+          .id('revisions')
+          .title('Révisions')
+          .filter('_type == "entry" && translationStatus == "in_review"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+  ]
+
+  const expertsItems = [
+    S.listItem()
+      .title('Vérifications')
+      .child(
+        S.documentList()
+          .id('controls')
+          .title('Vérifications')
+          .filter('_type == "entry" && translationStatus == "in_translation"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
+  ]
 
   return S.list()
     .title('Inhalt')
@@ -82,36 +118,7 @@ export default async () => {
               }),
             ])
         ),
-      /*      S.listItem()
-        .title('Sachgebiete')
-        .icon(AiOutlineApartment)
-        .child(S.documentTypeList('domain')), */
-      S.listItem()
-        .title('Traductions')
-        .child(
-          S.documentList()
-            .id('translations')
-            .title('Traductions')
-            .filter('_type == "entry" && translationStatus == "in_translation"')
-            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-        ),
-      S.listItem()
-        .title('Révisions')
-        .child(
-          S.documentList()
-            .id('revisions')
-            .title('Révisions')
-            .filter('_type == "entry" && translationStatus == "in_review"')
-            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-        ),
-      S.listItem()
-        .title('Vérifications')
-        .child(
-          S.documentList()
-            .id('controls')
-            .title('Vérifications')
-            .filter('_type == "entry" && translationStatus == "in_translation"')
-            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-        ),
+      ...(translators.includes(id) ? translationsItems : []),
+      ...(experts.includes(id) ? expertsItems : []),
     ])
 }
