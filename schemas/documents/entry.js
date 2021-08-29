@@ -23,17 +23,6 @@ export default {
   fields: [
     {
       type: 'string',
-      name: 'translationStatus',
-      hidden: ({ currentUser }) => {
-        return currentUser.id === 'puCcAHT8N'
-      },
-      fieldset: 'admin',
-      options: {
-        list: translationStatusList,
-      },
-    },
-    {
-      type: 'string',
       name: 'status',
       title: 'Bearbeitungsstatus',
       options: {
@@ -52,6 +41,21 @@ export default {
           { title: 'IOTH-Begriff', value: 'IOTH' },
           { title: 'VKF-Begriff', value: 'VKF' },
         ],
+      },
+    },
+    {
+      title: 'Übersetzungstatus',
+      type: 'string',
+      name: 'translationStatus',
+      hidden: ({ currentUser, document }) => {
+        return (
+          !['puCcAHT8N', 'pfoCdHT74', 'pNqrbwTtv'].includes(currentUser.id) ||
+          !['approved', 'validated', 'in_force'].includes(document.status)
+        )
+      },
+      fieldset: 'admin',
+      options: {
+        list: translationStatusList,
       },
     },
     ...langs.map(({ title, code }) => {

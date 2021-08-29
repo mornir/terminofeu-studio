@@ -1,17 +1,22 @@
 export const translationStatusList = [
   {
-    title: 'In Übersetzung',
-    value: 'in_translation',
+    title: 'Zur Übersetzung',
+    value: 'translation',
     desc: 'Eintrag wird auf FR übersetzt',
   },
   {
-    title: 'Übersetzung wird geprüft',
-    value: 'in_review',
-    desc: 'FR-Übersetzung wird geprüft',
+    title: 'Zur Revision',
+    value: 'review',
+    desc: 'FR-Übersetzung wird revidiert',
   },
   {
-    title: 'Übersetzung freigegeben',
-    value: 'reviewed',
-    desc: 'FR-Übersetzung ist freigegeben',
+    title: 'Zur Freigabe',
+    value: 'validation',
+    desc: 'FR-Übersetzung wird freigegeben',
+  },
+  {
+    title: 'Freigegeben',
+    value: 'validated',
+    desc: 'FR-Übersetzung wurde freigegeben',
   },
 ]

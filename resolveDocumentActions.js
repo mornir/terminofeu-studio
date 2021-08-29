@@ -2,8 +2,7 @@ import defaultResolve, {
   PublishAction,
 } from 'part:@sanity/base/document-actions'
 
-import { setEntryTitlesAction } from './workflows/setEntryTitlesAction'
-import { TranslateFlow } from './workflows/TranslateFlow'
+import { CustomPublishAction } from './workflows/CustomPublishAction'
 
 export default function resolveDocumentActions(props) {
   if (props.type !== 'entry') {
@@ -12,10 +11,8 @@ export default function resolveDocumentActions(props) {
 
   const actions = defaultResolve(props).map((Action) =>
     // Overwrite default publish action with our custom publish action
-    Action === PublishAction ? setEntryTitlesAction : Action
+    Action === PublishAction ? CustomPublishAction : Action
   )
-
-  actions.push(TranslateFlow)
 
   return actions
 }

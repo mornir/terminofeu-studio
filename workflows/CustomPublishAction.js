@@ -4,7 +4,7 @@ import isEqual from 'lodash.isequal'
 
 import { langs } from '../schemas/data/langs'
 
-export function setEntryTitlesAction(props) {
+export function CustomPublishAction(props) {
   if (props.type !== 'entry') {
     return null
   }
@@ -26,8 +26,6 @@ export function setEntryTitlesAction(props) {
     onHandle: () => {
       // This will update the button text
       setIsPublishing(true)
-
-      console.log(props)
 
       // Create { set: deTitle: term + abbreviation } patch for every language
       const patches = langs
@@ -51,20 +49,18 @@ export function setEntryTitlesAction(props) {
 
       patch.execute(patches)
 
-      if (props.draft && props.published) {
-        console.log('draft', props.draft)
-        console.log('published', props.published)
-
-        const shouldRequestTranslation = isEqual(
+      if (
+        props.draft &&
+        props.published &&
+        ['approved', 'validated', 'in_force'].includes(props.published.status)
+      ) {
+        const areVersionsEqual = isEqual(
           props.draft.content.de,
           props.published.content.de
         )
 
-        if (shouldRequestTranslation) {
-          // TODO: Send email
-
-          patch.execute([{ set: { translationStatus: 'in_translation' } }])
-          console.log('SEND EMAIL TO UD!')
+        if (!areVersionsEqual) {
+          patch.execute([{ set: { translationStatus: 'translation' } }])
         }
       }
 

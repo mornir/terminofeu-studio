@@ -42,7 +42,7 @@ export default async () => {
         S.documentList()
           .id('translations')
           .title('Traductions')
-          .filter('_type == "entry" && translationStatus == "in_translation"')
+          .filter('_type == "entry" && translationStatus == "translation"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
     S.listItem()
@@ -51,7 +51,7 @@ export default async () => {
         S.documentList()
           .id('revisions')
           .title('Révisions')
-          .filter('_type == "entry" && translationStatus == "in_review"')
+          .filter('_type == "entry" && translationStatus == "review"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
   ]
@@ -63,7 +63,7 @@ export default async () => {
         S.documentList()
           .id('controls')
           .title('Vérifications')
-          .filter('_type == "entry" && translationStatus == "in_translation"')
+          .filter('_type == "entry" && translationStatus == "validation"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
   ]
