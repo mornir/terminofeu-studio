@@ -5,16 +5,12 @@ import {
   AiFillEye,
   AiFillEdit,
   AiOutlineContainer,
-  AiOutlineApartment,
-  AiOutlineUser,
   AiOutlineFileSearch,
-  AiFillCheckSquare,
   AiOutlineMessage,
 } from 'react-icons/ai'
 
 import IframePreview from './components/previews/iframe/IframePreview'
 import Comments from './components/comments/Comments'
-/* import Votes from './components/votes/Votes' */
 
 import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
@@ -23,7 +19,6 @@ export const getDefaultDocumentNode = (doc) => {
   if (doc.schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
-      /* S.view.component(Votes).title('Abstimmungen').icon(AiFillCheckSquare), */
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
