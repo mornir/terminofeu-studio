@@ -33,6 +33,7 @@
     "react-table": "^7.6.3",
     "recharts": "^2.0.7",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
+    "sanity-plugin-documents-pane": "^1.0.5",
     "sanity-plugin-tabs": "^2.0.0"
   },
   "devDependencies": {}
