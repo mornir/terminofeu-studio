@@ -51,20 +51,24 @@ export default {
   preview: {
     select: {
       title: 'title',
+      longTitle: 'longTitle',
       date: 'date',
+      lang: 'lang',
     },
-    prepare({ title, date }) {
+    prepare({ longTitle, title, date, lang }) {
+      const previewTitle = longTitle ? longTitle : title
       if (date) {
         const formattedDate = new Intl.DateTimeFormat('de-CH').format(
           new Date(date)
         )
+        const preText = lang === 'de' ? 'Stand: ' : 'État au '
         return {
-          title,
-          subtitle: `Stand: ${formattedDate}`,
+          title: previewTitle,
+          subtitle: preText + formattedDate,
         }
       } else {
         return {
-          title,
+          title: previewTitle,
           subtitle: null,
         }
       }

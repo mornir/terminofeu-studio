@@ -11,6 +11,7 @@ import {
 
 import IframePreview from './components/previews/iframe/IframePreview'
 import Comments from './components/comments/Comments'
+import DocumentsPane from 'sanity-plugin-documents-pane'
 
 import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
@@ -25,6 +26,20 @@ export const getDefaultDocumentNode = (doc) => {
         .title('Eintrag anzeigen')
         .icon(AiFillEye),
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
+    ])
+  }
+
+  if (doc.schemaType === 'source') {
+    return S.document().views([
+      S.view.form().icon(AiFillEdit),
+      S.view
+        .component(DocumentsPane)
+        .options({
+          query: `*[!(_id in path("drafts.**")) && references($id)]`,
+          params: { id: `_id` },
+          useDraft: false,
+        })
+        .title('Einträge'),
     ])
   }
 }
