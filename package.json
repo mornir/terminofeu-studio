@@ -14,14 +14,14 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.17.1",
+    "@sanity/base": "^2.21.9",
     "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.17.1",
-    "@sanity/dashboard": "^2.17.1",
-    "@sanity/default-layout": "^2.17.1",
-    "@sanity/default-login": "^2.17.1",
-    "@sanity/desk-tool": "^2.17.1",
-    "@sanity/vision": "^2.15.0",
+    "@sanity/core": "^2.21.8",
+    "@sanity/dashboard": "^2.21.9",
+    "@sanity/default-layout": "^2.21.9",
+    "@sanity/default-login": "^2.21.9",
+    "@sanity/desk-tool": "^2.21.9",
+    "@sanity/vision": "^2.21.9",
     "exceljs": "^4.2.1",
     "file-saver": "^2.0.5",
     "lodash.isequal": "^4.5.0",
@@ -34,7 +34,8 @@
     "recharts": "^2.0.7",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
     "sanity-plugin-documents-pane": "^1.0.5",
-    "sanity-plugin-tabs": "^2.0.0"
+    "sanity-plugin-tabs": "^2.0.0",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {}
 }
