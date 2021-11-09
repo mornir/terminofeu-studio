@@ -71,27 +71,6 @@ function MyTool() {
           <Bar dataKey="value" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-
-      {/*  <PieChart width={400} height={400}>
-        <Pie
-          dataKey="value"
-          isAnimationActive={false}
-          data={data}
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          fill="#8884d8"
-          label
-        />
-
-        <Tooltip />
-      </PieChart> */}
-      {/*    <Box marginBottom={4} marginLeft={5} marginTop={5}>
-        <Heading as="h2" size={2} style={{ textAlign: 'center' }}>
-          Abstimmungen
-        </Heading>
-      </Box>
-      <ApprovalTable /> */}
     </div>
   )
 }
