@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 import { Stack, Card, TextArea, Button, Label, Box, Heading } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
-import { useDocumentOperation } from '@sanity/react-hooks'
 import userStore from 'part:@sanity/base/user'
 import { nanoid } from 'nanoid'
 
 import styles from './Comments.css'
 
 function Comments({ document }) {
-  const { displayed, published } = document
+  const { displayed } = document
 
   const [text, setText] = useState('')
   const [isSending, setIsSending] = useState(false)
-
-  // const { publish } = useDocumentOperation(published._id, 'entry')
-
+  
   async function postText(event) {
     event.preventDefault()
     if (isSending) return
@@ -34,7 +31,6 @@ function Comments({ document }) {
 
     setText('')
     setIsSending(false)
-    // publish.execute()
   }
 
   return (

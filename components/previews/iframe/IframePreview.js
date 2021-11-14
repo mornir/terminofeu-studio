@@ -24,6 +24,14 @@ class IframePreview extends React.PureComponent {
       )
     }
 
+    if(displayed._id.startsWith('drafts')) {
+      return (
+        <div className={styles.componentWrapper}>
+          <p>Sie müssen zuerst den Eintrag veröffentlichen, damit sie die Vorschau aktivieren können.</p>
+        </div>
+      )
+    }
+
     const url = assemblePageUrl(displayed, options)
 
     if (!url) {
