@@ -1,6 +1,5 @@
 .container {
-  padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 3rem;
-  max-width: 1000px;
+  max-width: min(1000px, 100%);
 }
