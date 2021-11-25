@@ -7,9 +7,11 @@ import {
   AiOutlineContainer,
   AiOutlineFileSearch,
   AiOutlineMessage,
+  AiOutlineMergeCells,
 } from 'react-icons/ai'
 
 import IframePreview from './components/previews/iframe/IframePreview'
+import Review from './components/Review/Review'
 import Comments from './components/comments/Comments'
 import DocumentsPane from 'sanity-plugin-documents-pane'
 
@@ -26,6 +28,7 @@ export const getDefaultDocumentNode = (doc) => {
         .title('Eintrag anzeigen')
         .icon(AiFillEye),
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
+      S.view.component(Review).title('Revision').icon(AiOutlineMergeCells),
     ])
   }
 

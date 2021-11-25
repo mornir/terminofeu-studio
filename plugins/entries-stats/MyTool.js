@@ -54,11 +54,6 @@ function MyTool() {
       .then((counts) => {
         const newData = [
           {
-            title: 'BSV 2015',
-            Anzahl: counts.draft,
-            color: '#EF4444',
-          },
-          {
             title: 'Entwurf',
             Anzahl: counts.new_draft,
             color: '#F97316',
