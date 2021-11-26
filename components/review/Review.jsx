@@ -40,17 +40,13 @@ function Review({ document }) {
               Version im Entwurf
             </Heading>
 
-            <Text size={3}>
-              {toPlainText(published.content.de?.definition)}
-            </Text>
-            <Text size={3}>
-              {toPlainText(published.content.fr?.definition)}
-            </Text>
+            <Text size={3}>{toPlainText(draft.content.de?.definition)}</Text>
+            <Text size={3}>{toPlainText(draft.content.fr?.definition)}</Text>
           </Stack>
 
           <Stack space={4}>
-            <Text size={2}>{toPlainText(published.content.de?.note)}</Text>
-            <Text size={2}>{toPlainText(published.content.fr?.note)}</Text>
+            <Text size={2}>{toPlainText(draft.content.de?.note)}</Text>
+            <Text size={2}>{toPlainText(draft.content.fr?.note)}</Text>
           </Stack>
         </Box>
       )}
