@@ -3,7 +3,6 @@ import Tabs from 'sanity-plugin-tabs'
 import illustrationFn from '../functions/illustrationFn'
 import { langs } from '../data/langs'
 import { generateStatus } from '../functions/statusFn'
-import { description } from '../functions/sourceFn'
 
 export default {
   title: 'Bild',
@@ -22,7 +21,6 @@ export default {
       title: 'Quelle der Abbildung',
       name: 'source',
       type: 'reference',
-      description: description,
       validation: (Rule) =>
         Rule.required().error('Quelle fehlt bei der Abbildung'),
       to: [{ type: 'source' }],

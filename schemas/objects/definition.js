@@ -3,7 +3,7 @@ const statusList = [
   { title: 'Alternative Definition', value: 'variant' },
 ]
 
-import { description, filter } from '../functions/sourceFn'
+import { filter } from '../functions/sourceFn'
 
 export default {
   title: 'Definition',
@@ -24,7 +24,6 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
-      description: description,
       validation: (Rule) =>
         Rule.required().error('Quelle fehlt bei der Definition'),
       to: [{ type: 'source' }],

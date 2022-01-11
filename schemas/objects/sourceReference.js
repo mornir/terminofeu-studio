@@ -3,7 +3,8 @@ export default {
   title: 'source',
   type: 'object',
   options: {
-    columns: 2,
+    collapsible: true,
+    collapsed: true,
   },
   fields: [
     {

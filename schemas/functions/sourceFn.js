@@ -1,12 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-
-export const description = (
-  <span>
-    Neue Quellen können <Link href={'/desk/quellen'}>hier</Link> erfasst werden.
-  </span>
-)
-
 export const filter = ({ document, parentPath }) => {
   // Always make sure to check for document properties
   // before attempting to use them

@@ -1,5 +1,3 @@
-// import { description } from './sourceFn'
-
 export default ({ title, code }) => {
   return {
     title,
