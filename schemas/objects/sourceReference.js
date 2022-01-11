@@ -1,9 +1,12 @@
+import { filter } from '../functions/sourceFn'
+
 export default {
   name: 'sourceReference',
   title: 'source',
   type: 'object',
   options: {
-    columns: 2,
+    collapsible: true,
+    collapsed: true,
   },
   fields: [
     {
@@ -11,6 +14,9 @@ export default {
       title: 'Quelle',
       type: 'reference',
       to: [{ type: 'source' }],
+      options: {
+        filter: filter,
+      },
     },
     {
       type: 'string',

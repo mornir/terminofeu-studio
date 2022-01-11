@@ -12,7 +12,7 @@ import source from './documents/source'
 import blockContent from './objects/blockContent'
 import term from './objects/term'
 import illustration from './objects/illustration'
-import definition from './objects/definition'
+import thirdPartyDefinition from './objects/thirdPartyDefinition'
 import note from './objects/note'
 import noteRedactor from './objects/noteRedactor'
 import approval from './objects/approval'
@@ -32,7 +32,7 @@ export default createSchema({
     approval,
     note,
     noteRedactor,
-    definition,
+    thirdPartyDefinition,
     source,
     term,
     entry,

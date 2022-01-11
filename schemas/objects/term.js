@@ -1,7 +1,7 @@
 import { AiOutlineFileText } from 'react-icons/ai'
 
 import { generateStatus } from '../functions/statusFn'
-import { description, filter } from '../functions/sourceFn'
+import { filter } from '../functions/sourceFn'
 
 export default {
   title: 'Begriff',
@@ -33,7 +33,6 @@ export default {
       title: 'Quelle',
       name: 'source',
       type: 'reference',
-      description: description,
       to: [{ type: 'source' }],
       validation: (Rule) => Rule.required().error('Quelle fehlt beim Begriff'),
       options: {
@@ -52,7 +51,6 @@ export default {
       name: 'abbreviationSource',
       type: 'reference',
       fieldset: 'abbreviation',
-      description: description,
       to: [{ type: 'source' }],
       options: {
         filter: filter,
