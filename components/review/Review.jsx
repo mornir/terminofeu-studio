@@ -1,11 +1,29 @@
-import React from 'react'
-import { Stack, Card, Box, Heading, Text } from '@sanity/ui'
-
+import React, { useEffect, useState } from 'react'
+import { Stack, Box, Heading, Text } from '@sanity/ui'
+import sanityClient from 'part:@sanity/base/client'
 import styles from './Review.css'
 import { toPlainText } from '../../utils/toPlainText'
 
-function Review({ document }) {
+function Review({ document, documentId }) {
   const { published, draft } = document
+
+  const [definitions, setDefinitions] = useState([])
+
+  useEffect(() => {
+    const query = `*[_id == $id].content.fr.definitions[] {
+          definition,
+          source->
+      }`
+
+    const params = { id: documentId }
+
+    sanityClient
+      .fetch(query, params)
+      .then((definitions) => {
+        setDefinitions(definitions)
+      })
+      .catch((error) => console.error(error))
+  }, [])
 
   if (!published) {
     return (
@@ -50,6 +68,20 @@ function Review({ document }) {
           </Stack>
         </Box>
       )}
+
+      <Box padding={4}>
+        <Stack space={5} paddingBottom={6}>
+          <Heading as="h2" size={7}>
+            Definitionen aus bestehenden Regelwerken
+          </Heading>
+
+          {definitions.map((def) => (
+            <Text key={def._key} size={2} muted>
+              {toPlainText(def.definition)}
+            </Text>
+          ))}
+        </Stack>
+      </Box>
     </div>
   )
 }
