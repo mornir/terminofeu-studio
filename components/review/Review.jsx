@@ -7,23 +7,37 @@ import { toPlainText } from '../../utils/toPlainText'
 function Review({ document, documentId }) {
   const { published, draft } = document
 
-  const [definitions, setDefinitions] = useState([])
+  const [source, setSource] = useState(null)
+
+  const client = sanityClient.withConfig({ apiVersion: '2022-02-02' })
 
   useEffect(() => {
-    const query = `*[_id == $id].content.fr.definitions[] {
-          definition,
-          source->
-      }`
+    const query = `*[_id == $id][0].content.fr.definitionSource {
+  type,
+  reference->{title, url}
+}`
 
     const params = { id: documentId }
 
-    sanityClient
+    client
       .fetch(query, params)
-      .then((definitions) => {
-        setDefinitions(definitions)
+      .then((source) => {
+        if (source.reference?.title !== 'Traduction AEAI') {
+          setSource(source)
+        }
       })
       .catch((error) => console.error(error))
   }, [])
+
+  function referenceType(type) {
+    if (type === 'original') {
+      return 'Définition reprise verbatim de '
+    } else if (type === 'after') {
+      return 'Définition adaptée de '
+    } else {
+      return ''
+    }
+  }
 
   if (!published) {
     return (
@@ -42,7 +56,24 @@ function Review({ document, documentId }) {
           </Heading>
 
           <Text size={3}>{toPlainText(published.content.de?.definition)}</Text>
-          <Text size={3}>{toPlainText(published.content.fr?.definition)}</Text>
+
+          <Stack space={4}>
+            <Text size={3}>
+              {toPlainText(published.content.fr?.definition)}
+            </Text>
+            {source && (
+              <Text size={2} muted>
+                {referenceType(source.type)}
+                {source.url ? (
+                  <a href={source.url} target="_blank">
+                    {source.reference?.title}
+                  </a>
+                ) : (
+                  <span>{source.reference?.title}</span>
+                )}
+              </Text>
+            )}
+          </Stack>
         </Stack>
 
         <Stack space={4}>
@@ -68,20 +99,6 @@ function Review({ document, documentId }) {
           </Stack>
         </Box>
       )}
-
-      <Box padding={4}>
-        <Stack space={5} paddingBottom={6}>
-          <Heading as="h2" size={7}>
-            Definitionen aus bestehenden Regelwerken
-          </Heading>
-
-          {definitions.map((def) => (
-            <Text key={def._key} size={2} muted>
-              {toPlainText(def.definition)}
-            </Text>
-          ))}
-        </Stack>
-      </Box>
     </div>
   )
 }
