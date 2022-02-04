@@ -1,11 +1,46 @@
-import React from 'react'
-import { Stack, Card, Box, Heading, Text } from '@sanity/ui'
-
+import React, { useEffect, useState } from 'react'
+import { Stack, Box, Heading, Text } from '@sanity/ui'
+import sanityClient from 'part:@sanity/base/client'
 import styles from './Review.css'
 import { toPlainText } from '../../utils/toPlainText'
 
-function Review({ document }) {
+function Review({ document, documentId }) {
   const { published, draft } = document
+
+  const [source, setSource] = useState(null)
+
+  const client = sanityClient.withConfig({ apiVersion: '2022-02-02' })
+
+  useEffect(() => {
+    const query = `*[_id == $id][0].content.fr.definitionSource {
+  type,
+  reference->{title, url}
+}`
+
+    const params = { id: documentId }
+
+    client
+      .fetch(query, params)
+      .then((source) => {
+        if (
+          source.reference?.title &&
+          source.reference.title !== 'Traduction AEAI'
+        ) {
+          setSource(source)
+        }
+      })
+      .catch((error) => console.error(error))
+  }, [])
+
+  function referenceType(type) {
+    if (type === 'original') {
+      return 'Définition reprise verbatim de '
+    } else if (type === 'after') {
+      return 'Définition adaptée de '
+    } else {
+      return ''
+    }
+  }
 
   if (!published) {
     return (
@@ -24,7 +59,24 @@ function Review({ document }) {
           </Heading>
 
           <Text size={3}>{toPlainText(published.content.de?.definition)}</Text>
-          <Text size={3}>{toPlainText(published.content.fr?.definition)}</Text>
+
+          <Stack space={4}>
+            <Text size={3}>
+              {toPlainText(published.content.fr?.definition)}
+            </Text>
+            {source && (
+              <Text size={2} muted>
+                {referenceType(source.type)}
+                {source.reference?.url ? (
+                  <a href={source.reference.url} target="_blank">
+                    {source.reference?.title}
+                  </a>
+                ) : (
+                  <span>{source.reference?.title}</span>
+                )}
+              </Text>
+            )}
+          </Stack>
         </Stack>
 
         <Stack space={4}>
