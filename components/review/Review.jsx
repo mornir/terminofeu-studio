@@ -22,7 +22,10 @@ function Review({ document, documentId }) {
     client
       .fetch(query, params)
       .then((source) => {
-        if (source.reference?.title !== 'Traduction AEAI') {
+        if (
+          source.reference?.title &&
+          source.reference.title !== 'Traduction AEAI'
+        ) {
           setSource(source)
         }
       })
@@ -64,8 +67,8 @@ function Review({ document, documentId }) {
             {source && (
               <Text size={2} muted>
                 {referenceType(source.type)}
-                {source.url ? (
-                  <a href={source.url} target="_blank">
+                {source.reference?.url ? (
+                  <a href={source.reference.url} target="_blank">
                     {source.reference?.title}
                   </a>
                 ) : (
