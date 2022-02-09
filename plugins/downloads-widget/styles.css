@@ -8,6 +8,7 @@
   composes: header from 'part:@sanity/dashboard/widget-styles';
   margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--hairline-color);
+  padding: 0 1rem;
 }
 
 .title {
