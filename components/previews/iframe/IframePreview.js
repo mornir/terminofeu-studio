@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './IframePreview.css'
-import { assemblePageUrl } from '../frontendUtils'
+import { assemblePageUrl } from '../assemblePageUrl'
 
 class IframePreview extends React.PureComponent {
   static propTypes = {
@@ -24,10 +24,13 @@ class IframePreview extends React.PureComponent {
       )
     }
 
-    if(displayed._id.startsWith('drafts')) {
+    if (displayed._id.startsWith('drafts')) {
       return (
         <div className={styles.componentWrapper}>
-          <p>Sie müssen zuerst den Eintrag veröffentlichen, damit sie die Vorschau aktivieren können.</p>
+          <p>
+            Sie müssen zuerst den Eintrag veröffentlichen, damit sie die
+            Vorschau aktivieren können.
+          </p>
         </div>
       )
     }
