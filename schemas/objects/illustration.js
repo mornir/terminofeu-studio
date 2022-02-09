@@ -2,21 +2,12 @@ import Tabs from 'sanity-plugin-tabs'
 
 import illustrationFn from '../functions/illustrationFn'
 import { langs } from '../data/langs'
-import { generateStatus } from '../functions/statusFn'
 
 export default {
   title: 'Bild',
   name: 'illustration',
   type: 'object',
   fields: [
-    {
-      type: 'string',
-      name: 'status',
-      title: 'Status',
-      options: {
-        list: generateStatus('abbildung'),
-      },
-    },
     {
       title: 'Quelle der Abbildung',
       name: 'source',
@@ -43,17 +34,11 @@ export default {
     select: {
       media: 'image',
       title: 'content.de.title',
-      status: 'status',
     },
-    prepare({ status, title, media }) {
-      const subtitle = status
-        ? generateStatus('abbildung').find((s) => s.value === status).title
-        : 'kein Status'
-
+    prepare({ title, media }) {
       return {
         media,
         title,
-        subtitle,
       }
     },
   },

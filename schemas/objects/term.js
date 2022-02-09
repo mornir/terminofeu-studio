@@ -1,6 +1,4 @@
 import { AiOutlineFileText } from 'react-icons/ai'
-
-import { generateStatus } from '../functions/statusFn'
 import { filter } from '../functions/sourceFn'
 
 export default {
@@ -26,7 +24,11 @@ export default {
       title: 'Status',
       hidden: true,
       options: {
-        list: generateStatus(),
+        list: [
+          { title: 'Hauptbegriff', value: 'main' },
+          { title: 'Alternativ', value: 'variant' },
+          { title: 'Abgelehnt', value: 'rejected' },
+        ],
       },
     },
     {
