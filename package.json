@@ -13,6 +13,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@portabletext/react": "^1.0.2",
     "@sanity/base": "^2.26.0",
     "@sanity/components": "^2.14.0",
     "@sanity/core": "^2.26.0",
