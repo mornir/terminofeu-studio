@@ -7,21 +7,21 @@
   "author": "Jérôme Pott <jeromepott@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "sanity start",
-    "test": "sanity check"
+    "dev": "sanity start"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.26.0",
+    "@portabletext/react": "^1.0.2",
+    "@sanity/base": "^2.27.0",
     "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.26.0",
-    "@sanity/dashboard": "^2.26.0",
-    "@sanity/default-layout": "^2.26.0",
-    "@sanity/default-login": "^2.26.0",
-    "@sanity/desk-tool": "^2.26.0",
-    "@sanity/vision": "^2.26.0",
+    "@sanity/core": "^2.27.0",
+    "@sanity/dashboard": "^2.27.0",
+    "@sanity/default-layout": "^2.27.0",
+    "@sanity/default-login": "^2.27.0",
+    "@sanity/desk-tool": "^2.27.0",
+    "@sanity/vision": "^2.27.0",
     "exceljs": "^4.2.1",
     "file-saver": "^2.0.5",
     "lodash.isequal": "^4.5.0",

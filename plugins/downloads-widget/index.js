@@ -7,8 +7,22 @@ import { List, Item } from 'part:@sanity/components/lists/default'
 import { Select, Stack, Text } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { statusList } from '../../schemas/data/statusList'
-import { toPlainText } from '../../utils/toPlainText'
 
+const defaults = { nonTextBehavior: 'remove' }
+function toPlainText(blocks, opts = {}) {
+  const options = Object.assign({}, defaults, opts)
+  return blocks
+    .map((block) => {
+      if (block._type !== 'block' || !block.children) {
+        return options.nonTextBehavior === 'remove'
+          ? ''
+          : `[${block._type} block]`
+      }
+
+      return block.children.map((child) => child.text).join('')
+    })
+    .join('\n\n')
+}
 
 function DownloadsList() {
   // Options for the select input

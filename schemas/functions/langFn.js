@@ -20,8 +20,6 @@ export default ({ title, code }) => {
         name: 'definitionSource',
         title: 'Quelle der Definition',
         type: 'sourceReference',
-        description:
-          'Sind mehrere Quellen vorhanden, ist die zuverlässigste aufzuführen.',
       },
 
       {
@@ -33,8 +31,6 @@ export default ({ title, code }) => {
         name: 'notesSource',
         title: 'Quelle der Anmerkung',
         type: 'sourceReference',
-        description:
-          'Sind mehrere Quellen vorhanden, ist die zuverlässigste aufzuführen.',
       },
       {
         title: 'Definitionen aus bestehenden Regelwerken',
