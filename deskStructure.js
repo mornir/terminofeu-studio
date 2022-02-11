@@ -90,7 +90,7 @@ export default async () => {
         S.documentList()
           .id('validated')
           .title('Fiches validées')
-          .filter('_type == "entry" && translationStatus == "validated"')
+          .filter('_type == "entry" && translationStatus == "fr_validated"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
   ]

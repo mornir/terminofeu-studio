@@ -99,7 +99,7 @@ function MyTool() {
           },
           {
             title: 'Freigabe',
-            Anzahl: counts.validated,
+            Anzahl: counts.fr_validated,
             color: '#84CC16',
           },
         ]
