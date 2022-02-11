@@ -16,7 +16,7 @@ export const translationStatusList = [
   },
   {
     title: 'FR-Übersetzung wurde freigegeben',
-    value: 'validated',
+    value: 'fr_validated',
     desc: 'Die FR-Übersetzung wurde freigegeben.',
   },
 ]

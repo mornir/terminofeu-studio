@@ -1,4 +1,6 @@
+import React from 'react'
 import { AiOutlineFileText } from 'react-icons/ai'
+
 import { filter } from '../functions/sourceFn'
 
 export default {
@@ -18,16 +20,14 @@ export default {
   ],
   fields: [
     {
-      // TODO: Delete field if no longer needed in the future
       type: 'string',
       name: 'status',
       title: 'Status',
-      hidden: true,
       options: {
         list: [
           { title: 'Hauptbegriff', value: 'main' },
           { title: 'Alternativ', value: 'variant' },
-          { title: 'Abgelehnt', value: 'rejected' },
+          { title: 'Zu vermeiden', value: 'avoid' },
         ],
       },
     },
@@ -70,12 +70,25 @@ export default {
       term: 'designation',
       abbreviation: 'abbreviation',
       subtitle: 'source.title',
+      status: 'status',
     },
-    prepare({ subtitle, term, abbreviation }) {
+    prepare({ subtitle, term, abbreviation, status }) {
+      const EMOJIS = {
+        main: '✌️',
+        variant: '👍',
+        avoid: '👎',
+      }
+
       const title = abbreviation ? `${term} (${abbreviation})` : term
+
       return {
         title,
         subtitle,
+        media: (
+          <span style={{ fontSize: '1.5rem' }}>
+            {status ? EMOJIS[status] : '👍'}
+          </span>
+        ),
       }
     },
   },
