@@ -24,6 +24,10 @@ function Review({ document, documentId }) {
     )
   }
 
+  const comments = published.notes || []
+
+  const isComment = comments.some((comment) => comment.author === 'Jérôme Pott')
+
   const [definitionSource, setDefinitionSource] = useState({})
   const [noteSource, setNoteSource] = useState({})
 
@@ -50,7 +54,6 @@ function Review({ document, documentId }) {
     client
       .fetch(query, params)
       .then((sources) => {
-        console.log(sources)
         const definitionSource = sources.content.fr?.definitionSource
         if (definitionSource?.reference?.title) {
           setDefinitionSource(definitionSource)
@@ -83,7 +86,14 @@ function Review({ document, documentId }) {
   return (
     <div className={styles.container}>
       <Box padding={4}>
-        <Stack space={3} paddingBottom={6}>
+        {isComment ? (
+          <Text weight="semibold">
+            Jérôme a laissé un commentaire dans l'onglet Kommentare.
+          </Text>
+        ) : (
+          ''
+        )}
+        <Stack space={3} paddingBottom={6} paddingTop={4}>
           <Heading as="h2" size={6}>
             Veröffentliche Version
           </Heading>
