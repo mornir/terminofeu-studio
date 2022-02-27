@@ -1,3 +1,4 @@
+import groq from 'groq'
 import React, { useEffect, useState } from 'react'
 import { Stack, Box, Heading, Text } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
@@ -7,33 +8,66 @@ import { PortableText } from '@portabletext/react'
 function Review({ document, documentId }) {
   const { published, draft } = document
 
-  const [source, setSource] = useState(null)
+  if (!published) {
+    return (
+      <Box padding={4}>
+        <Text size={2}>Der Eintrag wurde noch nie veröffentlicht.</Text>{' '}
+      </Box>
+    )
+  }
+
+  if (!draft?.content?.fr && !published?.content?.fr) {
+    return (
+      <Box padding={4}>
+        <Text size={2}>Aucune définition en français.</Text>{' '}
+      </Box>
+    )
+  }
+
+  const [definitionSource, setDefinitionSource] = useState({})
+  const [noteSource, setNoteSource] = useState({})
 
   const client = sanityClient.withConfig({ apiVersion: '2022-02-02' })
 
   useEffect(() => {
-    const query = `*[_id == $id][0].content.fr.definitionSource {
-  type,
-  reference->{title, url}
+    const query = groq`*[_id == $id][0] {
+      content {
+      fr {
+        definitionSource {
+          type,
+          reference->{title, url}
+        },
+      notesSource {
+          type,
+          reference->{title, url}
+        }
+  }
+  }
 }`
 
     const params = { id: documentId }
 
     client
       .fetch(query, params)
-      .then((source) => {
-        if (
-          source.reference?.title &&
-          source.reference.title !== 'Traduction AEAI'
-        ) {
-          setSource(source)
+      .then((sources) => {
+        console.log(sources)
+        const definitionSource = sources.content.fr?.definitionSource
+        if (definitionSource?.reference?.title) {
+          setDefinitionSource(definitionSource)
+        }
+
+        const noteSource = sources.content.fr?.notesSource
+        if (noteSource?.reference?.title) {
+          setNoteSource(noteSource)
         }
       })
       .catch((error) => console.error(error))
   }, [])
 
   function referenceType(type) {
-    if (type === 'original') {
+    if (!type) {
+      return ''
+    } else if (type === 'original') {
       return 'Définition reprise verbatim de '
     } else if (type === 'after') {
       return 'Définition adaptée de '
@@ -44,14 +78,6 @@ function Review({ document, documentId }) {
 
   function renderText(blocks) {
     return blocks ? <PortableText value={blocks} /> : ''
-  }
-
-  if (!published) {
-    return (
-      <Box padding={4}>
-        <Text size={2}>Der Eintrag wurde noch nie veröffentlicht.</Text>{' '}
-      </Box>
-    )
   }
 
   return (
@@ -66,15 +92,15 @@ function Review({ document, documentId }) {
 
           <Stack space={2}>
             <Text size={3}>{renderText(published.content.fr?.definition)}</Text>
-            {source && (
+            {definitionSource && (
               <Text size={2} muted>
-                {referenceType(source.type)}
-                {source.reference?.url ? (
-                  <a href={source.reference.url} target="_blank">
-                    {source.reference?.title}
+                {referenceType(definitionSource.type)}
+                {definitionSource.reference?.url ? (
+                  <a href={definitionSource.reference.url} target="_blank">
+                    {definitionSource.reference?.title}
                   </a>
                 ) : (
-                  <span>{source.reference?.title}</span>
+                  <span>{definitionSource.reference?.title}</span>
                 )}
               </Text>
             )}
@@ -84,6 +110,18 @@ function Review({ document, documentId }) {
         <Stack space={4}>
           <Text size={2}>{renderText(published.content.de?.note)}</Text>
           <Text size={2}>{renderText(published.content.fr?.note)}</Text>
+          {noteSource && (
+            <Text size={2} muted>
+              {referenceType(noteSource.type)}
+              {noteSource.reference?.url ? (
+                <a href={noteSource.reference.url} target="_blank">
+                  {noteSource.reference?.title}
+                </a>
+              ) : (
+                <span>{noteSource.reference?.title}</span>
+              )}
+            </Text>
+          )}
         </Stack>
       </Box>
 
