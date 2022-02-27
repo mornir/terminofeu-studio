@@ -19,7 +19,7 @@ function Review({ document, documentId }) {
   if (!draft?.content?.fr && !published?.content?.fr) {
     return (
       <Box padding={4}>
-        <Text size={2}>Aucune définition en français.</Text>{' '}
+        <Text size={2}>Aucun contenu en français.</Text>{' '}
       </Box>
     )
   }
