@@ -93,6 +93,15 @@ export default async () => {
           .filter('_type == "entry" && translationStatus == "fr_validated"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
+    S.listItem()
+      .title('Fiches à discuter')
+      .child(
+        S.documentList()
+          .id('in_discussion')
+          .title('Fiches à discuter')
+          .filter('_type == "entry" && translationStatus == "fr_in_discussion"')
+          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+      ),
   ]
 
   return S.list()

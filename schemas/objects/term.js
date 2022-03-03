@@ -28,6 +28,7 @@ export default {
           { title: 'Hauptbegriff', value: 'main' },
           { title: 'Alternativ', value: 'variant' },
           { title: 'Zu vermeiden', value: 'avoid' },
+          { title: 'Noch zu bestimmen', value: 'to_be_defined' },
         ],
       },
     },
@@ -77,6 +78,7 @@ export default {
         main: '✌️',
         variant: '👍',
         avoid: '👎',
+        to_be_defined: '❓',
       }
 
       const title = abbreviation ? `${term} (${abbreviation})` : term
@@ -86,7 +88,7 @@ export default {
         subtitle,
         media: (
           <span style={{ fontSize: '1.5rem' }}>
-            {status ? EMOJIS[status] : '👍'}
+            {status ? EMOJIS[status] : '✌️'}
           </span>
         ),
       }
