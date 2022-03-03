@@ -19,4 +19,9 @@ export const translationStatusList = [
     value: 'fr_validated',
     desc: 'Die FR-Übersetzung wurde freigegeben.',
   },
+  {
+    title: 'FR-Übersetzung wird diskutiert',
+    value: 'fr_in_discussion',
+    desc: 'Die FR-Übersetzung wird diskutiert.',
+  },
 ]
