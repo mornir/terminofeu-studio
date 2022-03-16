@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImSuperscript } from 'react-icons/im'
 
-import { FaExternalLinkAlt, FaLink } from 'react-icons/fa'
+import { AiOutlineLink } from 'react-icons/ai'
 
 const superscriptRender = (props) => <sup>{props.children}</sup>
 
@@ -44,25 +44,8 @@ export default {
             validation: (Rule) =>
               Rule.required().error('Feld darf nicht leer sein'),
             blockEditor: {
-              icon: FaLink,
+              icon: AiOutlineLink,
             },
-          },
-          {
-            title: 'Externer Link',
-            name: 'externalLink',
-            type: 'object',
-            validation: (Rule) =>
-              Rule.required().error('Feld darf nicht leer sein'),
-            blockEditor: {
-              icon: FaExternalLinkAlt,
-            },
-            fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-              },
-            ],
           },
         ],
       },

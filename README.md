@@ -1,12 +1,12 @@
 # Terminofeu
 
-> Terminology managment solution for the Swiss Fire Safety Regulations by the Swiss Cantonal Fire Insurance Association (VKF)
+> Terminology management solution for the Swiss Fire Safety Regulations by the Swiss Cantonal Fire Insurance Association (VKF)
 
 ## Introduction
 
-Approximmately every decade, the [Swiss Fire Safety Regulations (SFSR)](https://www.vkg.ch/de/brandschutz/vorschriften-und-register/) are revised by the the [Swiss Cantonal Fire Insurance Association (VKF)](https://www.vkg.ch/de/über-uns/organisationen/).
+Approximately every decade, the [Swiss Fire Safety Regulations (SFSR)](https://www.vkg.ch/de/brandschutz/vorschriften-und-register/) are revised by the the [Swiss Cantonal Fire Insurance Association (VKF)](https://www.vkg.ch/de/über-uns/organisationen/).
 
-When working in technial domain, terminology is always at the utmost importance. Unfortunately it is often neglected.
+When working in technical domain, terminology is always at the utmost importance. Unfortunately it is often neglected.
 
 Access to terminology is also vital. Unlike the previous editions where PDF
 
