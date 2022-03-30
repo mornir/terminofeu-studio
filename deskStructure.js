@@ -25,10 +25,13 @@ export const getDefaultDocumentNode = (doc) => {
       S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
-        .title('Eintrag anzeigen')
+        .title('Vorschau')
         .icon(AiFillEye),
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
-      S.view.component(Review).title('Revision').icon(AiOutlineMergeCells),
+      S.view
+        .component(Review)
+        .title('Vergleich DE-FR')
+        .icon(AiOutlineMergeCells),
     ])
   }
 
