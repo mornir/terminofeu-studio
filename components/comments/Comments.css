@@ -12,3 +12,9 @@
   margin: 0;
   white-space: pre-line;
 }
+
+.noComment {
+  font-weight: bolder;
+  font-style: italic;
+  user-select: none;
+}
