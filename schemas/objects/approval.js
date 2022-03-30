@@ -1,5 +1,5 @@
 import React from 'react'
-import reviewers from '../data/reviewers'
+import userStore from 'part:@sanity/base/user'
 
 export default {
   name: 'approval',
@@ -10,8 +10,9 @@ export default {
       name: 'author',
       title: 'Verfasser',
       type: 'string',
-      options: {
-        list: reviewers,
+      initialValue: async () => {
+        const user = await userStore.getUser('me')
+        return user.displayName ?? ''
       },
       validation: (Rule) => Rule.required(),
     },

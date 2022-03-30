@@ -1,5 +1,5 @@
-import reviewers from '../data/reviewers'
 import { BiCommentDetail } from 'react-icons/bi'
+import userStore from 'part:@sanity/base/user'
 
 export default {
   name: 'note',
@@ -11,8 +11,9 @@ export default {
       name: 'author',
       title: 'Verfasser',
       type: 'string',
-      options: {
-        list: reviewers,
+      initialValue: async () => {
+        const user = await userStore.getUser('me')
+        return user.displayName ?? ''
       },
       validation: (Rule) => Rule.required(),
     },
