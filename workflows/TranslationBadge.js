@@ -7,6 +7,8 @@ export function TranslationBadge(props) {
 
   if (!status) return undefined
 
+  if (!status.desc) return undefined
+
   return {
     label: status.title,
     title: status.desc,

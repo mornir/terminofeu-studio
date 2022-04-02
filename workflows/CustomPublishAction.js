@@ -49,18 +49,39 @@ export function CustomPublishAction(props) {
 
       patch.execute(patches)
 
-      if (
-        props.draft &&
-        props.published &&
-        ['approved', 'validated', 'in_force'].includes(props.published.status)
-      ) {
-        const areVersionsEqual = isEqual(
-          props.draft.content.de,
-          props.published.content.de
+      function getTranslationStatus(oldStatus, newStatus) {
+        // When entries are moved from "Im Definitionsprozess" to "Fachliche Freigabe", set the translation status to "Eintrag wird ins FR übersetzt"
+        if (newStatus === 'approved' && oldStatus === 'definition') {
+          return 'translation'
+        }
+
+        // When entries are moved from "Fachliche Freigabe" back to "Im Definitionsprozess", set the translation status back to "Warten auf DE"
+        if (newStatus === 'definition' && oldStatus === 'approved') {
+          return 'fr_wait'
+        }
+
+        // When changes are made while the admin status is set to either "Fachliche Freigabe", "Freigabe durch Kernausschuss", or "Übernommen in BSV 2026", set the translation status back to "Im Definitionsprozess"
+        if (['approved', 'validated', 'in_force'].includes(newStatus)) {
+          const areVersionsEqual = isEqual(
+            props.draft.content.de,
+            props.published.content.de
+          )
+
+          if (!areVersionsEqual) {
+            return 'translation'
+          }
+        }
+        return null
+      }
+
+      if (props.published.status && props.draft.status) {
+        const newTranslationStatus = getTranslationStatus(
+          props.published.status,
+          props.draft.status
         )
 
-        if (!areVersionsEqual) {
-          patch.execute([{ set: { translationStatus: 'translation' } }])
+        if (newTranslationStatus) {
+          patch.execute([{ set: { translationStatus: newTranslationStatus } }])
         }
       }
 
