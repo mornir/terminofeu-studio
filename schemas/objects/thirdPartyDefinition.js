@@ -40,10 +40,13 @@ export default {
   preview: {
     select: {
       blocks: 'definition',
-      subtitle: 'source.title',
+      shortTitle: 'source.title',
+      longTitle: 'source.longTitle',
     },
-    prepare({ blocks, subtitle }) {
+    prepare({ blocks, shortTitle, longTitle }) {
       const block = (blocks || []).find((block) => block._type === 'block')
+
+      const subtitle = longTitle ? longTitle : shortTitle
 
       return {
         title: block
