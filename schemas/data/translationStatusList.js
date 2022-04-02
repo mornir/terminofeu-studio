@@ -1,5 +1,10 @@
 export const translationStatusList = [
   {
+    title: 'Warten auf DE',
+    value: 'fr_wait',
+    desc: null,
+  },
+  {
     title: 'Eintrag wird ins FR übersetzt',
     value: 'translation',
     desc: 'Der Eintrag wird ins Französisch übersetzt.',

@@ -7,9 +7,11 @@ export function TranslationBadge(props) {
 
   if (!status) return undefined
 
+  if (!status.desc) return undefined
+
   return {
     label: status.title,
     title: status.desc,
-    color: status.value === 'validated' ? 'success' : 'warning',
+    color: status.value === 'fr_validated' ? 'success' : 'warning',
   }
 }

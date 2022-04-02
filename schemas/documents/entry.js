@@ -48,10 +48,7 @@ export default {
       type: 'string',
       name: 'translationStatus',
       hidden: ({ currentUser, document }) => {
-        return (
-          !['puCcAHT8N', 'pfoCdHT74', 'pNqrbwTtv'].includes(currentUser.id) ||
-          !['approved', 'validated', 'in_force'].includes(document.status)
-        )
+        return !['puCcAHT8N', 'pfoCdHT74', 'pNqrbwTtv'].includes(currentUser.id)
       },
       fieldset: 'admin',
       options: {

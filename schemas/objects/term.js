@@ -70,10 +70,11 @@ export default {
     select: {
       term: 'designation',
       abbreviation: 'abbreviation',
-      subtitle: 'source.title',
+      shortTitle: 'source.title',
+      longTitle: 'source.longTitle',
       status: 'status',
     },
-    prepare({ subtitle, term, abbreviation, status }) {
+    prepare({ shortTitle, longTitle, term, abbreviation, status }) {
       const EMOJIS = {
         main: '✌️',
         variant: '👍',
@@ -82,6 +83,8 @@ export default {
       }
 
       const title = abbreviation ? `${term} (${abbreviation})` : term
+
+      const subtitle = longTitle ? longTitle : shortTitle
 
       return {
         title,
