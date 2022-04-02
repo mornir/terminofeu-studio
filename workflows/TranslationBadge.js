@@ -10,6 +10,6 @@ export function TranslationBadge(props) {
   return {
     label: status.title,
     title: status.desc,
-    color: status.value === 'validated' ? 'success' : 'warning',
+    color: status.value === 'fr_validated' ? 'success' : 'warning',
   }
 }
