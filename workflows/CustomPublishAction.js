@@ -74,7 +74,7 @@ export function CustomPublishAction(props) {
         return null
       }
 
-      if (props.published.status && props.draft.status) {
+      if (props.published?.status && props.draft?.status) {
         const newTranslationStatus = getTranslationStatus(
           props.published.status,
           props.draft.status
