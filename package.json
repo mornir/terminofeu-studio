@@ -30,7 +30,6 @@
     "react": "^16.2",
     "react-dom": "^16.2",
     "react-icons": "^3.11.0",
-    "react-table": "^7.6.3",
     "recharts": "^2.1.10",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-documents-pane": "^1.0.8",
