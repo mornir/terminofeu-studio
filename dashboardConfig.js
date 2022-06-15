@@ -21,6 +21,7 @@ export default {
         order: '_updatedAt desc',
         limit: 20,
         types: ['entry'],
+        showCreateButton: false,
       },
       layout: {
         width: 'small',
@@ -34,6 +35,7 @@ export default {
         order: '_updatedAt desc',
         limit: 20,
         types: ['source'],
+        showCreateButton: false,
       },
     },
   ],
