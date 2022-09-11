@@ -1,4 +1,3 @@
-import groq from 'groq'
 import React, { useEffect, useState } from 'react'
 import { Stack, Box, Heading, Text } from '@sanity/ui'
 import sanityClient from 'part:@sanity/base/client'
@@ -34,7 +33,7 @@ function Review({ document, documentId }) {
   const client = sanityClient.withConfig({ apiVersion: '2022-02-02' })
 
   useEffect(() => {
-    const query = groq`*[_id == $id][0] {
+    const query = /* groq */ `*[_id == $id][0] {
       content {
       fr {
         definitionSource {

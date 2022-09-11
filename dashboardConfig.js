@@ -19,8 +19,9 @@ export default {
       options: {
         title: 'Zuletzt bearbeitete Einträge',
         order: '_updatedAt desc',
-        limit: 5,
+        limit: 20,
         types: ['entry'],
+        showCreateButton: false,
       },
       layout: {
         width: 'small',
@@ -32,8 +33,9 @@ export default {
       options: {
         title: 'Zuletzt bearbeitete Quellen',
         order: '_updatedAt desc',
-        limit: 5,
+        limit: 20,
         types: ['source'],
+        showCreateButton: false,
       },
     },
   ],

@@ -1,5 +1,5 @@
 export const statusList = [
-  { title: 'Bestehende Begriffe', value: 'draft' },
+  { title: 'Nicht übernommen', value: 'draft' },
   { title: 'Entwurf', value: 'new_draft' },
   { title: 'Im Definitionsprozess', value: 'definition' },
   { title: 'Fachliche Freigabe', value: 'approved' },
