@@ -17,6 +17,7 @@ import DocumentsPane from 'sanity-plugin-documents-pane'
 
 import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
+import { ag } from './schemas/data/arbeitsgruppen'
 
 export const getDefaultDocumentNode = (doc) => {
   if (doc.schemaType === 'entry') {
@@ -128,6 +129,25 @@ export default async () => {
                       .title(status.title)
                       .filter('_type == "entry" && status == $status')
                       .params({ status: status.value })
+                      .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+                  )
+              }),
+            ])
+        ),
+      S.listItem()
+        .title('Arbeitsgruppen')
+        .child(
+          S.list()
+            .title('Arbeitsgruppen')
+            .items([
+              ...ag.map((gruppe) => {
+                return S.listItem()
+                  .title(gruppe.title)
+                  .child(
+                    S.documentList()
+                      .title(gruppe.title)
+                      .filter('_type == "entry" && $ag in assignees')
+                      .params({ ag: gruppe.value })
                       .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
                   )
               }),

@@ -18,6 +18,16 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: 'Datum',
+      name: 'publishedDate',
+      type: 'date',
+      // TODO: ask why this doesn't work
+      //initialValue: new Intl.DateTimeFormat('fr-CH').format(new Date()),
+      options: {
+        dateFormat: 'DD.MM.YYYY',
+      },
+    },
+    {
       name: 'text',
       title: 'Kommentar',
       type: 'text',
@@ -28,11 +38,18 @@ export default {
     select: {
       author: 'author',
       text: 'text',
+      date: 'publishedDate',
     },
-    prepare({ author, text }) {
+    prepare({ author, text, date }) {
+      const subtitle = date
+        ? `${author} am ${new Intl.DateTimeFormat('fr-CH').format(
+            new Date(date)
+          )}`
+        : author
+
       return {
         title: text,
-        subtitle: author,
+        subtitle,
       }
     },
   },

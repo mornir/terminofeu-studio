@@ -33,8 +33,7 @@ export default {
       title: 'Stand',
       type: 'date',
       options: {
-        dateFormat: 'DD-MM-YYYY',
-        calendarTodayLabel: 'Today',
+        dateFormat: 'DD.MM.YYYY',
       },
       validation: (Rule) => Rule.required().error('Feld darf nicht leer sein'),
     },
@@ -58,7 +57,7 @@ export default {
     prepare({ longTitle, title, date, lang }) {
       const previewTitle = longTitle ? longTitle : title
       if (date) {
-        const formattedDate = new Intl.DateTimeFormat('de-CH').format(
+        const formattedDate = new Intl.DateTimeFormat('fr-CH').format(
           new Date(date)
         )
         const preText = lang === 'de' ? 'Stand: ' : 'État au '
