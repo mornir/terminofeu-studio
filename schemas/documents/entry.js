@@ -77,6 +77,15 @@ export default {
       }
     }),
     {
+      title: 'Kommentare',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+      options: {
+        sortable: false,
+      },
+    },
+    {
       name: 'content',
       type: 'object',
       inputComponent: Tabs,
@@ -94,16 +103,6 @@ export default {
       type: 'array',
       description: 'Zeichnungen, grafische Darstellungen oder Schemata',
       of: [{ type: 'illustration' }],
-    },
-
-    {
-      title: 'Kommentare',
-      name: 'notes',
-      type: 'array',
-      of: [{ type: 'note' }],
-      options: {
-        sortable: false,
-      },
     },
 
     {
