@@ -5,6 +5,7 @@ import langFn from '../functions/langFn'
 import { langs } from '../data/langs'
 import { statusList } from '../data/statusList'
 import { translationStatusList } from '../data/translationStatusList'
+import { ag } from '../data/arbeitsgruppen'
 
 export default {
   name: 'entry',
@@ -44,21 +45,13 @@ export default {
       },
     },
     {
-      title: 'Zuständigkeit',
+      title: 'AG-Zuordnung',
       name: 'assignees',
       type: 'array',
       of: [{ type: 'string' }],
       fieldset: 'admin',
       options: {
-        list: [
-          { title: 'AG2', value: 'AG2' },
-          { title: 'AG3', value: 'AG3' },
-          { title: 'AG4', value: 'AG4' },
-          { title: 'AG5', value: 'AG5' },
-          { title: 'AG6', value: 'AG6' },
-          { title: 'AG7', value: 'AG7' },
-          { title: 'AG8', value: 'AG8' },
-        ],
+        list: ag,
         layout: 'radio',
         direction: 'horizontal',
       },
