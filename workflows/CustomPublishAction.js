@@ -30,7 +30,7 @@ export function CustomPublishAction(props) {
       // Create { set: deTitle: term + abbreviation } patch for every language
       const patches = langs
         .map(({ code }) => {
-          const term = props.draft.content[code]?.terms?.[0]?.designation
+          const term = props.draft?.content[code]?.terms?.[0]?.designation
           if (!term) {
             return null
           }
