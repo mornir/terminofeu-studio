@@ -2,7 +2,7 @@ import { translationStatusList } from '../schemas/data/translationStatusList'
 
 export function TranslationBadge(props) {
   const status = translationStatusList.find(
-    (s) => s.value === props.published.translationStatus
+    (s) => s.value === props.published?.translationStatus
   )
 
   if (!status) return undefined
