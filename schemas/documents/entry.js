@@ -116,7 +116,7 @@ export default {
     },
   ],
   initialValue: {
-    status: statusList[0].value,
+    status: statusList[1].value,
   },
   preview: {
     select: {
