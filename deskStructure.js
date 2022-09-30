@@ -42,7 +42,7 @@ export const getDefaultDocumentNode = (doc) => {
       S.view
         .component(DocumentsPane)
         .options({
-          query: `*[!(_id in path("drafts.**")) && references($id)]`,
+          query: `*[!(_id in path("drafts.**")) && references($id) && _type == 'entry']`,
           params: { id: `_id` },
           useDraft: false,
         })
