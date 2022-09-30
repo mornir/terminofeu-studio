@@ -31,7 +31,7 @@
     "react-icons": "^4.4.0",
     "recharts": "^2.1.10",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "sanity-plugin-documents-pane": "^1.0.8",
+    "sanity-plugin-documents-pane": "^1.1.0",
     "sanity-plugin-tabs": "^2.1.0",
     "styled-components": "^5.3.5"
   },
