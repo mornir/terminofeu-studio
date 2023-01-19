@@ -1,4 +1,3 @@
-import Tabs from 'sanity-plugin-tabs'
 import { AiOutlineContainer } from 'react-icons/ai'
 
 import langFn from '../functions/langFn'
@@ -12,6 +11,7 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
+
   fieldsets: [
     {
       name: 'admin',
@@ -88,14 +88,23 @@ export default {
     {
       name: 'content',
       type: 'object',
-      inputComponent: Tabs,
-      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      title: 'Sprachauswahl',
+      groups: [
+        {
+          name: 'de',
+          title: 'Deutsch',
+          default: true,
+        },
+        {
+          name: 'fr',
+          title: 'Französisch',
+        },
+        {
+          name: 'it',
+          title: 'Italienisch',
+        },
+      ],
       fields: langs.map((lang) => langFn(lang)),
-      options: {
-        // setting layout to object will group the tab content in an object fieldset border.
-        // ... Useful for when your tab is in between other fields inside a document.
-        layout: 'object',
-      },
     },
     {
       title: 'Abbildungen',

@@ -14,7 +14,6 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/dashboard",
-    "tabs",
     "dashboard-widget-document-list",
     "welcome-widget",
     "entries-stats",
@@ -24,9 +23,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

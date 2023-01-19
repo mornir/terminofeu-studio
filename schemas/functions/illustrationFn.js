@@ -3,7 +3,7 @@ export default ({ title, code }) => {
     title,
     name: code,
     type: 'object',
-    fieldset: code,
+    group: code,
     fields: [
       {
         name: 'title',
