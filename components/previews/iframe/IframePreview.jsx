@@ -1,7 +1,7 @@
 /* eslint-disable react/no-multi-comp, react/no-did-mount-set-state */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './IframePreview.css'
+import styles from './IframePreview.css?inline'
 import { assemblePageUrl } from '../assemblePageUrl'
 
 class IframePreview extends React.PureComponent {

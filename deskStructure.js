@@ -1,6 +1,3 @@
-// https://www.sanity.io/docs/structure-builder/how-it-works
-import userStore from 'part:@sanity/base/user'
-import S from '@sanity/desk-tool/structure-builder'
 import {
   AiFillEye,
   AiFillEdit,
@@ -19,8 +16,8 @@ import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
 import { ag } from './schemas/data/arbeitsgruppen'
 
-export const getDefaultDocumentNode = (doc) => {
-  if (doc.schemaType === 'entry') {
+export const defaultDocumentNode = (S, { schemaType }) => {
+  if (schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
       S.view
@@ -36,7 +33,7 @@ export const getDefaultDocumentNode = (doc) => {
     ])
   }
 
-  if (doc.schemaType === 'source') {
+  if (schemaType === 'source') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
       S.view
@@ -51,9 +48,8 @@ export const getDefaultDocumentNode = (doc) => {
   }
 }
 
-export default async () => {
-  const { id } = await userStore.getUser('me')
-
+export const structure = (S, { currentUser }) => {
+  // Sanity user ids of translators and experts
   const translators = ['puCcAHT8N', 'pfoCdHT74']
   const experts = [...translators, 'pNqrbwTtv']
 
@@ -172,7 +168,7 @@ export default async () => {
               }),
             ])
         ),
-      ...(translators.includes(id) ? translationsItems : []),
-      ...(experts.includes(id) ? expertsItems : []),
+      ...(translators.includes(currentUser.id) ? translationsItems : []),
+      ...(experts.includes(currentUser.id) ? expertsItems : []),
     ])
 }

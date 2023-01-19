@@ -1,5 +1,4 @@
 import { BiCommentDetail } from 'react-icons/bi'
-import userStore from 'part:@sanity/base/user'
 
 export default {
   name: 'note',
@@ -11,9 +10,8 @@ export default {
       name: 'author',
       title: 'Verfasser',
       type: 'string',
-      initialValue: async () => {
-        const user = await userStore.getUser('me')
-        return user.displayName ?? ''
+      initialValue: (value, { currentUser }) => {
+        return currentUser.name ?? ''
       },
       validation: (Rule) => Rule.required(),
     },

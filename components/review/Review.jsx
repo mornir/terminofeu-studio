@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Box, Heading, Text } from '@sanity/ui'
-import sanityClient from 'part:@sanity/base/client'
-import styles from './Review.css'
+import { useClient } from 'sanity'
+import styles from './Review.css?inline'
 import { PortableText } from '@portabletext/react'
 
 function Review({ document, documentId }) {
@@ -30,7 +30,7 @@ function Review({ document, documentId }) {
   const [definitionSource, setDefinitionSource] = useState({})
   const [noteSource, setNoteSource] = useState({})
 
-  const client = sanityClient.withConfig({ apiVersion: '2022-02-02' })
+  const client = useClient().withConfig({ apiVersion: '2023-01-19' })
 
   useEffect(() => {
     const query = /* groq */ `*[_id == $id][0] {

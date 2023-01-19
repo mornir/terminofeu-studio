@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import ExcelJS from 'exceljs'
 import { saveAs } from 'file-saver'
-import sanityClient from 'part:@sanity/base/client'
-import styles from './styles.css'
-import { List, Item } from 'part:@sanity/components/lists/default'
-import { Select, Stack, Text } from '@sanity/ui'
+import { useClient } from 'sanity'
+import { DashboardWidgetContainer } from '@sanity/dashboard'
+import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { statusList } from '../../schemas/data/statusList'
 
@@ -27,6 +26,7 @@ function toPlainText(blocks, opts = {}) {
 function DownloadsList() {
   // Options for the select input
   const [options, setOptions] = useState(['definition'])
+  const sanityClient = useClient({ apiVersion: '2023-01-19' })
 
   async function saveAsExcel() {
     try {
@@ -82,50 +82,37 @@ function DownloadsList() {
   }
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h2 className={styles.title}>Download Center</h2>
-      </header>
-      <div className={styles.content}>
+    <DashboardWidgetContainer header={'Download Center'}>
+      <div>
         <Stack padding={[2, 2, 3]} space={2}>
           <Text size={1}>
             Für Mehrfachauswahl: <br></br>
             <kbd>Ctrl</kbd> gedrückt halten
           </Text>
 
-          <Select
-            fontSize={2}
-            padding={[2, 2, 3]}
-            space={[2, 2, 3]}
-            multiple
-            onChange={updateSelectedOptions}
-            className={styles.select}
-          >
+          <select multiple onChange={updateSelectedOptions} value={options}>
             {statusList.map(({ title, value }) => (
-              <option
-                value={value}
-                selected={value === 'definition'}
-                key={value}
-              >
+              <option value={value} key={value}>
                 {title}
               </option>
             ))}
-          </Select>
+          </select>
         </Stack>
-        <List className={styles.list}>
-          <Item>
-            <button className={styles.link} type="button" onClick={saveAsExcel}>
+        <Card>
+          <Stack space={2}>
+            <button type="button" onClick={saveAsExcel}>
               <RiFileExcel2Line size={'2em'} />
               Excel (.xlsx)
             </button>
-          </Item>
-        </List>
+          </Stack>
+        </Card>
       </div>
-    </div>
+    </DashboardWidgetContainer>
   )
 }
 
-export default {
+export const downloadsList = {
   name: 'downloads-list',
   component: DownloadsList,
+  layout: { width: 'small' },
 }

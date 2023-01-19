@@ -11,7 +11,6 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
-
   fieldsets: [
     {
       name: 'admin',

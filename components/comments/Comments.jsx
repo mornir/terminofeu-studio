@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Card, Label, Box, Heading, Flex } from '@sanity/ui'
 
-import styles from './Comments.css'
+import styles from './Comments.css?inline'
 
 function Comments({ document }) {
   function checkComments(comments) {

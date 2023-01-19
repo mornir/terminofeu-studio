@@ -1,12 +1,13 @@
 import React from 'react'
 import { ImSuperscript } from 'react-icons/im'
+
 import { AiOutlineLink } from 'react-icons/ai'
 
 const superscriptRender = (props) => <sup>{props.children}</sup>
 
 export default {
   title: 'Block Content',
-  name: 'noteRedactor',
+  name: 'blockContent',
   type: 'array',
   of: [
     {
@@ -23,13 +24,12 @@ export default {
         // preference or highlighting by editors.
         decorators: [
           { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
           {
             title: 'Superscript',
             value: 'sup',
-            blockEditor: {
-              icon: ImSuperscript,
-              render: superscriptRender,
-            },
+            icon: ImSuperscript,
+            component: superscriptRender,
           },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
@@ -41,9 +41,7 @@ export default {
             to: [{ type: 'entry' }],
             validation: (Rule) =>
               Rule.required().error('Feld darf nicht leer sein'),
-            blockEditor: {
-              icon: AiOutlineLink,
-            },
+            icon: AiOutlineLink,
           },
         ],
       },
