@@ -1,5 +1,3 @@
-import Tabs from 'sanity-plugin-tabs'
-
 import illustrationFn from '../functions/illustrationFn'
 import { langs } from '../data/langs'
 
@@ -25,8 +23,21 @@ export default {
     {
       name: 'content',
       type: 'object',
-      inputComponent: Tabs,
-      fieldsets: langs.map(({ title, code }) => ({ name: code, title })),
+      groups: [
+        {
+          name: 'de',
+          title: 'Deutsch',
+          default: true,
+        },
+        {
+          name: 'fr',
+          title: 'Französisch',
+        },
+        {
+          name: 'it',
+          title: 'Italienisch',
+        },
+      ],
       fields: langs.map((lang) => illustrationFn(lang)),
     },
   ],
