@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
 jobs:
   backup-dataset:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: Backup dataset
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Export dataset
         uses: sanity-io/github-action-sanity@v0.4
         env:
@@ -17,7 +17,7 @@ jobs:
         with:
           args: . dataset export production backups/backup.tar.gz
       - name: Upload backup.tar.gz
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: backup-tarball
           path: backups/backup.tar.gz
