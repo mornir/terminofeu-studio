@@ -10,12 +10,21 @@ jobs:
     name: Backup dataset
     steps:
       - uses: actions/checkout@v3
-      - name: Export dataset
-        uses: sanity-io/github-action-sanity@v0.3
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+
+      - uses: actions/setup-node@v3
         with:
-          args: . dataset export production backups/backup.tar.gz
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Export dataset
+        run: |
+          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" \
+          npx sanity dataset export \
+          production backups/backup.tar.gz
+
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v3
         with:
