@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: yarn install
-
       - name: Export dataset
         run: |
           SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" \
