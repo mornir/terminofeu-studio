@@ -1,5 +1,5 @@
 import React from 'react'
-import { assemblePageUrl } from '../assemblePageUrl'
+import { assemblePageUrl } from './assemblePageUrl'
 import styled from 'styled-components'
 
 const Message = styled.p`

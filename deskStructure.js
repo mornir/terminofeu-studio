@@ -7,7 +7,7 @@ import {
   AiOutlineMergeCells,
 } from 'react-icons/ai'
 
-import IframePreview from './components/previews/iframe/IframePreview'
+import IframePreview from './components/previews/IframePreview'
 import Review from './components/Review/Review'
 import Comments from './components/comments/Comments'
 import DocumentsPane from 'sanity-plugin-documents-pane'
