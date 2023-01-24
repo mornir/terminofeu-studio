@@ -51,8 +51,7 @@ export default {
       fieldset: 'admin',
       options: {
         list: ag,
-        layout: 'radio',
-        direction: 'horizontal',
+        layout: 'grid',
       },
     },
     {
