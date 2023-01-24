@@ -7,6 +7,7 @@ import schemas from './schemas/schema'
 import { structure, defaultDocumentNode } from './deskStructure'
 import { welcomeWidget } from './plugins/welcome-widget'
 import { downloadsList } from './plugins/downloads-widget'
+import { CustomPublishAction } from './workflows/CustomPublishAction'
 
 const myTheme = buildLegacyTheme({
   '--main-navigation-color': '#c05621',
@@ -58,6 +59,22 @@ export default defineConfig({
   },
   schema: {
     types: schemas,
+  },
+  document: {
+    actions: (originalActions, context) => {
+      // Only add the action for documents of type "movie"
+
+      if (context.schemaType === 'entry') {
+        // Replace the built-in publish action with my own
+        return originalActions.map((originalAction) =>
+          originalAction.action === 'publish'
+            ? CustomPublishAction
+            : originalAction
+        )
+      }
+
+      return originalActions
+    },
   },
   theme: myTheme,
 })
