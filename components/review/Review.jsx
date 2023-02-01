@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Box, Heading, Text } from '@sanity/ui'
 import { useClient } from 'sanity'
-import styles from './Review.css?inline'
+import styled from 'styled-components'
 import { PortableText } from '@portabletext/react'
+
+const Container = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  max-width: 65ch;
+  margin: 0 auto;
+`
 
 function Review({ document, documentId }) {
   const { published, draft } = document
@@ -83,7 +91,7 @@ function Review({ document, documentId }) {
   }
 
   return (
-    <div className={styles.container}>
+    <Container>
       <Box padding={4}>
         {isComment ? (
           <Text weight="semibold">
@@ -151,7 +159,7 @@ function Review({ document, documentId }) {
           </Stack>
         </Box>
       )}
-    </div>
+    </Container>
   )
 }
 

@@ -1,7 +1,27 @@
 import React from 'react'
 import { Stack, Card, Label, Box, Heading, Flex } from '@sanity/ui'
+import styled from 'styled-components'
 
-import styles from './Comments.css?inline'
+const Container = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  max-width: 65ch;
+  margin: 0 auto;
+`
+
+const NoComment = styled.p`
+  font-weight: bolder;
+  font-style: italic;
+  user-select: none;
+`
+
+const Comment = styled.p`
+  hyphens: auto;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre-line;
+`
 
 function Comments({ document }) {
   function checkComments(comments) {
@@ -14,11 +34,17 @@ function Comments({ document }) {
           <Flex direction="column-reverse">
             {comments.map((comment) => {
               return (
-                <Card padding={[3, 3, 4]} radius={2} shadow={1} marginY={2}>
+                <Card
+                  padding={[3, 3, 4]}
+                  radius={2}
+                  shadow={1}
+                  marginY={2}
+                  key={comment._key}
+                >
                   <Box marginBottom={3}>
                     <Label size={0}>{comment.author}</Label>
                   </Box>
-                  <p class={styles.noteText}>{comment.text}</p>
+                  <Comment>{comment.text}</Comment>
                 </Card>
               )
             })}
@@ -26,14 +52,12 @@ function Comments({ document }) {
         </Stack>
       )
     } else {
-      return <p className={styles.noComment}>Keine Kommentare</p>
+      return <NoComment>Keine Kommentare</NoComment>
     }
   }
 
   return (
-    <div className={styles.container} lang="de">
-      {checkComments(document.displayed.notes)}
-    </div>
+    <Container lang="de">{checkComments(document.displayed.notes)}</Container>
   )
 }
 
