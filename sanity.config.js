@@ -10,6 +10,7 @@ import { downloadsList } from './desktop-widgets/downloads-widget'
 import { CustomPublishAction } from './workflows/CustomPublishAction'
 
 import EntriesStats from './tools/entries-stats/EntriesStats'
+import Miro from './tools/miro/Miro'
 
 const myTheme = buildLegacyTheme({
   '--main-navigation-color': '#c05621',
@@ -55,11 +56,8 @@ export default defineConfig({
       ({ name }) => name === 'administrator'
     )
 
-    const tools = [
-      ...defaultTools,
-      EntriesStats,
-      /*{ name: 'admin', title: 'Admin', component: MyAdminTool }, */
-    ]
+    const tools = [...defaultTools, EntriesStats, Miro]
+
     if (isAdmin) {
       return tools
     }
