@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDocumentOperation } from '@sanity/react-hooks'
+import { useDocumentOperation } from 'sanity'
 import isEqual from 'lodash.isequal'
 
 import { langs } from '../schemas/data/langs'
