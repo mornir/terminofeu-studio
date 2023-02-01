@@ -63,7 +63,6 @@ export default defineConfig({
   document: {
     actions: (originalActions, context) => {
       // Only add the action for documents of type "movie"
-
       if (context.schemaType === 'entry') {
         // Replace the built-in publish action with my own
         return originalActions.map((originalAction) =>
@@ -74,6 +73,14 @@ export default defineConfig({
       }
 
       return originalActions
+    },
+
+    productionUrl: async (prev, context) => {
+      const { document } = context
+      if (document._type === 'entry') {
+        return `https://terminofeu.ch/de/entry/${document._id}`
+      }
+      return prev
     },
   },
   theme: myTheme,
