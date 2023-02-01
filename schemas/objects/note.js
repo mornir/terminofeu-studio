@@ -19,8 +19,7 @@ export default {
       title: 'Datum',
       name: 'publishedDate',
       type: 'date',
-      // TODO: ask why this doesn't work
-      //initialValue: new Intl.DateTimeFormat('fr-CH').format(new Date()),
+      initialValue: new Date().toISOString().split('T')[0],
       options: {
         dateFormat: 'DD.MM.YYYY',
       },
