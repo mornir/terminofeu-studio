@@ -11,9 +11,5 @@ export const assemblePageUrl = (document) => {
     url = rootURL + 'entry/' + _id
   }
 
-  if (_type == 'term') {
-    url = rootURL + 'term/' + _id
-  }
-
   return url
 }
