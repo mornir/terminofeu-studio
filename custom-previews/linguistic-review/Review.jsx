@@ -108,7 +108,7 @@ function Review({ document, documentId }) {
                 {draft.deTitle}
               </Heading>
               <Heading as="h2" size={6}>
-                {published.frTitle}
+                {draft.frTitle}
               </Heading>
 
               <Text size={3}>{renderText(draft.content.de?.definition)}</Text>
