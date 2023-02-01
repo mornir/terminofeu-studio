@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
-import sanityClient from 'part:@sanity/base/client'
+import styled from 'styled-components'
+import { useClient } from 'sanity'
 import { statusList } from '../../schemas/data/statusList'
 import { translationStatusList } from '../../schemas/data/translationStatusList'
 import { Heading, Box } from '@sanity/ui'
+import Icon from './icon'
 
 import {
   BarChart,
@@ -16,12 +17,11 @@ import {
   Cell,
 } from 'recharts'
 
-// Sanity uses CSS modules for styling. We import a stylesheet and get an
-// object where the keys matches the class names defined in the CSS file and
-// the values are a unique, generated class name. This allows you to write CSS
-// with only your components in mind without any conflicting class names.
-// See https://github.com/css-modules/css-modules for more info.
-import styles from './MyTool.css'
+const Container = styled.div`
+  padding-right: 1rem;
+  padding-top: 3rem;
+  max-width: min(1000px, 100%);
+`
 
 const list = statusList
   .map(
@@ -43,10 +43,12 @@ const query = `
    ${list2}
 }`
 
-function MyTool() {
+function EntriesStats() {
   const [data, setData] = useState([])
 
   const [data2, setData2] = useState([])
+
+  const sanityClient = useClient({ apiVersion: '2023-01-19' })
 
   useEffect(() => {
     sanityClient
@@ -110,7 +112,7 @@ function MyTool() {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <Container>
       <Box marginBottom={4} marginLeft={5}>
         <Heading as="h2" size={2}>
           Einträgeanzahl je nach Status
@@ -149,8 +151,13 @@ function MyTool() {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-    </div>
+    </Container>
   )
 }
 
-export default MyTool
+export default {
+  name: 'stats',
+  title: 'Stats',
+  component: EntriesStats,
+  icon: Icon,
+}

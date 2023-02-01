@@ -5,9 +5,11 @@ import { visionTool } from '@sanity/vision'
 import { documentListWidget } from 'sanity-plugin-dashboard-widget-document-list'
 import schemas from './schemas/schema'
 import { structure, defaultDocumentNode } from './deskStructure'
-import { welcomeWidget } from './plugins/welcome-widget'
-import { downloadsList } from './plugins/downloads-widget'
+import { welcomeWidget } from './desktop-widgets/welcome-widget'
+import { downloadsList } from './desktop-widgets/downloads-widget'
 import { CustomPublishAction } from './workflows/CustomPublishAction'
+
+import EntriesStats from './tools/entries-stats/EntriesStats'
 
 const myTheme = buildLegacyTheme({
   '--main-navigation-color': '#c05621',
@@ -48,14 +50,20 @@ export default defineConfig({
     }),
     visionTool(),
   ],
-  tools: (prev, context) => {
+  tools: (defaultTools, context) => {
     const isAdmin = context.currentUser.roles.find(
       ({ name }) => name === 'administrator'
     )
+
+    const tools = [
+      ...defaultTools,
+      EntriesStats,
+      /*{ name: 'admin', title: 'Admin', component: MyAdminTool }, */
+    ]
     if (isAdmin) {
-      return prev
+      return tools
     }
-    return prev.filter((tool) => tool.name !== 'vision')
+    return tools.filter((tool) => tool.name !== 'vision')
   },
   schema: {
     types: schemas,
