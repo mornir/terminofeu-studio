@@ -7,7 +7,8 @@ import {
   AiOutlineMergeCells,
 } from 'react-icons/ai'
 
-import IframePreview from './components/previews/IframePreview'
+// TODO: Better preview
+// import IframePreview from './components/previews/IframePreview'
 import Review from './components/Review/Review'
 import Comments from './components/comments/Comments'
 import DocumentsPane from 'sanity-plugin-documents-pane'
@@ -20,11 +21,11 @@ export const defaultDocumentNode = (S, { schemaType }) => {
   if (schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
-      S.view
+      /*    S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
         .title('Vorschau')
-        .icon(AiFillEye),
+        .icon(AiFillEye), */
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
       S.view
         .component(Review)
