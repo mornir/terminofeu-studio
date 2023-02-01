@@ -1,5 +1,4 @@
 import { BiCommentDetail } from 'react-icons/bi'
-import userStore from 'part:@sanity/base/user'
 
 export default {
   name: 'note',
@@ -11,9 +10,8 @@ export default {
       name: 'author',
       title: 'Verfasser',
       type: 'string',
-      initialValue: async () => {
-        const user = await userStore.getUser('me')
-        return user.displayName ?? ''
+      initialValue: (value, { currentUser }) => {
+        return currentUser.name ?? ''
       },
       validation: (Rule) => Rule.required(),
     },
@@ -21,8 +19,7 @@ export default {
       title: 'Datum',
       name: 'publishedDate',
       type: 'date',
-      // TODO: ask why this doesn't work
-      //initialValue: new Intl.DateTimeFormat('fr-CH').format(new Date()),
+      initialValue: new Date().toISOString().split('T')[0],
       options: {
         dateFormat: 'DD.MM.YYYY',
       },

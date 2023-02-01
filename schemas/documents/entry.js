@@ -11,7 +11,6 @@ export default {
   title: 'Eintrag',
   type: 'document',
   icon: AiOutlineContainer,
-
   fieldsets: [
     {
       name: 'admin',
@@ -52,8 +51,7 @@ export default {
       fieldset: 'admin',
       options: {
         list: ag,
-        layout: 'radio',
-        direction: 'horizontal',
+        layout: 'grid',
       },
     },
     {

@@ -1,6 +1,3 @@
-// https://www.sanity.io/docs/structure-builder/how-it-works
-import userStore from 'part:@sanity/base/user'
-import S from '@sanity/desk-tool/structure-builder'
 import {
   AiFillEye,
   AiFillEdit,
@@ -10,24 +7,25 @@ import {
   AiOutlineMergeCells,
 } from 'react-icons/ai'
 
-import IframePreview from './components/previews/iframe/IframePreview'
-import Review from './components/Review/Review'
-import Comments from './components/comments/Comments'
+// TODO: Better preview
+// import IframePreview from './custom-previews/web-preview/IframePreview'
+import Review from './custom-previews/linguistic-review/Review'
+import Comments from './custom-previews/comments/Comments'
 import DocumentsPane from 'sanity-plugin-documents-pane'
 
 import { langs } from './schemas/data/langs'
 import { statusList } from './schemas/data/statusList'
 import { ag } from './schemas/data/arbeitsgruppen'
 
-export const getDefaultDocumentNode = (doc) => {
-  if (doc.schemaType === 'entry') {
+export const defaultDocumentNode = (S, { schemaType }) => {
+  if (schemaType === 'entry') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
-      S.view
+      /*    S.view
         .component(IframePreview)
         .options({ addPreviewParam: true })
         .title('Vorschau')
-        .icon(AiFillEye),
+        .icon(AiFillEye), */
       S.view.component(Comments).title('Kommentare').icon(AiOutlineMessage),
       S.view
         .component(Review)
@@ -36,7 +34,7 @@ export const getDefaultDocumentNode = (doc) => {
     ])
   }
 
-  if (doc.schemaType === 'source') {
+  if (schemaType === 'source') {
     return S.document().views([
       S.view.form().icon(AiFillEdit),
       S.view
@@ -51,9 +49,8 @@ export const getDefaultDocumentNode = (doc) => {
   }
 }
 
-export default async () => {
-  const { id } = await userStore.getUser('me')
-
+export const structure = (S, { currentUser }) => {
+  // Sanity user ids of translators and experts
   const translators = ['puCcAHT8N', 'pfoCdHT74']
   const experts = [...translators, 'pNqrbwTtv']
 
@@ -172,7 +169,7 @@ export default async () => {
               }),
             ])
         ),
-      ...(translators.includes(id) ? translationsItems : []),
-      ...(experts.includes(id) ? expertsItems : []),
+      ...(translators.includes(currentUser.id) ? translationsItems : []),
+      ...(experts.includes(currentUser.id) ? expertsItems : []),
     ])
 }
