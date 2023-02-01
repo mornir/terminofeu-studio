@@ -8,9 +8,9 @@ import {
 } from 'react-icons/ai'
 
 // TODO: Better preview
-// import IframePreview from './components/previews/IframePreview'
-import Review from './components/Review/Review'
-import Comments from './components/comments/Comments'
+// import IframePreview from './custom-previews/web-preview/IframePreview'
+import Review from './custom-previews/linguistic-review/Review'
+import Comments from './custom-previews/comments/Comments'
 import DocumentsPane from 'sanity-plugin-documents-pane'
 
 import { langs } from './schemas/data/langs'
