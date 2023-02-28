@@ -94,15 +94,6 @@ export const structure = (S, { currentUser }) => {
           .filter('_type == "entry" && translationStatus == "fr_validated"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
-    S.listItem()
-      .title('Fiches à discuter')
-      .child(
-        S.documentList()
-          .id('in_discussion')
-          .title('Fiches à discuter')
-          .filter('_type == "entry" && translationStatus == "fr_in_discussion"')
-          .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
-      ),
   ]
 
   return S.list()
@@ -171,5 +162,16 @@ export const structure = (S, { currentUser }) => {
         ),
       ...(translators.includes(currentUser.id) ? translationsItems : []),
       ...(experts.includes(currentUser.id) ? expertsItems : []),
+      S.listItem()
+        .title('Fiches à discuter')
+        .child(
+          S.documentList()
+            .id('in_discussion')
+            .title('Fiches à discuter')
+            .filter(
+              '_type == "entry" && translationStatus == "fr_in_discussion"'
+            )
+            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
+        ),
     ])
 }
