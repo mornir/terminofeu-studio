@@ -28,7 +28,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "recharts": "^2.3.2",
-    "sanity": "^3.8.1",
+    "sanity": "^3.12.0",
     "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
     "sanity-plugin-documents-pane": "^2.0.1",
     "styled-components": "^5.3.5"
