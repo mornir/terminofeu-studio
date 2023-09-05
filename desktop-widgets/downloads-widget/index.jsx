@@ -7,6 +7,8 @@ import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { statusList } from '../../schemas/data/statusList'
 
+const CsvExport = require('./csv-export')
+
 const defaults = { nonTextBehavior: 'remove' }
 function toPlainText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts)
@@ -70,6 +72,29 @@ function DownloadsList() {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  async function buildCSVFile() {
+    const query = /* groq */ `*[_type == 'entry'][0..5] {
+                content {
+                  de {
+                    terms[] {
+                        designation,
+                        abbreviation
+                    } 
+                  },
+                fr {
+                    terms[] {
+                        designation,
+                        abbreviation
+                    } 
+                  }
+                }
+              }`
+
+    const entries = await sanityClient.fetch(query)
+
+    console.log(CsvExport(entries))
   }
 
   function updateSelectedOptions(e) {
