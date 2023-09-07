@@ -5,8 +5,12 @@ import { useClient } from 'sanity'
 import { DashboardWidgetContainer } from '@sanity/dashboard'
 import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
-import { statusList } from '../../schemas/data/statusList'
+import { mkConfig, generateCsv, download } from 'export-to-csv'
 
+import { statusList } from '../../schemas/data/statusList'
+import { formatJSON } from './format-json/format-json'
+
+// Function to convert Sanity rich text to plain text
 const defaults = { nonTextBehavior: 'remove' }
 function toPlainText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts)
@@ -72,6 +76,48 @@ function DownloadsList() {
     }
   }
 
+  async function saveAsCsv() {
+    try {
+      // Prevent the generation of the list if no option is selected
+      if (options.length === 0) return
+      const selectedStatus = options.map((s) => `"${s}"`).join(', ')
+      const query = /* groq */ `*[_type == 'entry' && status in [${selectedStatus}]] {
+                content {
+                  de {
+                    terms[] {
+                        designation,
+                        abbreviation
+                    } 
+                  },
+                fr {
+                    terms[] {
+                        designation,
+                        abbreviation
+                    } 
+                  }
+                }
+              }`
+
+      const entries = await sanityClient.fetch(query)
+
+      const formattedJSON = formatJSON(entries)
+
+      const csvConfig = mkConfig({
+        useKeysAsHeaders: true,
+        columnHeaders: ['termDE', 'termFR'],
+        showColumnHeaders: false,
+        filename: `${formattedJSON.length}_Begriffe-${
+          new Date().toISOString().split('T')[0]
+        }`,
+      })
+
+      const csv = generateCsv(csvConfig)(formattedJSON)
+      download(csvConfig)(csv)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   function updateSelectedOptions(e) {
     // selectedOptions is array-like (HTMLCollection)
     const selectedOptions = Array.from(
@@ -103,6 +149,9 @@ function DownloadsList() {
             <button type="button" onClick={saveAsExcel}>
               <RiFileExcel2Line size={'2em'} />
               Excel (.xlsx)
+            </button>
+            <button type="button" onClick={saveAsCsv}>
+              DeepL (.csv)
             </button>
           </Stack>
         </Card>
