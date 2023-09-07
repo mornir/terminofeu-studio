@@ -82,7 +82,7 @@ function DownloadsList() {
       // Prevent the generation of the list if no option is selected
       if (options.length === 0) return
       const selectedStatus = options.map((s) => `"${s}"`).join(', ')
-      const query = /* groq */ `*[_type == 'entry' && status in [${selectedStatus}]][0..5] {
+      const query = /* groq */ `*[_type == 'entry' && status in [${selectedStatus}]] {
                 content {
                   de {
                     terms[] {
@@ -103,7 +103,15 @@ function DownloadsList() {
 
       const formattedJSON = formatJSON(entries)
 
-      const csvConfig = mkConfig({ useKeysAsHeaders: true })
+      const csvConfig = mkConfig({
+        useKeysAsHeaders: true,
+        columnHeaders: ['termDE', 'termFR'],
+        showColumnHeaders: false,
+        filename: `${formattedJSON.length}_Begriffe-${
+          new Date().toISOString().split('T')[0]
+        }`,
+      })
+
       const csv = generateCsv(csvConfig)(formattedJSON)
       download(csvConfig)(csv)
     } catch (error) {
