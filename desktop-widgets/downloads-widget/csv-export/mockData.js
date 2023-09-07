@@ -67,4 +67,65 @@ export default [
       },
     },
   },
+  {
+    content: {
+      de: {
+        terms: [
+          {
+            designation: null,
+            abbreviation: null,
+          },
+        ],
+      },
+      fr: {
+        terms: [
+          {
+            designation: 'oxygène',
+            abbreviation: null,
+          },
+        ],
+      },
+    },
+  },
+  {
+    content: {
+      de: {
+        terms: [
+          {
+            designation: null,
+            abbreviation: 'CO2',
+          },
+        ],
+      },
+      fr: {
+        terms: [
+          {
+            designation: null,
+            abbreviation: null,
+          },
+        ],
+      },
+    },
+  },
+  // This should actually be saved, but it doesn't occur in practice.
+  {
+    content: {
+      de: {
+        terms: [
+          {
+            designation: null,
+            abbreviation: 'BSV',
+          },
+        ],
+      },
+      fr: {
+        terms: [
+          {
+            designation: null,
+            abbreviation: 'PPI',
+          },
+        ],
+      },
+    },
+  },
 ]
