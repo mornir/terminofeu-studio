@@ -1,4 +1,4 @@
-function CsvExport(entries) {
+export function CsvExport(entries) {
   const CsvJSON = entries.flatMap((entry) => {
     let frDesignation = entry.content.fr?.terms?.[0]?.designation
     let frAbbreviation = entry.content.fr?.terms?.[0]?.abbreviation
@@ -31,5 +31,3 @@ function CsvExport(entries) {
 
   return CsvJSON
 }
-
-module.exports = CsvExport

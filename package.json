@@ -11,7 +11,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "test": "jest"
+    "test": "vitest"
   },
   "keywords": [
     "sanity"
@@ -35,6 +35,6 @@
     "styled-components": "^5.2"
   },
   "devDependencies": {
-    "jest": "^29.6.4"
+    "vitest": "^0.34.3"
   }
 }

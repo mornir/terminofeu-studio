@@ -1,6 +1,7 @@
-const CsvExport = require('./csv-export')
+import { test, expect } from 'vitest'
 
-const mockData = require('./mockData')
+import { CsvExport } from './csv-export'
+import mockData from './mockData'
 
 test('converts data to expected JSON format', () => {
   const expectedObjectsArray = [

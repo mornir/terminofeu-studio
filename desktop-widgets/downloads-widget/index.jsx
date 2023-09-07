@@ -5,9 +5,9 @@ import { useClient } from 'sanity'
 import { DashboardWidgetContainer } from '@sanity/dashboard'
 import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
-import { statusList } from '../../schemas/data/statusList'
 
-const CsvExport = require('./csv-export')
+import { statusList } from '../../schemas/data/statusList'
+import { CsvExport } from './csv-export'
 
 const defaults = { nonTextBehavior: 'remove' }
 function toPlainText(blocks, opts = {}) {
