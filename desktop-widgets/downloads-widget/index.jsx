@@ -5,10 +5,13 @@ import { useClient } from 'sanity'
 import { DashboardWidgetContainer } from '@sanity/dashboard'
 import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
+import { mkConfig, generateCsv, download } from 'export-to-csv'
+const csvConfig = mkConfig({ useKeysAsHeaders: true })
 
 import { statusList } from '../../schemas/data/statusList'
-import { CsvExport } from './csv-export'
+import { formatJSON } from './format-json/format-json'
 
+// Function to convert Sanity rich text to plain text
 const defaults = { nonTextBehavior: 'remove' }
 function toPlainText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts)
@@ -74,8 +77,12 @@ function DownloadsList() {
     }
   }
 
-  async function buildCSVFile() {
-    const query = /* groq */ `*[_type == 'entry'][0..5] {
+  async function saveAsCsv() {
+    try {
+      // Prevent the generation of the list if no option is selected
+      if (options.length === 0) return
+      const selectedStatus = options.map((s) => `"${s}"`).join(', ')
+      const query = /* groq */ `*[_type == 'entry' && status in [${selectedStatus}]][0..5] {
                 content {
                   de {
                     terms[] {
@@ -92,9 +99,16 @@ function DownloadsList() {
                 }
               }`
 
-    const entries = await sanityClient.fetch(query)
+      const entries = await sanityClient.fetch(query)
 
-    console.log(CsvExport(entries))
+      const formattedJSON = formatJSON(entries)
+
+      const csvConfig = mkConfig({ useKeysAsHeaders: true })
+      const csv = generateCsv(csvConfig)(formattedJSON)
+      download(csvConfig)(csv)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   function updateSelectedOptions(e) {
@@ -128,6 +142,9 @@ function DownloadsList() {
             <button type="button" onClick={saveAsExcel}>
               <RiFileExcel2Line size={'2em'} />
               Excel (.xlsx)
+            </button>
+            <button type="button" onClick={saveAsCsv}>
+              DeepL (.csv)
             </button>
           </Stack>
         </Card>

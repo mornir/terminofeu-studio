@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest'
 
-import { CsvExport } from './csv-export'
+import { formatJSON } from './format-json'
 import mockData from './mockData'
 
 test('converts data to expected JSON format', () => {
@@ -30,5 +30,5 @@ test('converts data to expected JSON format', () => {
       termFR: 'système d’appauvrissement en oxygène',
     },
   ]
-  expect(CsvExport(mockData)).toStrictEqual(expectedObjectsArray)
+  expect(formatJSON(mockData)).toStrictEqual(expectedObjectsArray)
 })

@@ -1,5 +1,5 @@
-export function CsvExport(entries) {
-  const CsvJSON = entries
+export function formatJSON(entries) {
+  const formattedJSON = entries
     .flatMap((entry) => {
       let frDesignation = entry.content.fr?.terms?.[0]?.designation
       let frAbbreviation = entry.content.fr?.terms?.[0]?.abbreviation
@@ -32,5 +32,5 @@ export function CsvExport(entries) {
     })
     .filter(Boolean)
 
-  return CsvJSON
+  return formattedJSON
 }

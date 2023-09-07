@@ -22,6 +22,7 @@
     "@sanity/ui": "^1.2.0",
     "@sanity/vision": "^3.2.6",
     "exceljs": "^4.2.1",
+    "export-to-csv": "^1.0.0",
     "file-saver": "^2.0.5",
     "lodash.isequal": "^4.5.0",
     "prop-types": "^15.8.1",

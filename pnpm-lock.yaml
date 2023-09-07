@@ -6,6 +6,7 @@ specifiers:
   '@sanity/ui': ^1.2.0
   '@sanity/vision': ^3.2.6
   exceljs: ^4.2.1
+  export-to-csv: ^1.0.0
   file-saver: ^2.0.5
   lodash.isequal: ^4.5.0
   prop-types: ^15.8.1
@@ -25,6 +26,7 @@ dependencies:
   '@sanity/ui': 1.8.2_ynlbwjpw7oqthgrnao7bjjcd2y
   '@sanity/vision': 3.16.2_ynlbwjpw7oqthgrnao7bjjcd2y
   exceljs: 4.3.0
+  export-to-csv: 1.0.0
   file-saver: 2.0.5
   lodash.isequal: 4.5.0
   prop-types: 15.8.1
@@ -2587,6 +2589,10 @@ packages:
 
   /exif-component/1.0.1:
     resolution: {integrity: sha512-FXnmK9yJYTa3V3G7DE9BRjUJ0pwXMICAxfbsAuKPTuSlFzMZhQbcvvwx0I8ofNJHxz3tfjze+whxcGpfklAWOQ==}
+    dev: false
+
+  /export-to-csv/1.0.0:
+    resolution: {integrity: sha512-PMwskctJEbZMXZ3sRWcJHlaobY5b9JvbpB7+jpJF5FGrIh1ASWWI0IB4JrooIK9Kv+7GE+czp+gHKFFGkk8/ig==}
     dev: false
 
   /extend/3.0.2:
