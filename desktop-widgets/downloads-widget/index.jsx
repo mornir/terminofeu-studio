@@ -6,7 +6,6 @@ import { DashboardWidgetContainer } from '@sanity/dashboard'
 import { Stack, Text, Card } from '@sanity/ui'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { mkConfig, generateCsv, download } from 'export-to-csv'
-const csvConfig = mkConfig({ useKeysAsHeaders: true })
 
 import { statusList } from '../../schemas/data/statusList'
 import { formatJSON } from './format-json/format-json'
