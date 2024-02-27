@@ -55,7 +55,7 @@ export default {
       lang: 'lang',
     },
     prepare({ longTitle, title, date, lang }) {
-      const previewTitle = longTitle ? longTitle : title
+      const previewTitle = title ? title : longTitle
       if (date) {
         const formattedDate = new Intl.DateTimeFormat('fr-CH').format(
           new Date(date)

@@ -1,10 +1,11 @@
 import { buildLegacyTheme, defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
+import { deDELocale } from '@sanity/locale-de-de'
 import { dashboardTool } from '@sanity/dashboard'
 import { visionTool } from '@sanity/vision'
 import { documentListWidget } from 'sanity-plugin-dashboard-widget-document-list'
 import schemas from './schemas/schema'
-import { structure, defaultDocumentNode } from './deskStructure'
+import { structure, defaultDocumentNode } from './structure'
 import { welcomeWidget } from './desktop-widgets/welcome-widget'
 import { downloadsList } from './desktop-widgets/downloads-widget'
 import { CustomPublishAction } from './workflows/CustomPublishAction'
@@ -23,7 +24,7 @@ export default defineConfig({
   projectId: 'nipfx4rq',
   dataset: 'production',
   plugins: [
-    deskTool({
+    structureTool({
       structure,
       defaultDocumentNode,
     }),
@@ -50,6 +51,7 @@ export default defineConfig({
       ],
     }),
     visionTool(),
+    deDELocale(),
   ],
   tools: (defaultTools, context) => {
     const isAdmin = context.currentUser.roles.find(

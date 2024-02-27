@@ -61,6 +61,7 @@ export const structure = (S, { currentUser }) => {
         S.documentList()
           .id('translations')
           .title('Traductions')
+          .apiVersion('v2024-01-24')
           .filter('_type == "entry" && translationStatus == "translation"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
@@ -70,6 +71,7 @@ export const structure = (S, { currentUser }) => {
         S.documentList()
           .id('revisions')
           .title('Révisions')
+          .apiVersion('v2024-01-24')
           .filter('_type == "entry" && translationStatus == "review"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
@@ -82,6 +84,7 @@ export const structure = (S, { currentUser }) => {
         S.documentList()
           .id('controls')
           .title('Vérifications')
+          .apiVersion('v2024-01-24')
           .filter('_type == "entry" && translationStatus == "validation"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
@@ -91,6 +94,7 @@ export const structure = (S, { currentUser }) => {
         S.documentList()
           .id('validated')
           .title('Fiches validées')
+          .apiVersion('v2024-01-24')
           .filter('_type == "entry" && translationStatus == "fr_validated"')
           .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
       ),
@@ -115,6 +119,7 @@ export const structure = (S, { currentUser }) => {
                   .child(
                     S.documentList()
                       .title(status.title)
+                      .apiVersion('v2024-01-24')
                       .filter('_type == "entry" && status == $status')
                       .params({ status: status.value })
                       .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
@@ -134,6 +139,7 @@ export const structure = (S, { currentUser }) => {
                   .child(
                     S.documentList()
                       .title(gruppe.title)
+                      .apiVersion('v2024-01-24')
                       .filter('_type == "entry" && $ag in assignees')
                       .params({ ag: gruppe.value })
                       .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
@@ -154,6 +160,7 @@ export const structure = (S, { currentUser }) => {
                   .child(
                     S.documentList()
                       .title(lang.title)
+                      .apiVersion('v2024-01-24')
                       .filter('_type == "source" && lang == $lang')
                       .params({ lang: lang.code })
                   )
@@ -168,6 +175,7 @@ export const structure = (S, { currentUser }) => {
           S.documentList()
             .id('in_discussion')
             .title('Fiches à discuter')
+            .apiVersion('v2024-01-24')
             .filter(
               '_type == "entry" && translationStatus == "fr_in_discussion"'
             )
