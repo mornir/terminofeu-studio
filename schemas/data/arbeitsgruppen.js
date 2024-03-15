@@ -9,4 +9,5 @@ export const ag = [
   { title: 'AG9', value: 'AG9' },
   { title: 'AG11', value: 'AG11' },
   { title: 'AG12', value: 'AG12' },
+  { title: 'Projektteam', value: 'PT' },
 ]
