@@ -69,6 +69,9 @@ export default defineConfig({
     types: schemas,
   },
   document: {
+    comments: {
+      enabled: false,
+    },
     actions: (originalActions, context) => {
       // Only add the action for documents of type "movie"
       if (context.schemaType === 'entry') {
