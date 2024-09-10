@@ -26,6 +26,7 @@ export default defineConfig({
   scheduledPublishing: {
     enabled: false,
   },
+  tasks: { enabled: false },
   plugins: [
     structureTool({
       structure,
@@ -88,7 +89,6 @@ export default defineConfig({
 
       return originalActions
     },
-
     productionUrl: async (prev, context) => {
       const { document } = context
       if (document._type === 'entry') {
