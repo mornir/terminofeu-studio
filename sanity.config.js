@@ -23,6 +23,9 @@ export default defineConfig({
   title: 'Terminofeu',
   projectId: 'nipfx4rq',
   dataset: 'production',
+  scheduledPublishing: {
+    enabled: false,
+  },
   plugins: [
     structureTool({
       structure,
