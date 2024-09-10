@@ -23,6 +23,10 @@ export default defineConfig({
   title: 'Terminofeu',
   projectId: 'nipfx4rq',
   dataset: 'production',
+  scheduledPublishing: {
+    enabled: false,
+  },
+  tasks: { enabled: false },
   plugins: [
     structureTool({
       structure,
@@ -69,6 +73,9 @@ export default defineConfig({
     types: schemas,
   },
   document: {
+    comments: {
+      enabled: false,
+    },
     actions: (originalActions, context) => {
       // Only add the action for documents of type "movie"
       if (context.schemaType === 'entry') {
@@ -82,7 +89,6 @@ export default defineConfig({
 
       return originalActions
     },
-
     productionUrl: async (prev, context) => {
       const { document } = context
       if (document._type === 'entry') {
