@@ -23,6 +23,7 @@ export default defineConfig({
   title: 'Terminofeu',
   projectId: 'nipfx4rq',
   dataset: 'production',
+  studioHost: 'terminofeu',
   scheduledPublishing: {
     enabled: false,
   },
