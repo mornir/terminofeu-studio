@@ -91,8 +91,8 @@ function Review({ document, documentId }) {
   }
 
   return (
-    <Container>
-      <Box padding={4}>
+    <Container padding={4}>
+      <Box paddingBottom={4}>
         {isComment ? (
           <Text weight="semibold">
             Jérôme a laissé un commentaire dans l'onglet Kommentare.
@@ -100,75 +100,71 @@ function Review({ document, documentId }) {
         ) : (
           ''
         )}
-
-        {draft ? (
-          <Box padding={4}>
-            <Stack space={3} paddingBottom={6}>
-              <Heading as="h2" size={6}>
-                {draft.deTitle}
-              </Heading>
-              <Heading as="h2" size={6}>
-                {draft.frTitle}
-              </Heading>
-
-              <Text size={3}>{renderText(draft.content.de?.definition)}</Text>
-              <Text size={3}>{renderText(draft.content.fr?.definition)}</Text>
-            </Stack>
-
-            <Stack space={4}>
-              <Text size={2}>{renderText(draft.content.de?.note)}</Text>
-              <Text size={2}>{renderText(draft.content.fr?.note)}</Text>
-            </Stack>
-          </Box>
-        ) : (
-          <Stack space={3} paddingBottom={6} paddingTop={4}>
-            <Heading as="h2" size={6}>
-              {published.deTitle}
-            </Heading>
-
-            <Heading as="h2" size={6}>
-              {published.frTitle}
-            </Heading>
-
-            <Text size={3}>{renderText(published.content.de?.definition)}</Text>
-
-            <Stack space={2}>
-              <Text size={3}>
-                {renderText(published.content.fr?.definition)}
-              </Text>
-              {definitionSource && (
-                <Text size={2} muted>
-                  {referenceType(definitionSource.type)}
-                  {definitionSource.reference?.url ? (
-                    <a href={definitionSource.reference.url} target="_blank">
-                      {definitionSource.reference?.title}
-                    </a>
-                  ) : (
-                    <span>{definitionSource.reference?.title}</span>
-                  )}
-                </Text>
-              )}
-            </Stack>
-
-            <Stack space={4}>
-              <Text size={2}>{renderText(published.content.de?.note)}</Text>
-              <Text size={2}>{renderText(published.content.fr?.note)}</Text>
-              {noteSource && (
-                <Text size={2} muted>
-                  {referenceType(noteSource.type)}
-                  {noteSource.reference?.url ? (
-                    <a href={noteSource.reference.url} target="_blank">
-                      {noteSource.reference?.title}
-                    </a>
-                  ) : (
-                    <span>{noteSource.reference?.title}</span>
-                  )}
-                </Text>
-              )}
-            </Stack>
-          </Stack>
-        )}
       </Box>
+      {draft ? (
+        <Box>
+          <Stack space={3}>
+            <Heading as="h2" size={6}>
+              {draft.deTitle}
+            </Heading>
+            <Heading as="h2" size={6}>
+              {draft.frTitle}
+            </Heading>
+
+            <Text size={3}>{renderText(draft.content.de?.definition)}</Text>
+            <Text size={3}>{renderText(draft.content.fr?.definition)}</Text>
+          </Stack>
+
+          <Stack space={4}>
+            <Text size={2}>{renderText(draft.content.de?.note)}</Text>
+            <Text size={2}>{renderText(draft.content.fr?.note)}</Text>
+          </Stack>
+        </Box>
+      ) : (
+        <Stack space={3}>
+          <Heading as="h2" size={6}>
+            {published.deTitle}
+          </Heading>
+
+          <Heading as="h2" size={6}>
+            {published.frTitle}
+          </Heading>
+
+          <Stack space={2} paddingBottom={6}>
+            <Text size={3}>{renderText(published.content.de?.definition)}</Text>
+            <Text size={3}>{renderText(published.content.fr?.definition)}</Text>
+            {definitionSource && (
+              <Text size={2}>
+                {referenceType(definitionSource.type)}
+                {definitionSource.reference?.url ? (
+                  <a href={definitionSource.reference.url} target="_blank">
+                    {definitionSource.reference?.title}
+                  </a>
+                ) : (
+                  <span>{definitionSource.reference?.title}</span>
+                )}
+              </Text>
+            )}
+          </Stack>
+
+          <Stack space={4}>
+            <Text size={2}>{renderText(published.content.de?.note)}</Text>
+            <Text size={2}>{renderText(published.content.fr?.note)}</Text>
+            {noteSource && (
+              <Text size={2} muted>
+                {referenceType(noteSource.type)}
+                {noteSource.reference?.url ? (
+                  <a href={noteSource.reference.url} target="_blank">
+                    {noteSource.reference?.title}
+                  </a>
+                ) : (
+                  <span>{noteSource.reference?.title}</span>
+                )}
+              </Text>
+            )}
+          </Stack>
+        </Stack>
+      )}
     </Container>
   )
 }
