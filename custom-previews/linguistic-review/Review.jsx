@@ -91,7 +91,7 @@ function Review({ document, documentId }) {
   }
 
   return (
-    <Container padding={4}>
+    <Container>
       <Box paddingBottom={4}>
         {isComment ? (
           <Text weight="semibold">
