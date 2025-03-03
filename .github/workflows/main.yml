@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Backup dataset
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 8
-      - uses: actions/setup-node@v3
+          version: 10
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
@@ -28,7 +28,7 @@ jobs:
           production backups/backup.tar.gz
 
       - name: Upload backup.tar.gz
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backup-tarball
           path: backups/backup.tar.gz
