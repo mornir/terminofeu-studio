@@ -128,7 +128,7 @@ function DownloadsList() {
   }
 
   return (
-    <DashboardWidgetContainer header={'Download Center'}>
+    <DashboardWidgetContainer header={'Einträge exportieren'}>
       <div>
         <Stack padding={[2, 2, 3]} space={2}>
           <Text size={1}>

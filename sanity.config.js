@@ -34,6 +34,7 @@ export default defineConfig({
     structureTool({
       structure,
       defaultDocumentNode,
+      title: 'Einträge',
     }),
     dashboardTool({
       widgets: [
