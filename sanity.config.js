@@ -24,7 +24,7 @@ export default defineConfig({
   projectId: 'nipfx4rq',
   dataset: 'production',
   releases: {
-    enabled: false
+    enabled: false,
   },
   scheduledPublishing: {
     enabled: false,
@@ -60,18 +60,7 @@ export default defineConfig({
     visionTool(),
     deDELocale(),
   ],
-  tools: (defaultTools, context) => {
-    const isAdmin = context.currentUser.roles.find(
-      ({ name }) => name === 'administrator'
-    )
-
-    const tools = [...defaultTools, EntriesStats, Miro]
-
-    if (isAdmin) {
-      return tools
-    }
-    return tools.filter((tool) => tool.name !== 'vision')
-  },
+  tools: [EntriesStats, Miro],
   schema: {
     types: schemas,
   },
@@ -80,7 +69,7 @@ export default defineConfig({
       enabled: false,
     },
     actions: (originalActions, context) => {
-      // Only add the action for documents of type "movie"
+      // Only add the action for documents of type "entry"
       if (context.schemaType === 'entry') {
         // Replace the built-in publish action with my own
         return originalActions.map((originalAction) =>
