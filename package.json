@@ -38,5 +38,6 @@
   },
   "devDependencies": {
     "vitest": "^2.0.5"
-  }
+  },
+  "packageManager": "pnpm@10.8.1"
 }
