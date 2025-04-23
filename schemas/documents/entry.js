@@ -75,15 +75,6 @@ export default {
       }
     }),
     {
-      title: 'Kommentare',
-      name: 'notes',
-      type: 'array',
-      of: [{ type: 'note' }],
-      options: {
-        sortable: false,
-      },
-    },
-    {
       name: 'content',
       type: 'object',
       title: 'Sprachauswahl',
@@ -103,6 +94,15 @@ export default {
         },
       ],
       fields: langs.map((lang) => langFn(lang)),
+    },
+    {
+      title: 'Kommentare',
+      name: 'notes',
+      type: 'array',
+      of: [{ type: 'note' }],
+      options: {
+        sortable: false,
+      },
     },
     {
       title: 'Abbildungen',
