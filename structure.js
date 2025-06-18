@@ -167,8 +167,8 @@ export const structure = (S, { currentUser }) => {
               }),
             ])
         ),
-      ...(translators.includes(currentUser.id) ? translationsItems : []),
-      ...(experts.includes(currentUser.id) ? expertsItems : []),
+      ...translationsItems,
+      ...expertsItems,
       S.listItem()
         .title('Fiches à discuter')
         .child(

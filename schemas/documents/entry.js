@@ -58,9 +58,6 @@ export default {
       title: 'Übersetzungstatus',
       type: 'string',
       name: 'translationStatus',
-      hidden: ({ currentUser, document }) => {
-        return !['puCcAHT8N', 'pfoCdHT74', 'pNqrbwTtv'].includes(currentUser.id)
-      },
       fieldset: 'admin',
       options: {
         list: translationStatusList,

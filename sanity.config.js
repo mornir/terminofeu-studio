@@ -8,7 +8,7 @@ import schemas from './schemas/schema'
 import { structure, defaultDocumentNode } from './structure'
 import { welcomeWidget } from './desktop-widgets/welcome-widget'
 import { downloadsList } from './desktop-widgets/downloads-widget'
-import { CustomPublishAction } from './workflows/CustomPublishAction'
+// import { CustomPublishAction } from './workflows/CustomPublishAction'
 
 import EntriesStats from './tools/entries-stats/EntriesStats'
 import Miro from './tools/miro/Miro'
@@ -68,19 +68,6 @@ export default defineConfig({
   document: {
     comments: {
       enabled: false,
-    },
-    actions: (originalActions, context) => {
-      // Only add the action for documents of type "entry"
-      if (context.schemaType === 'entry') {
-        // Replace the built-in publish action with my own
-        return originalActions.map((originalAction) =>
-          originalAction.action === 'publish'
-            ? CustomPublishAction
-            : originalAction
-        )
-      }
-
-      return originalActions
     },
     productionUrl: async (prev, context) => {
       const { document } = context
