@@ -1,4 +1,5 @@
 import { AiOutlineContainer } from 'react-icons/ai'
+import { ALL_FIELDS_GROUP } from 'sanity'
 
 import langFn from '../functions/langFn'
 import { langs } from '../data/langs'
@@ -88,6 +89,10 @@ export default {
         {
           name: 'it',
           title: 'Italienisch',
+        },
+        {
+          ...ALL_FIELDS_GROUP,
+          hidden: true,
         },
       ],
       fields: langs.map((lang) => langFn(lang)),
