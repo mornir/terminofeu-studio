@@ -8,7 +8,6 @@ import schemas from './schemas/schema'
 import { structure, defaultDocumentNode } from './structure'
 import { welcomeWidget } from './desktop-widgets/welcome-widget'
 import { downloadsList } from './desktop-widgets/downloads-widget'
-// import { CustomPublishAction } from './workflows/CustomPublishAction'
 
 import EntriesStats from './tools/entries-stats/EntriesStats'
 import Miro from './tools/miro/Miro'

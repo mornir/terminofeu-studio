@@ -6,6 +6,7 @@ import {
   AiOutlineMessage,
   AiOutlineMergeCells,
 } from 'react-icons/ai'
+import { PiGavel } from 'react-icons/pi'
 
 // TODO: Better preview
 // import IframePreview from './custom-previews/web-preview/IframePreview'
@@ -126,6 +127,17 @@ export const structure = (S, { currentUser }) => {
                   )
               }),
             ])
+        ),
+      S.listItem()
+        .title('BSV 2026 Anhang 2')
+        .icon(PiGavel)
+        .child(
+          S.documentList()
+            .id('ioth')
+            .title('BSV 2026 Anhang 2')
+            .apiVersion('v2024-01-24')
+            .filter('_type == "entry" && level == "IOTH"')
+            .defaultOrdering([{ field: 'deTitle', direction: 'asc' }])
         ),
       S.listItem()
         .title('Arbeitsgruppen')
