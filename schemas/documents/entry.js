@@ -38,7 +38,7 @@ export default {
       fieldset: 'admin',
       options: {
         list: [
-          { title: 'IOTH-Begriff', value: 'IOTH' },
+          { title: 'BSV 2026 Anhang 2', value: 'IOTH' },
           { title: 'VKF-Begriff', value: 'VKF' },
         ],
       },
