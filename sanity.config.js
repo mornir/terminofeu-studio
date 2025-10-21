@@ -1,4 +1,5 @@
 import { buildLegacyTheme, defineConfig } from 'sanity'
+import { FlameIcon } from './static/FlameIcon.jsx'
 import { structureTool } from 'sanity/structure'
 import { deDELocale } from '@sanity/locale-de-de'
 import { dashboardTool } from '@sanity/dashboard'
@@ -22,6 +23,7 @@ export default defineConfig({
   title: 'Terminofeu',
   projectId: 'nipfx4rq',
   dataset: 'production',
+  icon: FlameIcon,
   releases: {
     enabled: false,
   },
