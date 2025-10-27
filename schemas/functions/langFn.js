@@ -21,16 +21,20 @@ export default ({ title, code }) => {
         title: 'Quelle der Definition',
         type: 'sourceReference',
       },
-
       {
         name: 'note',
-        title: 'Anmerkung',
+        title: 'Anmerkungen',
         type: 'noteRedactor',
       },
       {
         name: 'notesSource',
         title: 'Quelle der Anmerkung',
         type: 'sourceReference',
+      },
+      {
+        name: 'examples',
+        title: 'Beispiele',
+        type: 'noteRedactor',
       },
       {
         title: 'Definitionen aus bestehenden Regelwerken',
