@@ -18,10 +18,6 @@ https://github.com/mornir/terminofeu-web-astro
 
 ## Local Development
 
-### Add env variables
-
-- Add .env file based on .env.example
-
 ### Install dependencies
 
 ```bash
@@ -36,8 +32,7 @@ pnpm install
 pnpm run dev
 ```
 
-Studio runs at:
-http://localhost:3333
+Studio runs at: http://localhost:3333
 
 ### Deploy changes
 
