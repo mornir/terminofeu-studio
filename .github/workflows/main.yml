@@ -22,10 +22,10 @@ jobs:
         run: pnpm install
 
       - name: Export dataset
-        run: |
-          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" \
-          npx sanity dataset export --no-assets \
-          production backups/backup.tar.gz
+        env:
+          SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        run: npx sanity dataset export --no-assets production backup.tar.gz
 
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v4
