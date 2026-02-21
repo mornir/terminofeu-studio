@@ -23,7 +23,6 @@ jobs:
 
       - name: Export dataset
         env:
-          SANITY_STUDIO_API_PROJECT_ID: 'nipfx4rq'
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
         run: npx sanity dataset export --no-assets production backup.tar.gz
 

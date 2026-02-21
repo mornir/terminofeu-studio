@@ -7,7 +7,7 @@ const appId = process.env.SANITY_STUDIO_APP_ID || '<your app ID>'
 export default defineCliConfig({
   studioHost: 'terminofeu',
   api: {
-    projectId,
+    projectId: 'nipfx4rq',
     dataset,
   },
   deployment: { autoUpdates: false, appId },
