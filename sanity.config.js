@@ -40,7 +40,6 @@ export default defineConfig({
     dashboardTool({
       widgets: [
         welcomeWidget,
-        downloadsList,
         documentListWidget({
           title: 'Zuletzt bearbeitete Einträge',
           order: '_updatedAt desc',
