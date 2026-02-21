@@ -7,5 +7,5 @@ import {renderStudio} from "sanity"
 renderStudio(
   document.getElementById("sanity"),
   studioConfig,
-  {reactStrictMode: true, basePath: "/"}
+  {reactStrictMode: false, basePath: "/"}
 )
