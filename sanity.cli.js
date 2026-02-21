@@ -1,10 +1,13 @@
 import { defineCliConfig } from 'sanity/cli'
 
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || '<your project ID>'
+const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+
 export default defineCliConfig({
   studioHost: 'terminofeu',
   api: {
-    projectId: 'nipfx4rq',
-    dataset: 'production',
+    projectId,
+    dataset,
   },
-  reactStrictMode: true,
+  deployment: { autoUpdates: false },
 })
