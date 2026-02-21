@@ -6,4 +6,5 @@ export default defineCliConfig({
     projectId: 'nipfx4rq',
     dataset: 'production',
   },
+  reactStrictMode: true,
 })
