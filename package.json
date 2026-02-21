@@ -38,5 +38,10 @@
   "devDependencies": {
     "vitest": "^2.1.9"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.12.1",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
 }
