@@ -1,7 +1,7 @@
 import { AiOutlineContainer } from 'react-icons/ai'
 import { ALL_FIELDS_GROUP } from 'sanity'
 
-import langFn from '../functions/langFn'
+import langFn from '../utils/langFn'
 import { langs } from '../data/langs'
 import { statusList } from '../data/statusList'
 import { translationStatusList } from '../data/translationStatusList'

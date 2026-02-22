@@ -1,4 +1,4 @@
-import { filter } from '../functions/sourceFn'
+import { filter } from '../utils/sourceFn'
 
 export default {
   name: 'sourceReference',
