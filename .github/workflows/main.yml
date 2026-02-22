@@ -24,7 +24,7 @@ jobs:
       - name: Export dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: npx sanity@latest dataset export --no-assets production backups/backup.tar.gz
+        run: pnpm dlx sanity@latest dataset export --no-assets production backups/backup.tar.gz
 
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v6
