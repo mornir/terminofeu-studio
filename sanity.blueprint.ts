@@ -7,7 +7,7 @@ export default defineBlueprint({
       event: {
         on: ['create', 'update'],
         filter:
-          '_type == "entry" && delta::changedAny((content.de.terms[].designation, content.de.definition))',
+          '_type == "entry" && status in ["approved", "validated", "in_force"] &&delta::changedAny((content.de.terms, content.de.definition, content.de.note, content.de.examples))',
       },
     }),
   ],
