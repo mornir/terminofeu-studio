@@ -19,8 +19,10 @@
   ],
   "dependencies": {
     "@portabletext/react": "^6.0.2",
+    "@sanity/blueprints": "^0.12.2",
     "@sanity/client": "^7.15.0",
     "@sanity/dashboard": "^5.0.1",
+    "@sanity/functions": "^1.2.0",
     "@sanity/locale-de-de": "^1.1.29",
     "@sanity/ui": "^3.1.11",
     "@sanity/vision": "^5.11.0",
@@ -38,8 +40,6 @@
     "styled-components": "^6.3.11"
   },
   "devDependencies": {
-    "@sanity/blueprints": "0.12.2",
-    "@sanity/functions": "1.2.0",
     "typescript": "^5.9.3",
     "vitest": "^2.1.9"
   },

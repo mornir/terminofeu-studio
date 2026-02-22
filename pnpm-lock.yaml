@@ -11,12 +11,18 @@ importers:
       '@portabletext/react':
         specifier: ^6.0.2
         version: 6.0.2(react@19.2.4)
+      '@sanity/blueprints':
+        specifier: ^0.12.2
+        version: 0.12.2
       '@sanity/client':
         specifier: ^7.15.0
         version: 7.15.0(debug@4.4.3)
       '@sanity/dashboard':
         specifier: ^5.0.1
         version: 5.0.1(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react-is@19.2.4)(react@19.2.4)(sanity@5.11.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.0.1)(@types/node@25.3.0)(@types/react@19.2.14)(babel-plugin-react-compiler@1.0.0)(immer@11.1.4)(jiti@2.6.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(styled-components@6.3.11(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(styled-components@6.3.11(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+      '@sanity/functions':
+        specifier: ^1.2.0
+        version: 1.2.0
       '@sanity/locale-de-de':
         specifier: ^1.1.29
         version: 1.1.29(sanity@5.11.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.0.1)(@types/node@25.3.0)(@types/react@19.2.14)(babel-plugin-react-compiler@1.0.0)(immer@11.1.4)(jiti@2.6.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(styled-components@6.3.11(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
@@ -63,12 +69,6 @@ importers:
         specifier: ^6.3.11
         version: 6.3.11(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
-      '@sanity/blueprints':
-        specifier: 0.12.2
-        version: 0.12.2
-      '@sanity/functions':
-        specifier: 1.2.0
-        version: 1.2.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
