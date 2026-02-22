@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiOutlineFileText } from 'react-icons/ai'
 
-import { filter } from '../functions/sourceFn'
+import { filter } from '../utils/sourceFn'
 
 export default {
   title: 'Begriff',

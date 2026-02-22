@@ -3,7 +3,7 @@ const statusList = [
   { title: 'Alternative Definition', value: 'variant' },
 ]
 
-import { filter } from '../functions/sourceFn'
+import { filter } from '../utils/sourceFn'
 
 export default {
   title: 'Definition',

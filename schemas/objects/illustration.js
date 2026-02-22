@@ -1,4 +1,4 @@
-import illustrationFn from '../functions/illustrationFn'
+import illustrationFn from '../utils/illustrationFn'
 import { langs } from '../data/langs'
 
 export default {
