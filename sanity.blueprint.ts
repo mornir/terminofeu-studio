@@ -6,7 +6,8 @@ export default defineBlueprint({
       name: 'set-translation',
       event: {
         on: ['create', 'update'],
-        filter: '_type == "entry"',
+        filter:
+          '_type == "entry" && delta::changedAny((content.de.terms[].designation, content.de.definition))',
       },
     }),
   ],
