@@ -25,11 +25,11 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           SANITY_STUDIO_API_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-        run: npx @sanity/cli dataset export --no-assets production backups/backup.tar.gz
+        run: npx @sanity/cli dataset export --no-assets production backup.tar.gz
 
       - name: Upload backup.tar.gz
         uses: actions/upload-artifact@v4
         with:
           name: backup-tarball
-          path: backups/backup.tar.gz
+          path: backup.tar.gz
           if-no-files-found: error
