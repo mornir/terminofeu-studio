@@ -11,6 +11,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
+    "functions": "sanity functions dev",
     "test": "vitest"
   },
   "keywords": [
