@@ -60,6 +60,12 @@ importers:
         specifier: ^6.3.11
         version: 6.3.11(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@sanity/blueprints':
+        specifier: 0.12.2
+        version: 0.12.2
+      '@sanity/functions':
+        specifier: 1.2.0
+        version: 1.2.0
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@25.3.0)(jsdom@26.1.0)
@@ -1780,6 +1786,10 @@ packages:
     resolution: {integrity: sha512-yLwk+WZdSayG795fvvZmU2jW9gh6ulPCjJrc2jK5BR0VFFdfWHr4euXSKLW43DOKtvcbH3x0pqwnGYn7HjKd+w==}
     engines: {node: '>=20.19 <22 || >=22.12'}
     hasBin: true
+
+  '@sanity/functions@1.2.0':
+    resolution: {integrity: sha512-d8iVuruYKsgYI/KFbAVqjtnotnW3DDwgtOir1tqBJYVxxjPxH7JLiho26Kq6HWd/+N0wZHZEv+uz1aQa+T21kQ==}
+    engines: {node: '>=20'}
 
   '@sanity/generate-help-url@4.0.0':
     resolution: {integrity: sha512-Ooa4xkLT3TLaX+mw/13fq3IeGdnAkx4rbpVASvRVixzBBvvcL6jPqj50fjlCd+EhgB5GRXBCNNAy/hWXwjZEUA==}
@@ -7218,6 +7228,8 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
       - supports-color
+
+  '@sanity/functions@1.2.0': {}
 
   '@sanity/generate-help-url@4.0.0': {}
 

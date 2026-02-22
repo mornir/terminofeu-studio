@@ -36,7 +36,9 @@
     "styled-components": "^6.3.11"
   },
   "devDependencies": {
-    "vitest": "^2.1.9"
+    "vitest": "^2.1.9",
+    "@sanity/blueprints": "0.12.2",
+    "@sanity/functions": "1.2.0"
   },
   "packageManager": "pnpm@10.12.1",
   "prettier": {
