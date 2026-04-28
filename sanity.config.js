@@ -13,6 +13,11 @@ import { downloadsList } from './desktop-widgets/downloads-widget'
 import EntriesStats from './tools/entries-stats/EntriesStats'
 import Miro from './tools/miro/Miro'
 
+// Environment variables for project configuration
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
+const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+const auth_endpoint = process.env.SANITY_STUDIO_AUTH_ENDPOINT || ''
+
 const myTheme = buildLegacyTheme({
   '--main-navigation-color': '#c05621',
   '--brand-primary': '#dd6b20',
@@ -21,8 +26,8 @@ const myTheme = buildLegacyTheme({
 
 export default defineConfig({
   title: 'Terminofeu',
-  projectId: 'nipfx4rq',
-  dataset: 'production',
+  projectId,
+  dataset,
   icon: FlameIcon,
   releases: {
     enabled: false,
@@ -78,4 +83,17 @@ export default defineConfig({
     },
   },
   theme: myTheme,
+  auth: {
+    redirectOnSingle: false, //  If true, the "Choose login provider" (eg "Google, "GitHub", "E-mail/password") screen will be skipped if only a single provider is configured in the `providers` array
+    mode: 'append', // Use 'replace' if you only want this login provider
+    loginMethod: 'dual', // Attempt to use cookies where possible, falling back to storing authentication token in `localStorage` otherwise
+    providers: [
+      {
+        name: 'saml',
+        title: 'VKG SAML Login',
+        url: `https://api.sanity.io/v2021-10-01/auth/saml/login/${auth_endpoint}`,
+        logo: 'https://www.vkg.ch/favicon/favicon-32x32.png',
+      },
+    ],
+  },
 })
