@@ -32,7 +32,7 @@
     "react-dom": "^19.2.4",
     "react-icons": "^5.5.0",
     "recharts": "^3.7.0",
-    "sanity": "^5.11.0",
+    "sanity": "^6.16.0",
     "sanity-plugin-dashboard-widget-document-list": "^2.1.3",
     "sanity-plugin-documents-pane": "^3.0.2",
     "styled-components": "^6.3.11"
