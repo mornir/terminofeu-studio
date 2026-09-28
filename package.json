@@ -11,8 +11,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "functions": "sanity functions dev",
-    "test": "vitest"
+    "functions": "sanity functions dev"
   },
   "keywords": [
     "sanity"
@@ -37,13 +36,10 @@
     "sanity-plugin-documents-pane": "^3.0.2",
     "styled-components": "^6.3.11"
   },
-  "devDependencies": {
-    "vitest": "^2.1.9"
-  },
-  "packageManager": "pnpm@12.6.0",
   "prettier": {
     "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
-  }
+  },
+  "packageManager": "pnpm@12.6.0"
 }
