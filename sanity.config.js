@@ -8,7 +8,6 @@ import { documentListWidget } from 'sanity-plugin-dashboard-widget-document-list
 import schemas from './schemas/schema'
 import { structure, defaultDocumentNode } from './structure'
 import { welcomeWidget } from './desktop-widgets/welcome-widget'
-import { downloadsList } from './desktop-widgets/downloads-widget'
 
 import EntriesStats from './tools/entries-stats/EntriesStats'
 import Miro from './tools/miro/Miro'
@@ -84,16 +83,14 @@ export default defineConfig({
   },
   theme: myTheme,
   auth: {
-    redirectOnSingle: false, //  If true, the "Choose login provider" (eg "Google, "GitHub", "E-mail/password") screen will be skipped if only a single provider is configured in the `providers` array
-    mode: 'append', // Use 'replace' if you only want this login provider
-    loginMethod: 'dual', // Attempt to use cookies where possible, falling back to storing authentication token in `localStorage` otherwise
-    providers: [
+    providers: (defaultProviders) => [
       {
         name: 'saml',
         title: 'VKG SAML Login',
         url: `https://api.sanity.io/v2021-10-01/auth/saml/login/${auth_endpoint}`,
         logo: 'https://www.vkg.ch/favicon/favicon-32x32.png',
       },
+      ...defaultProviders,
     ],
   },
 })
